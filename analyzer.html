@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" dir="ltr" data-theme="light">
+<html lang="de" dir="ltr" data-theme="light" data-lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,24 +11,28 @@
 <script>
   (function () {
     try {
-      var root = document.documentElement;
-      var theme = localStorage.getItem('fea.theme');
-      if (!theme) {
-        theme = 'light'; /* white by default — dark mode only if the visitor toggles it */
-      }
-      root.setAttribute('data-theme', theme);
-      var lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('fea.lang');
-      if (lang === 'fa' || lang === 'ar') {
-        root.setAttribute('dir', 'rtl');
-        root.setAttribute('lang', lang === 'fa' ? 'fa-AF' : 'ar');
+      var r = document.documentElement;
+      r.setAttribute('data-theme', localStorage.getItem('fea.theme') || 'light');
+      var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('fea.lang');
+      if (l === 'de' || l === 'en' || l === 'fa' || l === 'ar') {
+        r.setAttribute('data-lang', l);
+        r.setAttribute('lang', l === 'fa' ? 'fa-AF' : l);
+        r.setAttribute('dir', l === 'fa' || l === 'ar' ? 'rtl' : 'ltr');
       }
     } catch (e) {}
   })();
 </script>
 </head>
-<body data-page-title="page.analyzer.title" data-page-description="an.hero.lead">
 
-<a class="skip-link" href="#main" data-i18n="common.skip">Zum Hauptinhalt springen</a>
+<body
+  data-title-de="KI-Chancen-Analyse — FEA" data-title-en="AI Opportunity Analyzer — FEA"
+  data-title-fa="تحلیلگر فرصت‌ها — FEA" data-title-ar="محلّل الفرص — FEA"
+  data-desc-de="Sechs Fragen, und die KI-Analyse zeigt passende Stipendien, Studienwege, Ausbildungen und Kurse."
+  data-desc-en="Six questions, and the AI analyzer ranks the scholarships, university routes, Ausbildung places and courses that fit you."
+  data-desc-fa="شش پرسش، و تحلیلگر مسیرهای مناسب شما را رتبه‌بندی می‌کند."
+  data-desc-ar="ستة أسئلة، ويرتّب المحلّل المنح والمسارات الجامعية والتدريب المهني التي تناسبك.">
+
+<a class="skip-link" href="#main"><span data-t="de">Zum Hauptinhalt springen</span><span data-t="en">Skip to main content</span><span data-t="fa">رفتن به محتوای اصلی</span><span data-t="ar">الانتقال إلى المحتوى الرئيسي</span></a>
 
 <header class="header" data-header>
   <div class="container header__inner">
@@ -39,38 +43,25 @@
         <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
         <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
       </svg>
-      <span class="brand__text">
-        <span class="brand__name">FEA</span>
-        <span class="brand__sub" data-i18n="brand.name">Free Education Assistance</span>
-      </span>
+      <span class="brand__text"><span class="brand__name">FEA</span><span class="brand__sub">Free Education Assistance</span></span>
     </a>
-
     <div class="header__spacer"></div>
-
-    <nav class="nav" data-nav-menu aria-label="Hauptnavigation">
-      <a href="index.html" data-nav-link data-i18n="nav.home">Start</a>
-      <a href="about.html" data-nav-link data-i18n="nav.about">Projekt</a>
-      <a href="opportunities.html" data-nav-link data-i18n="nav.opps">Möglichkeiten</a>
-      <a href="analyzer.html" data-nav-link data-i18n="nav.analyzer">KI-Analyse</a>
-      <a href="community.html" data-nav-link data-i18n="nav.community">Community</a>
-      <a href="contact.html" data-nav-link data-i18n="nav.contact">Kontakt</a>
+    <nav class="nav" data-nav-menu data-al-de="Hauptnavigation" data-al-en="Main navigation" data-al-fa="ناوبری اصلی" data-al-ar="التنقل الرئيسي">
+      <a href="index.html" data-nav-link><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a>
+      <a href="about.html" data-nav-link><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a>
+      <a href="opportunities.html" data-nav-link><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a>
+      <a href="analyzer.html" data-nav-link><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a>
+      <a href="community.html" data-nav-link><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a>
+      <a href="contact.html" data-nav-link><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a>
     </nav>
-
     <div class="header__tools">
-      <div class="lang-switcher" data-lang-switcher></div>
-      <button type="button" class="icon-btn" data-theme-toggle data-i18n-aria="common.theme" aria-pressed="false">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <circle cx="12" cy="12" r="4.2"/>
-          <path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round"/>
-        </svg>
+      <div class="lang-switcher" data-lang-switcher data-al-de="Sprache" data-al-en="Language" data-al-fa="زبان" data-al-ar="اللغة"></div>
+      <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" data-al-de="Hell / dunkel umschalten" data-al-en="Switch light / dark mode" data-al-fa="تغییر حالت روشن یا تاریک" data-al-ar="تبديل الوضع الفاتح والداكن">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
       </button>
-      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" data-i18n-aria="common.menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
-          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
-        </svg>
+      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" data-al-de="Menü" data-al-en="Menu" data-al-fa="فهرست" data-al-ar="القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>
@@ -80,73 +71,315 @@
 
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow" data-i18n="an.hero.eyebrow">KI-gestützte Beratung</p>
-      <h1 data-i18n="an.hero.title"></h1>
-      <p class="lead" style="max-width:68ch" data-i18n="an.hero.lead"></p>
-      <p class="note" style="margin-top:1rem;max-width:68ch" data-i18n="an.note"></p>
+      <p class="eyebrow"><span data-t="de">KI-gestützte Beratung</span><span data-t="en">AI-assisted guidance</span><span data-t="fa">رهنمایی با هوش مصنوعی</span><span data-t="ar">إرشاد بالذكاء الاصطناعي</span></p>
+      <h1><span data-t="de">KI-Chancen-Analyse</span><span data-t="en">AI Opportunity Analyzer</span><span data-t="fa">تحلیلگر فرصت‌ها</span><span data-t="ar">محلّل الفرص</span></h1>
+      <p class="lead measure">
+        <span data-t="de">Sechs kurze Fragen. Die Analyse gewichtet Wohnort, Bildungsniveau, Ziel, Interessen, Sprachniveau und Budget und sortiert die Wege, die wirklich zu dir passen.</span>
+        <span data-t="en">Six short questions. The analyzer weighs your location, education level, goal, interests, language levels and budget, then ranks the pathways that actually fit you.</span>
+        <span data-t="fa">شش پرسش کوتاه. تحلیلگر محل زندگی، سطح تحصیل، هدف، علاقه‌مندی، سطح زبان و توان مالی شما را می‌سنجد و مسیرهای مناسب را رتبه‌بندی می‌کند.</span>
+        <span data-t="ar">ستة أسئلة قصيرة. يوازن المحلّل بين مكان إقامتك ومستواك التعليمي وهدفك واهتماماتك ومستوى لغتك وإمكاناتك المالية، ثم يرتّب المسارات المناسبة لك.</span>
+      </p>
+      <p class="note measure mt-3">
+        <span data-t="de">Prototyp: Die Auswertung läuft vollständig in deinem Browser. Nichts wird hochgeladen, nichts auf einem Server gespeichert.</span>
+        <span data-t="en">Prototype: the matching runs entirely in your browser. Nothing is uploaded and nothing is stored on a server.</span>
+        <span data-t="fa">نمونهٔ اولیه: همهٔ محاسبه در مرورگر شما انجام می‌شود. چیزی ارسال یا در سرور ذخیره نمی‌شود.</span>
+        <span data-t="ar">نموذج أولي: تجري المطابقة بالكامل داخل متصفحك. لا يُرفع شيء ولا يُخزَّن على خادم.</span>
+      </p>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container" style="max-width:920px">
+  <section class="section section--flush">
+    <div class="container wrap-narrow">
 
-      <div class="analyzer" data-analyzer>
+      <!-- ============ THE SIX QUESTIONS (plain HTML) ============ -->
+      <form class="analyzer" data-analyzer novalidate>
         <div class="an-progress">
-          <span class="an-progress__label" data-an-progress></span>
-          <div class="progress-track">
-            <span class="progress-fill" data-an-bar></span>
+          <span class="an-progress__label" data-an-progress>
+            <span data-t="de">Frage <b data-an-cur>1</b> von <b data-an-total>6</b></span>
+            <span data-t="en">Question <b data-an-cur>1</b> of <b data-an-total>6</b></span>
+            <span data-t="fa">پرسش <b data-an-cur>1</b> از <b data-an-total>6</b></span>
+            <span data-t="ar">السؤال <b data-an-cur>1</b> من <b data-an-total>6</b></span>
+          </span>
+          <div class="progress-track"><span class="progress-fill" data-an-bar></span></div>
+        </div>
+
+        <!-- 1 -->
+        <fieldset class="an-step" data-an-step="location">
+          <legend class="an-step__title"><span data-t="de">Wo lebst du im Moment?</span><span data-t="en">Where do you live right now?</span><span data-t="fa">در حال حاضر کجا زندگی می‌کنید؟</span><span data-t="ar">أين تعيش حاليًا؟</span></legend>
+          <div class="an-options">
+            <label class="an-option"><input type="radio" name="location" value="afghanistan"><span class="an-option__label"><span data-t="de">Afghanistan</span><span data-t="en">Afghanistan</span><span data-t="fa">افغانستان</span><span data-t="ar">أفغانستان</span></span></label>
+            <label class="an-option"><input type="radio" name="location" value="germany" checked><span class="an-option__label"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span></label>
+            <label class="an-option"><input type="radio" name="location" value="other"><span class="an-option__label"><span data-t="de">Ein anderes Land</span><span data-t="en">Another country</span><span data-t="fa">کشور دیگر</span><span data-t="ar">بلد آخر</span></span></label>
           </div>
+        </fieldset>
+
+        <!-- 2 -->
+        <fieldset class="an-step" data-an-step="level" hidden>
+          <legend class="an-step__title"><span data-t="de">Welches Bildungsniveau hast du aktuell?</span><span data-t="en">What is your current education level?</span><span data-t="fa">سطح تحصیلی فعلی شما چیست؟</span><span data-t="ar">ما مستواك التعليمي الحالي؟</span></legend>
+          <div class="an-options">
+            <label class="an-option"><input type="radio" name="level" value="school"><span class="an-option__label"><span data-t="de">Schülerin / Schüler</span><span data-t="en">School student</span><span data-t="fa">شاگرد مکتب</span><span data-t="ar">طالب مدرسة</span></span></label>
+            <label class="an-option"><input type="radio" name="level" value="highschool" checked><span class="an-option__label"><span data-t="de">Schulabschluss (12. Klasse)</span><span data-t="en">School leaver (12th grade)</span><span data-t="fa">فارغ صنف ۱۲</span><span data-t="ar">خريج الثانوية (الصف 12)</span></span></label>
+            <label class="an-option"><input type="radio" name="level" value="bachelor"><span class="an-option__label"><span data-t="de">Bachelor</span><span data-t="en">Bachelor</span><span data-t="fa">لیسانس</span><span data-t="ar">بكالوريوس</span></span></label>
+            <label class="an-option"><input type="radio" name="level" value="master"><span class="an-option__label"><span data-t="de">Master</span><span data-t="en">Master</span><span data-t="fa">ماستری</span><span data-t="ar">ماجستير</span></span></label>
+            <label class="an-option"><input type="radio" name="level" value="professional"><span class="an-option__label"><span data-t="de">Berufstätig</span><span data-t="en">Working professional</span><span data-t="fa">شاغل در کار</span><span data-t="ar">يعمل مهنيًا</span></span></label>
+          </div>
+        </fieldset>
+
+        <!-- 3 -->
+        <fieldset class="an-step" data-an-step="goal" hidden>
+          <legend class="an-step__title"><span data-t="de">Wonach suchst du?</span><span data-t="en">What are you looking for?</span><span data-t="fa">به دنبال چه هستید؟</span><span data-t="ar">عمّ تبحث؟</span></legend>
+          <div class="an-options">
+            <label class="an-option"><input type="radio" name="goal" value="scholarship" checked><span class="an-option__label"><span data-t="de">Ein Stipendium</span><span data-t="en">A scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة دراسية</span></span></label>
+            <label class="an-option"><input type="radio" name="goal" value="university"><span class="an-option__label"><span data-t="de">Einen Studienplatz</span><span data-t="en">A university place</span><span data-t="fa">جای تحصیل در پوهنتون</span><span data-t="ar">مقعد جامعي</span></span></label>
+            <label class="an-option"><input type="radio" name="goal" value="ausbildung"><span class="an-option__label"><span data-t="de">Eine Ausbildung in Deutschland</span><span data-t="en">An Ausbildung in Germany</span><span data-t="fa">آموزش مسلکی در آلمان</span><span data-t="ar">تدريب مهني في ألمانيا</span></span></label>
+            <label class="an-option"><input type="radio" name="goal" value="course"><span class="an-option__label"><span data-t="de">Kostenlose Onlinekurse</span><span data-t="en">Free online courses</span><span data-t="fa">کورس‌های آنلاین رایگان</span><span data-t="ar">دورات مجانية</span></span></label>
+            <label class="an-option"><input type="radio" name="goal" value="language"><span class="an-option__label"><span data-t="de">Einen Sprachkurs</span><span data-t="en">A language course</span><span data-t="fa">کورس زبان</span><span data-t="ar">دورة لغة</span></span></label>
+            <label class="an-option"><input type="radio" name="goal" value="career"><span class="an-option__label"><span data-t="de">Berufliche Orientierung</span><span data-t="en">Career guidance</span><span data-t="fa">رهنمایی شغلی</span><span data-t="ar">إرشاد مهني</span></span></label>
+          </div>
+        </fieldset>
+
+        <!-- 4 -->
+        <fieldset class="an-step" data-an-step="fields" hidden>
+          <legend class="an-step__title"><span data-t="de">Welche Bereiche interessieren dich?</span><span data-t="en">Which fields interest you?</span><span data-t="fa">به کدام رشته‌ها علاقه دارید؟</span><span data-t="ar">ما المجالات التي تهمّك؟</span></legend>
+          <p class="an-step__hint"><span data-t="de">Mehrfachauswahl möglich</span><span data-t="en">Choose one or more</span><span data-t="fa">می‌توانید چند مورد را انتخاب کنید</span><span data-t="ar">يمكن اختيار أكثر من إجابة</span></p>
+          <div class="an-options">
+            <label class="an-option"><input type="checkbox" name="fields" value="it"><span class="an-option__label"><span data-t="de">IT &amp; Software</span><span data-t="en">IT &amp; software</span><span data-t="fa">کمپیوتر و نرم‌افزار</span><span data-t="ar">الحاسوب والبرمجيات</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="engineering"><span class="an-option__label"><span data-t="de">Ingenieurwesen</span><span data-t="en">Engineering</span><span data-t="fa">انجنیری</span><span data-t="ar">الهندسة</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="health"><span class="an-option__label"><span data-t="de">Medizin &amp; Gesundheit</span><span data-t="en">Medicine &amp; health</span><span data-t="fa">طب و صحت</span><span data-t="ar">الطب والصحة</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="business"><span class="an-option__label"><span data-t="de">Wirtschaft</span><span data-t="en">Business &amp; economics</span><span data-t="fa">اقتصاد و تجارت</span><span data-t="ar">الأعمال والاقتصاد</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="social"><span class="an-option__label"><span data-t="de">Recht &amp; Sozialwissenschaften</span><span data-t="en">Law &amp; social sciences</span><span data-t="fa">حقوق و علوم اجتماعی</span><span data-t="ar">القانون والعلوم الاجتماعية</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="education"><span class="an-option__label"><span data-t="de">Pädagogik &amp; Bildung</span><span data-t="en">Teaching &amp; education</span><span data-t="fa">تعلیم و تربیه</span><span data-t="ar">التربية والتعليم</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="arts"><span class="an-option__label"><span data-t="de">Kunst &amp; Design</span><span data-t="en">Arts &amp; design</span><span data-t="fa">هنر و دیزاین</span><span data-t="ar">الفنون والتصميم</span></span></label>
+            <label class="an-option"><input type="checkbox" name="fields" value="science"><span class="an-option__label"><span data-t="de">Naturwissenschaften</span><span data-t="en">Natural sciences</span><span data-t="fa">علوم طبیعی</span><span data-t="ar">العلوم الطبيعية</span></span></label>
+          </div>
+        </fieldset>
+
+        <!-- 5 -->
+        <fieldset class="an-step" data-an-step="languages" hidden>
+          <legend class="an-step__title"><span data-t="de">Wie gut sind deine Sprachkenntnisse?</span><span data-t="en">What are your language levels?</span><span data-t="fa">سطح زبان‌های شما چقدر است؟</span><span data-t="ar">ما مستوياتك اللغوية؟</span></legend>
+          <div class="an-langs">
+            <div class="field">
+              <label class="field__label" for="an-german"><span data-t="de">Deutsch</span><span data-t="en">German</span><span data-t="fa">آلمانی</span><span data-t="ar">الألمانية</span></label>
+              <select class="field__control" id="an-german" name="german">
+                <option value="none" data-de="Keine Kenntnisse" data-en="No knowledge" data-fa="بدون دانش" data-ar="بلا معرفة">Keine Kenntnisse</option>
+                <option value="a1">A1</option><option value="a2">A2</option><option value="b1">B1</option><option value="b2">B2</option><option value="c1">C1</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="an-english"><span data-t="de">Englisch</span><span data-t="en">English</span><span data-t="fa">انگلیسی</span><span data-t="ar">الإنجليزية</span></label>
+              <select class="field__control" id="an-english" name="english">
+                <option value="none" data-de="Keine Kenntnisse" data-en="No knowledge" data-fa="بدون دانش" data-ar="بلا معرفة">Keine Kenntnisse</option>
+                <option value="a1">A1</option><option value="a2">A2</option><option value="b1">B1</option><option value="b2">B2</option><option value="c1">C1</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- 6 -->
+        <fieldset class="an-step" data-an-step="free" hidden>
+          <legend class="an-step__title"><span data-t="de">Brauchst du Angebote, die vollständig kostenlos sind?</span><span data-t="en">Do you need opportunities that are completely free?</span><span data-t="fa">آیا به فرصت‌هایی نیاز دارید که کاملاً رایگان باشند؟</span><span data-t="ar">هل تحتاج إلى فرص مجانية بالكامل؟</span></legend>
+          <div class="an-options">
+            <label class="an-option"><input type="radio" name="free" value="yes" checked><span class="an-option__label"><span data-t="de">Ja, nur kostenlose</span><span data-t="en">Yes, free only</span><span data-t="fa">بلی، تنها رایگان</span><span data-t="ar">نعم، المجاني فقط</span></span></label>
+            <label class="an-option"><input type="radio" name="free" value="no"><span class="an-option__label"><span data-t="de">Nein, Kosten sind nicht das Hauptproblem</span><span data-t="en">No, cost is not the main problem</span><span data-t="fa">نی، مصرف مشکل اصلی نیست</span><span data-t="ar">لا، التكلفة ليست المشكلة الأساسية</span></span></label>
+          </div>
+        </fieldset>
+
+        <p class="an-error" data-an-error hidden role="alert">
+          <span data-t="de">Bitte wähle mindestens einen Bereich aus.</span><span data-t="en">Please choose at least one field.</span><span data-t="fa">لطفاً حداقل یک رشته را انتخاب کنید.</span><span data-t="ar">يرجى اختيار مجال واحد على الأقل.</span>
+        </p>
+
+        <div class="an-nav">
+          <button type="button" class="btn btn--ghost" data-an-back>
+            <span data-t="de">Zurück</span><span data-t="en">Back</span><span data-t="fa">بازگشت</span><span data-t="ar">رجوع</span>
+          </button>
+          <button type="button" class="btn btn--primary" data-an-next>
+            <span data-an-label-next><span data-t="de">Weiter</span><span data-t="en">Next</span><span data-t="fa">بعدی</span><span data-t="ar">التالي</span></span>
+            <span data-an-label-submit hidden><span data-t="de">Meine Wege anzeigen</span><span data-t="en">Show my pathways</span><span data-t="fa">نمایش مسیرهای من</span><span data-t="ar">اعرض مساراتي</span></span>
+          </button>
+        </div>
+      </form>
+
+      <!-- ============ RESULTS ============ -->
+      <div data-an-results hidden>
+        <h2><span data-t="de">Deine passenden Bildungswege</span><span data-t="en">Your matched pathways</span><span data-t="fa">مسیرهای مناسب شما</span><span data-t="ar">المسارات المناسبة لك</span></h2>
+        <p class="an-results__lead">
+          <span data-t="de"><b data-an-count>0</b> Möglichkeiten passen zu deinen Antworten — die beste Übereinstimmung zuerst.</span>
+          <span data-t="en"><b data-an-count>0</b> opportunities match your answers, strongest match first.</span>
+          <span data-t="fa"><b data-an-count>0</b> فرصت با پاسخ‌های شما مطابقت دارد؛ بهترین گزینه در اول.</span>
+          <span data-t="ar"><b data-an-count>0</b> فرصة تطابق إجاباتك، والأقوى مطابقةً أولًا.</span>
+        </p>
+
+        <div class="grid grid--cards" data-an-results-grid></div>
+
+        <div class="empty-state" data-an-results-empty hidden>
+          <p class="mb-0">
+            <span data-t="de">Noch keine gute Übereinstimmung. Erweitere deine Antworten, zum Beispiel mit mehr Interessensbereichen.</span>
+            <span data-t="en">No strong match yet. Try widening your answers — for example choose more fields of interest.</span>
+            <span data-t="fa">هنوز مطابقت قوی پیدا نشد. پاسخ‌های خود را گسترده‌تر کنید، مثلاً رشته‌های بیشتری انتخاب کنید.</span>
+            <span data-t="ar">لا توجد مطابقة قوية بعد. وسّع إجاباتك، مثلًا باختيار مجالات اهتمام أكثر.</span>
+          </p>
         </div>
 
-        <form data-an-steps novalidate></form>
-
-        <div class="an-nav" data-an-nav>
-          <button type="button" class="btn btn--ghost" data-an-back>Zurück</button>
-          <button type="button" class="btn btn--primary" data-an-next>Weiter</button>
+        <div class="an-next card card--soft">
+          <h3><span data-t="de">Die nächsten Schritte</span><span data-t="en">What to do next</span><span data-t="fa">گام‌های بعدی</span><span data-t="ar">الخطوات التالية</span></h3>
+          <ol class="an-next__list">
+            <li><span data-t="de">Öffne den offiziellen Link und prüfe aktuelle Frist und Voraussetzungen.</span><span data-t="en">Open the official link and check the current deadline and requirements.</span><span data-t="fa">پیوند رسمی را باز کنید و مهلت و شرایط فعلی را بررسی کنید.</span><span data-t="ar">افتح الرابط الرسمي وتحقّق من الموعد النهائي والمتطلبات.</span></li>
+            <li><span data-t="de">Bereite deine Unterlagen früh vor: Zeugnisse, Übersetzungen, Lebenslauf und Motivationsschreiben.</span><span data-t="en">Prepare your documents early: certificates, translations, CV and motivation letter.</span><span data-t="fa">اسناد خود را زود آماده کنید: تصدیق‌نامه‌ها، ترجمه‌ها، خلاصهٔ سوانح و مکتوب انگیزه.</span><span data-t="ar">جهّز أوراقك مبكرًا: الشهادات والترجمات والسيرة الذاتية وخطاب الدافع.</span></li>
+            <li><span data-t="de">Frag uns im Chat oder über WhatsApp, wenn etwas unklar ist — eine echte Person antwortet dir.</span><span data-t="en">Ask us in the chat or on WhatsApp if something is unclear — a real person will answer.</span><span data-t="fa">اگر چیزی روشن نبود، در چت یا واتساپ از ما بپرسید — یک انسان واقعی پاسخ می‌دهد.</span><span data-t="ar">اسألنا في المحادثة أو على واتساب إن كان شيء غير واضح — سيجيبك إنسان حقيقي.</span></li>
+          </ol>
         </div>
 
-        <div data-an-results hidden></div>
+        <div class="an-actions">
+          <button type="button" class="btn btn--ghost" data-an-restart><span data-t="de">Neu starten</span><span data-t="en">Start again</span><span data-t="fa">شروع دوباره</span><span data-t="ar">ابدأ من جديد</span></button>
+          <button type="button" class="btn btn--ghost" data-an-print><span data-t="de">Drucken / als PDF speichern</span><span data-t="en">Print / save as PDF</span><span data-t="fa">چاپ / ذخیره به شکل PDF</span><span data-t="ar">طباعة / حفظ كملف PDF</span></button>
+        </div>
       </div>
-
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="grid grid--3">
-        <article class="card card--soft">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-              <rect x="3.5" y="4.5" width="17" height="15" rx="3"/>
-              <path d="M8 9.5h8M8 13.5h5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3 data-i18n="about.ai.title"></h3>
-          <p class="note" style="margin:0" data-i18n="about.ai.note"></p>
-        </article>
-        <article class="card card--soft">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-              <path d="M12 3.5 4.5 7v5c0 4.3 3.1 7.5 7.5 8.5 4.4-1 7.5-4.2 7.5-8.5V7L12 3.5Z" stroke-linejoin="round"/>
-              <path d="m9 12 2.2 2.2L15.5 10" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <h3 data-i18n="faq.q2"></h3>
-          <p class="note" style="margin:0" data-i18n="faq.a2"></p>
-        </article>
-        <article class="card card--soft">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
-              <path d="M4 6.5h16M4 12h16M4 17.5h10" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <h3 data-i18n="opps.hero.title"></h3>
-          <p class="note" data-i18n="opps.note"></p>
-          <a class="btn btn--ghost btn--sm" href="opportunities.html" data-i18n="hero.ctaSecondary"></a>
-        </article>
-      </div>
+  <!-- ============ CARD POOL ============
+       The same 14 opportunities as on the Opportunities page. They stay hidden
+       until the analyzer moves the best matches into the results grid above.
+  -->
+  <div data-an-pool hidden>
+    <article class="card opp-card" data-id="daad" data-kind="scholarship" data-region="international" data-levels="highschool bachelor master professional" data-fields="any" data-needs="b2" data-offered="de en" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-scholarship"><span data-t="de">Stipendium</span><span data-t="en">Scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title"><span data-t="de">DAAD-Stipendiendatenbank</span><span data-t="en">DAAD scholarship database</span><span data-t="fa">بانک معلومات بورسیه‌های DAAD</span><span data-t="ar">قاعدة بيانات منح DAAD</span></h3>
+      <p class="opp-card__provider"><span data-t="de">Deutscher Akademischer Austauschdienst</span><span data-t="en">German Academic Exchange Service</span><span data-t="fa">سرویس تبادل اکادمیک آلمان</span><span data-t="ar">الهيئة الألمانية للتبادل العلمي</span></p>
+      <p class="opp-card__summary"><span data-t="de">Die größte offizielle Datenbank für Stipendien internationaler Studierender in Deutschland.</span><span data-t="en">The largest official database of scholarships for international students in Germany.</span><span data-t="fa">بزرگ‌ترین بانک رسمی معلومات بورسیه برای محصلان بین‌المللی در آلمان.</span><span data-t="ar">أكبر قاعدة بيانات رسمية للمنح للطلاب الدوليين في ألمانيا.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="deutschlandstipendium" data-kind="scholarship" data-region="germany" data-levels="bachelor master" data-fields="any" data-needs="b1" data-offered="de en" data-free="true" data-deadline="2026-10-15">
+      <div class="opp-card__tags"><span class="tag tag--kind-scholarship"><span data-t="de">Stipendium</span><span data-t="en">Scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">Deutschlandstipendium</h3>
+      <p class="opp-card__provider"><span data-t="de">Deutsche Hochschulen</span><span data-t="en">German universities</span><span data-t="fa">پوهنتون‌های آلمان</span><span data-t="ar">الجامعات الألمانية</span></p>
+      <p class="opp-card__summary"><span data-t="de">300 € pro Monat für talentierte und engagierte Studierende, unabhängig von der Nationalität.</span><span data-t="en">300 € per month for talented and committed students, independent of nationality.</span><span data-t="fa">ماهانه ۳۰۰ یورو برای محصلان با استعداد، بدون در نظر گرفتن ملیت.</span><span data-t="ar">300 يورو شهريًا للطلاب الموهوبين بغضّ النظر عن الجنسية.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.deutschlandstipendium.de/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="hildedomin" data-kind="scholarship" data-region="international" data-levels="highschool bachelor master" data-fields="any" data-needs="b1" data-offered="de en" data-free="true" data-deadline="2026-11-30">
+      <div class="opp-card__tags"><span class="tag tag--kind-scholarship"><span data-t="de">Stipendium</span><span data-t="en">Scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title"><span data-t="de">Hilde-Domin-Programm</span><span data-t="en">Hilde Domin Programme</span><span data-t="fa">برنامهٔ Hilde Domin</span><span data-t="ar">برنامج Hilde Domin</span></h3>
+      <p class="opp-card__provider">DAAD</p>
+      <p class="opp-card__summary"><span data-t="de">Stipendien für Studierende, denen im Herkunftsland Bildung verwehrt wird.</span><span data-t="en">Scholarships for students who are denied education in their home country.</span><span data-t="fa">بورسیه برای محصلانی که در کشور خود از تحصیل محروم شده‌اند.</span><span data-t="ar">منح للطلاب المحرومين من التعليم في بلدانهم.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.daad.de/en/studying-in-germany/scholarships/hilde-domin-programm/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="auw" data-kind="scholarship" data-region="international" data-levels="highschool bachelor" data-fields="any" data-needs="b1" data-offered="en" data-free="true" data-deadline="2027-01-31">
+      <div class="opp-card__tags"><span class="tag tag--kind-scholarship"><span data-t="de">Stipendium</span><span data-t="en">Scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title"><span data-t="de">Asian University for Women</span><span data-t="en">Asian University for Women</span><span data-t="fa">پوهنتون آسیایی برای زنان</span><span data-t="ar">الجامعة الآسيوية للنساء</span></h3>
+      <p class="opp-card__provider">AUW</p>
+      <p class="opp-card__summary"><span data-t="de">Vollstipendien für Frauen aus Asien, mit einem eigenen Programm für afghanische Studentinnen.</span><span data-t="en">Full scholarships for women from Asia, including a dedicated pathway for Afghan students.</span><span data-t="fa">بورسیه‌های کامل برای زنان آسیا، همراه با مسیر ویژه برای محصلان افغانستان.</span><span data-t="ar">منح كاملة للنساء من آسيا، مع مسار مخصّص للطالبات الأفغانيات.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://asian-university.org/admissions/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="garantiefonds" data-kind="scholarship" data-region="germany" data-levels="highschool bachelor" data-fields="any" data-needs="a2" data-offered="de" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-scholarship"><span data-t="de">Stipendium</span><span data-t="en">Scholarship</span><span data-t="fa">بورسیه</span><span data-t="ar">منحة</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">Garantiefonds Hochschule</h3>
+      <p class="opp-card__provider"><span data-t="de">Otto Benecke Stiftung</span><span data-t="en">Otto Benecke Foundation</span><span data-t="fa">بنیاد Otto Benecke</span><span data-t="ar">مؤسسة Otto Benecke</span></p>
+      <p class="opp-card__summary"><span data-t="de">Förderung für junge Geflüchtete in Deutschland, die sich auf ein Studium vorbereiten.</span><span data-t="en">Funding for young refugees in Germany preparing for university study.</span><span data-t="fa">حمایت مالی برای جوانان پناهنده در آلمان که برای تحصیل آماده می‌شوند.</span><span data-t="ar">تمويل للشباب اللاجئين في ألمانيا الراغبين في الاستعداد للدراسة الجامعية.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.obs-ev.de/gf-h/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="studienkolleg" data-kind="university" data-region="germany" data-levels="highschool" data-fields="any" data-needs="b1" data-offered="de" data-free="true" data-deadline="2026-11-15">
+      <div class="opp-card__tags"><span class="tag tag--kind-university"><span data-t="de">Universität</span><span data-t="en">University</span><span data-t="fa">پوهنتون</span><span data-t="ar">جامعة</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">Studienkolleg</h3>
+      <p class="opp-card__provider"><span data-t="de">Deutsche Studienkollegs</span><span data-t="en">German Studienkollegs</span><span data-t="fa">Studienkolleg‌های آلمان</span><span data-t="ar">معاهد Studienkolleg</span></p>
+      <p class="opp-card__summary"><span data-t="de">Einjähriger Vorbereitungskurs, wenn dein Schulabschluss nicht direkt anerkannt wird.</span><span data-t="en">One-year preparatory course if your school certificate is not directly recognised.</span><span data-t="fa">کورس آمادگی یک‌ساله اگر سند مکتب شما مستقیماً پذیرفته نشود.</span><span data-t="ar">سنة تحضيرية إن لم تُعترف شهادتك المدرسية مباشرةً.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.studienkollegs.de/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="uniassist" data-kind="university" data-region="germany" data-levels="highschool bachelor master" data-fields="any" data-needs="b2" data-offered="de en" data-free="false" data-deadline="2027-01-15">
+      <div class="opp-card__tags"><span class="tag tag--kind-university"><span data-t="de">Universität</span><span data-t="en">University</span><span data-t="fa">پوهنتون</span><span data-t="ar">جامعة</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span></div>
+      <h3 class="opp-card__title">uni-assist</h3>
+      <p class="opp-card__provider">uni-assist e.V.</p>
+      <p class="opp-card__summary"><span data-t="de">Zentrale Stelle, die Zeugnisse prüft und Bewerbungen an über 170 Hochschulen weiterleitet.</span><span data-t="en">Central service that checks certificates and forwards applications to over 170 universities.</span><span data-t="fa">مرجع مرکزی که اسناد را بررسی و درخواست‌ها را به بیش از ۱۷۰ پوهنتون می‌فرستد.</span><span data-t="ar">جهة مركزية تفحص الشهادات وتحوّل الطلبات إلى أكثر من 170 جامعة.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.uni-assist.de/en/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="ausbildungba" data-kind="ausbildung" data-region="germany" data-levels="school highschool professional" data-fields="any" data-needs="b1" data-offered="de" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-ausbildung"><span data-t="de">Ausbildung</span><span data-t="en">Ausbildung</span><span data-t="fa">آموزش مسلکی</span><span data-t="ar">تدريب مهني</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title"><span data-t="de">Ausbildungsportal der Arbeitsagentur</span><span data-t="en">Ausbildung search portal</span><span data-t="fa">پورتال جستجوی Ausbildung</span><span data-t="ar">بوابة البحث عن التدريب المهني</span></h3>
+      <p class="opp-card__provider"><span data-t="de">Bundesagentur für Arbeit</span><span data-t="en">Federal Employment Agency</span><span data-t="fa">ادارهٔ فدرال کار آلمان</span><span data-t="ar">وكالة العمل الاتحادية</span></p>
+      <p class="opp-card__summary"><span data-t="de">Tausende bezahlte Ausbildungsplätze in allen Berufsfeldern in Deutschland.</span><span data-t="en">Thousands of paid apprenticeship places across every profession in Germany.</span><span data-t="fa">هزاران جای آموزش مسلکی معاش‌دار در همهٔ رشته‌ها در آلمان.</span><span data-t="ar">آلاف أماكن التدريب المهني المدفوع في جميع المهن في ألمانيا.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.arbeitsagentur.de/ausbildung" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="ihk" data-kind="ausbildung" data-region="germany" data-levels="school highschool professional" data-fields="any it engineering business health" data-needs="b1" data-offered="de" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-ausbildung"><span data-t="de">Ausbildung</span><span data-t="en">Ausbildung</span><span data-t="fa">آموزش مسلکی</span><span data-t="ar">تدريب مهني</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">IHK-Lehrstellenbörse</h3>
+      <p class="opp-card__provider"><span data-t="de">Industrie- und Handelskammern</span><span data-t="en">Chambers of Industry and Commerce</span><span data-t="fa">اتاق‌های صنعت و تجارت</span><span data-t="ar">غرف الصناعة والتجارة</span></p>
+      <p class="opp-card__summary"><span data-t="de">Regionale Lehrstellenbörse mit freien Plätzen direkt von ausbildenden Unternehmen.</span><span data-t="en">Regional apprenticeship exchange with vacancies from companies that train apprentices.</span><span data-t="fa">بازار محلی جای‌های آموزش مسلکی، مستقیم از شرکت‌ها.</span><span data-t="ar">سوق إقليمي لأماكن التدريب المهني من الشركات مباشرةً.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.ihk-lehrstellenboerse.de/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="integrationskurs" data-kind="language" data-region="germany" data-levels="school highschool bachelor master professional" data-fields="any" data-needs="none" data-offered="de en ar fa" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-language"><span data-t="de">Sprache</span><span data-t="en">Language</span><span data-t="fa">زبان</span><span data-t="ar">لغة</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title"><span data-t="de">Integrationskurs</span><span data-t="en">Integration course</span><span data-t="fa">کورس ادغام</span><span data-t="ar">دورة الاندماج</span></h3>
+      <p class="opp-card__provider">BAMF</p>
+      <p class="opp-card__summary"><span data-t="de">Deutsch bis Niveau B1 plus Orientierungskurs zu Recht, Geschichte und Gesellschaft.</span><span data-t="en">German up to level B1 plus an orientation course on law, history and society.</span><span data-t="fa">آلمانی تا سطح B1 به‌همراه کورس آشنایی با قانون، تاریخ و جامعه.</span><span data-t="ar">ألمانية حتى مستوى B1 مع دورة توجيه في القانون والتاريخ والمجتمع.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="dwgerman" data-kind="language" data-region="online" data-levels="school highschool bachelor master professional" data-fields="any" data-needs="none" data-offered="de en ar fa" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-language"><span data-t="de">Sprache</span><span data-t="en">Language</span><span data-t="fa">زبان</span><span data-t="ar">لغة</span></span><span class="tag"><span data-t="de">Online</span><span data-t="en">Online</span><span data-t="fa">آنلاین</span><span data-t="ar">عبر الإنترنت</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">DW — <span data-t="de">Deutsch lernen</span><span data-t="en">Learn German</span><span data-t="fa">آموزش آلمانی</span><span data-t="ar">تعلّم الألمانية</span></h3>
+      <p class="opp-card__provider">Deutsche Welle</p>
+      <p class="opp-card__summary"><span data-t="de">Kostenlose Deutschkurse von A1 bis C1 mit Audio, Video und Übungen — ohne Anmeldung.</span><span data-t="en">Free German courses from A1 to C1 with audio, video and exercises — no registration.</span><span data-t="fa">کورس‌های رایگان آلمانی از A1 تا C1 — بدون ثبت‌نام.</span><span data-t="ar">دورات ألمانية مجانية من A1 إلى C1 — بلا تسجيل.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://learngerman.dw.com/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="freecodecamp" data-kind="course" data-region="online" data-levels="school highschool bachelor master professional" data-fields="it engineering science" data-needs="a2" data-offered="en ar" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-course"><span data-t="de">Kostenloser Kurs</span><span data-t="en">Free course</span><span data-t="fa">کورس رایگان</span><span data-t="ar">دورة مجانية</span></span><span class="tag"><span data-t="de">Online</span><span data-t="en">Online</span><span data-t="fa">آنلاین</span><span data-t="ar">عبر الإنترنت</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">freeCodeCamp</h3>
+      <p class="opp-card__provider"><span data-t="de">Programmieren &amp; Datenanalyse</span><span data-t="en">Programming &amp; data analysis</span><span data-t="fa">برنامه‌نویسی و تحلیل داده</span><span data-t="ar">البرمجة وتحليل البيانات</span></p>
+      <p class="opp-card__summary"><span data-t="de">Kostenloses Lernprogramm mit Zertifikaten in Webentwicklung und Softwaretechnik.</span><span data-t="en">Free, certificate-based curriculum in web development and software engineering.</span><span data-t="fa">برنامهٔ آموزشی رایگان با سرتیفیکیت در ساخت ویب‌سایت و انجنیری نرم‌افزار.</span><span data-t="ar">منهج مجاني بشهادات في تطوير الويب وهندسة البرمجيات.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="edx" data-kind="course" data-region="online" data-levels="highschool bachelor master professional" data-fields="any" data-needs="b1" data-offered="en" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-course"><span data-t="de">Kostenloser Kurs</span><span data-t="en">Free course</span><span data-t="fa">کورس رایگان</span><span data-t="ar">دورة مجانية</span></span><span class="tag"><span data-t="de">Online</span><span data-t="en">Online</span><span data-t="fa">آنلاین</span><span data-t="ar">عبر الإنترنت</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">edX &amp; Coursera</h3>
+      <p class="opp-card__provider"><span data-t="de">Internationale Universitäten</span><span data-t="en">International universities</span><span data-t="fa">پوهنتون‌های بین‌المللی</span><span data-t="ar">جامعات دولية</span></p>
+      <p class="opp-card__summary"><span data-t="de">Universitätskurse, die im Audit-Modus kostenlos belegt werden können.</span><span data-t="en">University courses you can follow for free in audit mode.</span><span data-t="fa">کورس‌های پوهنتونی که در حالت audit رایگان قابل استفاده اند.</span><span data-t="ar">مقررات جامعية يمكن متابعتها مجانًا في وضع audit.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.edx.org/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+
+    <article class="card opp-card" data-id="makeit" data-kind="career" data-region="germany" data-levels="highschool bachelor master professional" data-fields="any" data-needs="none" data-offered="de en" data-free="true" data-deadline="rolling">
+      <div class="opp-card__tags"><span class="tag tag--kind-career"><span data-t="de">Beruf</span><span data-t="en">Career</span><span data-t="fa">کار و مسلک</span><span data-t="ar">مسار مهني</span></span><span class="tag"><span data-t="de">Deutschland</span><span data-t="en">Germany</span><span data-t="fa">آلمان</span><span data-t="ar">ألمانيا</span></span><span class="tag tag--free"><span data-t="de">Kostenlos</span><span data-t="en">Free</span><span data-t="fa">رایگان</span><span data-t="ar">مجاني</span></span></div>
+      <h3 class="opp-card__title">Make it in Germany</h3>
+      <p class="opp-card__provider"><span data-t="de">Portal der Bundesregierung</span><span data-t="en">Federal Government portal</span><span data-t="fa">پورتال حکومت فدرال آلمان</span><span data-t="ar">بوابة الحكومة الاتحادية</span></p>
+      <p class="opp-card__summary"><span data-t="de">Offizielle Informationen zu Anerkennung von Abschlüssen, Jobsuche und Visum.</span><span data-t="en">Official guidance on recognition of qualifications, job search and visas.</span><span data-t="fa">رهنمایی رسمی دربارهٔ به‌رسمیت‌شناسی اسناد، جستجوی کار و ویزه.</span><span data-t="ar">إرشاد رسمي حول معادلة الشهادات والبحث عن عمل والتأشيرة.</span></p>
+      <a class="btn btn--ghost btn--sm opp-card__link" href="https://www.make-it-in-germany.com/en/" target="_blank" rel="noopener noreferrer"><span data-t="de">Offizielle Informationen</span><span data-t="en">Official information</span><span data-t="fa">معلومات رسمی</span><span data-t="ar">المعلومات الرسمية</span></a>
+    </article>
+  </div>
+
+  <!-- ============ TEMPLATES used by the analyzer ============ -->
+  <template id="tpl-match">
+    <div class="match">
+      <span class="match__value"><b data-score>0</b>% <span data-t="de">Übereinstimmung</span><span data-t="en">match</span><span data-t="fa">مطابقت</span><span data-t="ar">تطابق</span></span>
+      <div class="match__bar"><span class="match__fill"></span></div>
     </div>
-  </section>
+  </template>
+
+  <template id="tpl-why">
+    <div class="why">
+      <p class="why__title"><span data-t="de">Warum das zu dir passt</span><span data-t="en">Why this fits you</span><span data-t="fa">چرا این گزینه مناسب شماست</span><span data-t="ar">لماذا يناسبك هذا</span></p>
+      <ul class="why__list"></ul>
+    </div>
+  </template>
+
+  <template id="tpl-reasons">
+    <li data-reason="goal"><span data-t="de">Entspricht deinem Ziel</span><span data-t="en">Matches what you are looking for</span><span data-t="fa">با هدف شما مطابقت دارد</span><span data-t="ar">يطابق ما تبحث عنه</span></li>
+    <li data-reason="location"><span data-t="de">Passt zu deinem Wohnort</span><span data-t="en">Fits your location</span><span data-t="fa">با محل زندگی شما مطابقت دارد</span><span data-t="ar">يناسب مكان إقامتك</span></li>
+    <li data-reason="level"><span data-t="de">Passt zu deinem Bildungsniveau</span><span data-t="en">Fits your education level</span><span data-t="fa">با سطح تحصیل شما مطابقت دارد</span><span data-t="ar">يناسب مستواك التعليمي</span></li>
+    <li data-reason="field"><span data-t="de">Passt zu deinem Interessensbereich</span><span data-t="en">Matches your field of interest</span><span data-t="fa">با رشتهٔ مورد علاقهٔ شما مطابقت دارد</span><span data-t="ar">يطابق مجال اهتمامك</span></li>
+    <li data-reason="language"><span data-t="de">Dein Sprachniveau reicht aus</span><span data-t="en">Your language level is sufficient</span><span data-t="fa">سطح زبان شما کافی است</span><span data-t="ar">مستواك اللغوي كافٍ</span></li>
+    <li data-reason="free"><span data-t="de">Kostenfrei</span><span data-t="en">Free of charge</span><span data-t="fa">رایگان است</span><span data-t="ar">مجاني</span></li>
+    <li data-reason="available"><span data-t="de">Informationen in deiner Sprache verfügbar</span><span data-t="en">Information available in your language</span><span data-t="fa">معلومات به زبان شما موجود است</span><span data-t="ar">المعلومات متاحة بلغتك</span></li>
+    <li data-reason="deadline"><span data-t="de">Frist ist noch offen</span><span data-t="en">Deadline is still open</span><span data-t="fa">مهلت هنوز باز است</span><span data-t="ar">الموعد النهائي ما زال مفتوحًا</span></li>
+  </template>
 
 </main>
 
@@ -154,7 +387,7 @@
   <div class="container">
     <div class="footer__grid">
       <div>
-        <a class="brand" href="index.html" style="margin-bottom:.9rem">
+        <a class="brand brand--footer" href="index.html">
           <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
             <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
             <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
@@ -163,47 +396,76 @@
           </svg>
           <span class="brand__text"><span class="brand__name">FEA</span></span>
         </a>
-        <p class="note" data-i18n="footer.about"></p>
-        <div class="channels" data-channels="inline"></div>
+        <p class="note"><span data-t="de">FEA ist eine gemeinnützige Initiative von zwei Studierenden der Softwaretechnik in Deutschland.</span><span data-t="en">FEA is a non-profit initiative founded by two software engineering students in Germany.</span><span data-t="fa">FEA یک ابتکار غیرانتفاعی از دو محصل انجنیری نرم‌افزار در آلمان است.</span><span data-t="ar">FEA مبادرة غير ربحية أسّسها طالبان في هندسة البرمجيات في ألمانيا.</span></p>
       </div>
       <div>
-        <h3 data-i18n="footer.links">Seiten</h3>
+        <h3><span data-t="de">Seiten</span><span data-t="en">Pages</span><span data-t="fa">صفحه‌ها</span><span data-t="ar">الصفحات</span></h3>
         <ul class="footer__list">
-          <li><a href="index.html" data-i18n="nav.home"></a></li>
-          <li><a href="about.html" data-i18n="nav.about"></a></li>
-          <li><a href="opportunities.html" data-i18n="nav.opps"></a></li>
-          <li><a href="analyzer.html" data-i18n="nav.analyzer"></a></li>
-          <li><a href="community.html" data-i18n="nav.community"></a></li>
-          <li><a href="contact.html" data-i18n="nav.contact"></a></li>
+          <li><a href="index.html"><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a></li>
+          <li><a href="about.html"><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a></li>
+          <li><a href="opportunities.html"><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a></li>
+          <li><a href="analyzer.html"><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a></li>
+          <li><a href="community.html"><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a></li>
+          <li><a href="contact.html"><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a></li>
         </ul>
       </div>
       <div>
-        <h3 data-i18n="footer.languages">Sprachen</h3>
-        <div class="lang-switcher" data-lang-switcher style="margin-bottom:1rem"></div>
-        <p class="note" data-i18n="footer.legal"></p>
+        <h3><span data-t="de">Sprachen</span><span data-t="en">Languages</span><span data-t="fa">زبان‌ها</span><span data-t="ar">اللغات</span></h3>
+        <div class="lang-switcher lang-switcher--footer" data-lang-switcher></div>
+        <p class="note"><span data-t="de">Gemeinnützig · Keine Gebühren · Keine Werbung</span><span data-t="en">Non-profit · No fees · No advertising</span><span data-t="fa">غیرانتفاعی · بدون فیس · بدون اعلان</span><span data-t="ar">غير ربحي · بلا رسوم · بلا إعلانات</span></p>
       </div>
       <div>
-        <h3 data-i18n="nav.contact">Kontakt</h3>
+        <h3><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></h3>
         <ul class="footer__list">
-          <li><a href="contact.html" data-i18n="ct.form.title"></a></li>
-          <li><a data-mailto data-mailto-text href="#">happytrustcore.github@gmail.com</a></li>
-          <li><a data-dev-link target="_blank" rel="noopener noreferrer" href="#" data-i18n="footer.dev"></a></li>
+          <li><a href="contact.html"><span data-t="de">Frage senden</span><span data-t="en">Send a question</span><span data-t="fa">ارسال پرسش</span><span data-t="ar">أرسل سؤالك</span></a></li>
+          <li><a href="mailto:happytrustcore.github@gmail.com">happytrustcore.github@gmail.com</a></li>
+          <li><a href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><span data-t="de">Live-Entwicklungsversion</span><span data-t="en">Live development version</span><span data-t="fa">نسخهٔ در حال توسعه</span><span data-t="ar">النسخة التطويرية</span></a></li>
         </ul>
       </div>
     </div>
     <div class="footer__bottom">
-      <p style="margin:0" data-i18n="footer.rights"></p>
-      <p style="margin:0" data-i18n="brand.tagline"></p>
+      <p class="mb-0"><span data-t="de">© 2026 Free Education Assistance. Projektkonzept für die Werner-Schulz-Stipendien 2026.</span><span data-t="en">© 2026 Free Education Assistance. Project concept for the Werner-Schulz-Stipendien 2026.</span><span data-t="fa">© 2026 Free Education Assistance. طرح پروژه برای بورسیهٔ Werner-Schulz 2026.</span><span data-t="ar">© 2026 Free Education Assistance. مفهوم المشروع لمنحة Werner-Schulz 2026.</span></p>
     </div>
   </div>
 </footer>
 
-<button type="button" class="to-top" data-to-top data-i18n-aria="common.top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-    <path d="M12 19V6M6 11.5 12 5.5l6 6" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
+<button type="button" class="to-top" data-to-top data-al-de="Nach oben" data-al-en="Back to top" data-al-fa="بازگشت به بالا" data-al-ar="العودة إلى الأعلى">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V6M6 11.5 12 5.5l6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
+<button type="button" class="chat-launcher" data-chat-launcher aria-expanded="false" aria-controls="fea-chat">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 3.4 9 7.6 0 4.2-4 7.6-9 7.6-.9 0-1.7-.1-2.5-.3L5 20.4l.9-3.2C4.1 15.8 3 13.3 3 10.6 3 6.4 7 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.5" cy="10.6" r="1.05" fill="currentColor"/><circle cx="12" cy="10.6" r="1.05" fill="currentColor"/><circle cx="15.5" cy="10.6" r="1.05" fill="currentColor"/></svg>
+  <span class="chat-launcher__label"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></span>
+</button>
+
+<section class="chat-panel" id="fea-chat" data-chat-panel hidden data-al-de="FEA-Assistent" data-al-en="FEA Assistant" data-al-fa="دستیار FEA" data-al-ar="مساعد FEA">
+  <header class="chat-panel__head">
+    <div>
+      <p class="chat-panel__title"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></p>
+      <p class="chat-panel__subtitle"><span data-t="de">Antworten in deiner Sprache · rund um die Uhr</span><span data-t="en">Answers in your language · 24/7</span><span data-t="fa">پاسخ به زبان شما · ۲۴ ساعته</span><span data-t="ar">إجابات بلغتك · على مدار الساعة</span></p>
+    </div>
+    <button type="button" class="chat-panel__close" data-chat-close data-al-de="Schließen" data-al-en="Close" data-al-fa="بستن" data-al-ar="إغلاق">&times;</button>
+  </header>
+  <div class="chat-panel__log" data-chat-log role="log" aria-live="polite"></div>
+  <div class="chat-panel__chips">
+    <button type="button" class="chip" data-chip="scholarship"><span data-t="de">Stipendien</span><span data-t="en">Scholarships</span><span data-t="fa">بورسیه‌ها</span><span data-t="ar">المنح</span></button>
+    <button type="button" class="chip" data-chip="ausbildung"><span data-t="de">Ausbildung</span><span data-t="en">Ausbildung</span><span data-t="fa">آموزش مسلکی</span><span data-t="ar">التدريب المهني</span></button>
+    <button type="button" class="chip" data-chip="university"><span data-t="de">Universität</span><span data-t="en">University</span><span data-t="fa">پوهنتون</span><span data-t="ar">الجامعة</span></button>
+    <button type="button" class="chip" data-chip="german"><span data-t="de">Deutsch lernen</span><span data-t="en">Learning German</span><span data-t="fa">یادگیری آلمانی</span><span data-t="ar">تعلّم الألمانية</span></button>
+    <button type="button" class="chip" data-chip="free"><span data-t="de">Kostenlose Kurse</span><span data-t="en">Free courses</span><span data-t="fa">کورس‌های رایگان</span><span data-t="ar">دورات مجانية</span></button>
+    <button type="button" class="chip" data-chip="cost"><span data-t="de">Kostet das etwas?</span><span data-t="en">Does it cost anything?</span><span data-t="fa">آیا مصرف دارد؟</span><span data-t="ar">هل هناك تكلفة؟</span></button>
+  </div>
+  <form class="chat-panel__form" data-chat-form>
+    <input type="text" class="chat-panel__input" data-chat-input autocomplete="off"
+           data-ph-de="Frag nach Stipendien, Ausbildung, Kursen …" data-ph-en="Ask about scholarships, Ausbildung, courses …"
+           data-ph-fa="دربارهٔ بورسیه، آموزش مسلکی، کورس‌ها بپرسید …" data-ph-ar="اسأل عن المنح أو التدريب المهني أو الدورات …"
+           data-al-de="Deine Frage" data-al-en="Your question" data-al-fa="پرسش شما" data-al-ar="سؤالك">
+    <button type="submit" class="btn btn--primary btn--sm"><span data-t="de">Senden</span><span data-t="en">Send</span><span data-t="fa">ارسال</span><span data-t="ar">إرسال</span></button>
+  </form>
+  <p class="chat-panel__note"><span data-t="de">Prototyp: Die Antworten kommen aus einer lokalen Wissensbasis im Browser.</span><span data-t="en">Prototype: answers come from a local knowledge base in your browser.</span><span data-t="fa">نمونهٔ اولیه: پاسخ‌ها از یک بانک معلومات محلی در مرورگر می‌آیند.</span><span data-t="ar">نموذج أولي: تأتي الإجابات من قاعدة معرفة محلية داخل المتصفح.</span></p>
+</section>
+
+<script src="assets/js/chat-data.js"></script>
 <script src="assets/js/fea.js"></script>
 <script src="assets/js/ui.js"></script>
 </body>

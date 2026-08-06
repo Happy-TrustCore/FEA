@@ -237,6 +237,81 @@
     }
   }
 
+  /* ---------------------------------------------------------------- */
+  /* Contact form                                                      */
+  /* ---------------------------------------------------------------- */
+
+  /**
+   * There is no backend in this phase, so a valid form opens the visitor's mail
+   * client with the message prepared. The error texts are not written here —
+   * they sit in contact.html in all four languages and are only revealed.
+   */
+  function initContactForm() {
+    var form = document.querySelector('[data-contact-form]');
+    if (!form) return;
+
+    var name = form.querySelector('#ct-name');
+    var email = form.querySelector('#ct-email');
+    var message = form.querySelector('#ct-message');
+    var consent = form.querySelector('#ct-consent');
+    var topic = form.querySelector('#ct-topic');
+    var answerLang = form.querySelector('#ct-lang');
+    var success = document.querySelector('[data-contact-success]');
+    var address = form.getAttribute('data-mail-to') || '';
+
+    function mark(field, invalid) {
+      var wrapper = field.closest('.field');
+      var hint = wrapper ? wrapper.querySelector('.field__error') : null;
+      if (hint) hint.hidden = !invalid;
+      if (invalid) field.setAttribute('aria-invalid', 'true');
+      else field.removeAttribute('aria-invalid');
+      return !invalid;
+    }
+
+    function selectedText(select) {
+      return select && select.options[select.selectedIndex]
+        ? select.options[select.selectedIndex].text
+        : '';
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var valid = true;
+      valid = mark(name, name.value.trim().length < 2) && valid;
+      valid = mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) && valid;
+      valid = mark(message, message.value.trim().length < 20) && valid;
+      valid = mark(consent, !consent.checked) && valid;
+
+      if (!valid) {
+        if (success) success.hidden = true;
+        var first = form.querySelector('[aria-invalid="true"]');
+        if (first) first.focus();
+        return;
+      }
+
+      var body = [
+        message.value.trim(),
+        '',
+        '---',
+        'Name: ' + name.value.trim(),
+        'E-Mail: ' + email.value.trim(),
+        'Thema / topic: ' + selectedText(topic),
+        'Antwortsprache / answer language: ' + selectedText(answerLang)
+      ].join('\n');
+
+      window.location.href =
+        'mailto:' + address +
+        '?subject=' + encodeURIComponent('[FEA] ' + selectedText(topic) + ' — ' + name.value.trim()) +
+        '&body=' + encodeURIComponent(body);
+
+      if (success) {
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+
   function start() {
     initTheme();
     initNav();
@@ -245,6 +320,7 @@
     initCounters();
     initBackToTop();
     initFlow();
+    initContactForm();
   }
 
   if (document.readyState === 'loading') {

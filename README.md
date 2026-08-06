@@ -15,12 +15,36 @@ remembered in `localStorage` and can also be deep-linked: `index.html?lang=fa`.
 
 ## Tech stack
 
-| Layer | Technology |
-| --- | --- |
-| Structure | HTML5, semantic, accessible (skip link, ARIA, keyboard support) |
-| Styling | CSS3 — custom properties, grid/flex, logical properties for RTL, light + dark theme |
-| App logic | **TypeScript** (strict) compiled to one classic script |
-| Progressive UI | Plain **JavaScript** (`assets/js/ui.js`) — theme, nav, reveal, accordion, counters |
+| Layer | Technology | What it does |
+| --- | --- | --- |
+| Content | **HTML5** | Every sentence, in all four languages, written directly in the pages |
+| Presentation | **CSS3** | Themes, layout, RTL — *and the language switching itself* |
+| Behaviour | **JavaScript** | Theme, navigation, reveal, accordion, counters, contact-form validation |
+| Typed logic | **TypeScript** | Only what needs types: language state, filtering, analyzer scoring, chat matching |
+
+### How the four languages work
+
+There is no translation dictionary in the code. Each sentence appears four times
+in the HTML and CSS shows only the active one:
+
+```html
+<h1>
+  <span data-t="de">Bildung darf nicht davon abhängen …</span>
+  <span data-t="en">Education should never depend on …</span>
+  <span data-t="fa">تحصیل هرگز نباید …</span>
+  <span data-t="ar">يجب ألّا يتوقف التعليم …</span>
+</h1>
+```
+
+```css
+[data-t] { display: none; }
+html[data-lang="de"] [data-t="de"] { display: revert; }
+```
+
+TypeScript only sets `data-lang` and `dir` on `<html>`. To change any wording,
+edit the page — no build step needed for text. `<option>` elements and
+placeholders cannot hold child elements, so they use `data-de` / `data-en` /
+`data-fa` / `data-ar` attributes instead; the wording still lives in the HTML.
 
 ## Pages
 
@@ -41,20 +65,17 @@ The **assistant chat widget** is injected on every page by `src/ts/chat.ts`.
 fea/
 ├─ index.html … contact.html      6 pages
 ├─ assets/
-│  ├─ css/main.css                design system (themes, RTL, components, print)
-│  ├─ js/fea.js                   compiled TypeScript bundle (do not edit)
-│  ├─ js/ui.js                    hand-written JavaScript
+│  ├─ css/main.css                design system, language switching, utilities
+│  ├─ js/ui.js                    JavaScript: theme, nav, reveal, accordion, contact form
+│  ├─ js/chat-data.js             JavaScript: the assistant's answers in four languages
+│  ├─ js/fea.js                   compiled TypeScript bundle (do not edit by hand)
 │  └─ img/favicon.svg
-├─ src/ts/
+├─ src/ts/                        ~600 lines of TypeScript in total
 │  ├─ types.ts                    shared interfaces
-│  ├─ locales/{en,de,fa,ar}.ts    the four dictionaries
-│  ├─ translations.ts             language registry + assembled table
-│  ├─ data.ts                     opportunities, chat knowledge base, channels
-│  ├─ i18n.ts                     translation engine, RTL switching
-│  ├─ opportunities.ts            card rendering + directory filters
-│  ├─ analyzer.ts                 questionnaire + scoring
-│  ├─ chat.ts                     assistant widget
-│  ├─ contact.ts                  form validation + mailto
+│  ├─ lang.ts                     which language is active + RTL
+│  ├─ directory.ts                filter / search / sort the HTML cards
+│  ├─ analyzer.ts                 step navigation + scoring
+│  ├─ chat.ts                     keyword matching + printing replies
 │  └─ main.ts                     bootstrap
 ├─ tsconfig.json
 └─ package.json

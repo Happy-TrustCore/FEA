@@ -10,23 +10,14 @@
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "forceConsistentCasingInFileNames": true,
-    "removeComments": false,
-    "sourceMap": true,
-    "declaration": false
+    "sourceMap": true
   },
   "files": [
     "src/ts/types.ts",
-    "src/ts/locales/en.ts",
-    "src/ts/locales/de.ts",
-    "src/ts/locales/fa.ts",
-    "src/ts/locales/ar.ts",
-    "src/ts/translations.ts",
-    "src/ts/data.ts",
-    "src/ts/i18n.ts",
-    "src/ts/opportunities.ts",
+    "src/ts/lang.ts",
+    "src/ts/directory.ts",
     "src/ts/analyzer.ts",
     "src/ts/chat.ts",
-    "src/ts/contact.ts",
     "src/ts/main.ts"
   ]
 }

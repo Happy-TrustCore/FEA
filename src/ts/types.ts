@@ -1,101 +1,59 @@
 /**
- * Free Education Assistance (FEA) — shared type definitions.
+ * FEA — shared types.
  *
- * The whole front end is written in TypeScript and compiled with `tsc` into a
- * single classic script (assets/js/fea.js) so the site also runs from the file
- * system without a bundler or a server.
+ * TypeScript is deliberately kept small here. All wording lives in the HTML
+ * pages and all styling in main.css; these modules only add the typed logic
+ * that markup and CSS cannot express: language state, filtering, scoring and
+ * the assistant's intent matching.
  */
 
 namespace FEA {
-  /** The four languages the FEA platform must support. */
+  /** The four languages of the platform. */
   export type LangCode = 'de' | 'en' | 'fa' | 'ar';
 
-  export type TextDirection = 'ltr' | 'rtl';
-
-  export interface LanguageMeta {
+  export interface LangMeta {
     code: LangCode;
-    /** Name written in the language itself. */
-    native: string;
     /** Short label for the switcher pill. */
     short: string;
-    dir: TextDirection;
+    /** Name written in the language itself. */
+    native: string;
+    dir: 'ltr' | 'rtl';
     /** BCP-47 tag written to <html lang>. */
     htmlLang: string;
   }
 
-  /** A flat dictionary: translation key -> translated string. */
-  export type Dictionary = Record<string, string>;
-
-  export type TranslationTable = Record<LangCode, Dictionary>;
-
-  export type OpportunityKind =
-    | 'scholarship'
-    | 'university'
-    | 'ausbildung'
-    | 'course'
-    | 'language'
-    | 'career';
-
-  export type Region = 'germany' | 'afghanistan' | 'online' | 'international';
-
-  export type StudyLevel = 'school' | 'highschool' | 'bachelor' | 'master' | 'professional';
-
-  export interface Opportunity {
+  /** One opportunity card, read from the data-* attributes in the HTML. */
+  export interface Card {
+    el: HTMLElement;
     id: string;
-    kind: OpportunityKind;
-    region: Region;
-    /** Levels this opportunity is realistically open to. */
-    levels: StudyLevel[];
-    /** Fields of interest, matched against the analyzer answers. */
+    kind: string;
+    region: string;
+    levels: string[];
     fields: string[];
-    /** Language requirement expressed as a minimum level (a1..c1, none). */
-    requiresLanguage: 'none' | 'a1' | 'a2' | 'b1' | 'b2' | 'c1';
-    /** Which of the four site languages the provider publishes in. */
-    languagesOffered: LangCode[];
-    /** Free of charge for the applicant. */
+    /** Minimum language level required: none | a1 … c1 */
+    needs: string;
+    /** Site languages the provider publishes in. */
+    offered: string[];
     free: boolean;
-    /** Rolling deadline (no fixed date) or an ISO date string. */
-    deadline: 'rolling' | string;
-    /** Translation keys — the card content itself is multilingual. */
-    titleKey: string;
-    providerKey: string;
-    summaryKey: string;
-    /** Official information link. */
-    link: string;
+    /** ISO date or "rolling". */
+    deadline: string;
   }
 
-  export interface AnalyzerAnswers {
-    location: 'afghanistan' | 'germany' | 'other';
-    level: StudyLevel;
-    goal: OpportunityKind;
+  /** Answers collected from the analyzer form in analyzer.html. */
+  export interface Answers {
+    location: string;
+    level: string;
+    goal: string;
     fields: string[];
-    german: 'none' | 'a1' | 'a2' | 'b1' | 'b2' | 'c1';
-    english: 'none' | 'a1' | 'a2' | 'b1' | 'b2' | 'c1';
+    german: string;
+    english: string;
     needsFree: boolean;
   }
 
-  export interface MatchResult {
-    opportunity: Opportunity;
-    /** 0..100 */
+  export interface Match {
+    card: Card;
     score: number;
-    /** Translation keys explaining why this result was matched. */
-    reasonKeys: string[];
-  }
-
-  export interface ChatMessage {
-    author: 'user' | 'bot';
-    /** Already-resolved text for the active language. */
-    text: string;
-    time: string;
-  }
-
-  export interface ChatIntent {
-    id: string;
-    /** Lower-cased keywords per language; any hit counts. */
-    keywords: Record<LangCode, string[]>;
-    /** Translation key of the answer. */
-    answerKey: string;
-    /** Optional follow-up chips (translation keys). */
-    suggestionKeys?: string[];
+    /** Ids of the reason templates to show ("goal", "level", …). */
+    reasons: string[];
   }
 }
