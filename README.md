@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Free Education Assistance (FEA) — Website
 
 Front end for the FEA platform: free educational guidance for students in Afghanistan,
@@ -116,3 +117,6 @@ official source, and the page says so.
 - The site always opens in the white (light) theme; the header toggle switches to dark and remembers it.
 - No horizontal scrolling down to 360 px, in LTR and RTL.
 - Print styles produce a clean PDF of the analyzer results.
+=======
+# FEA
+>>>>>>> 0f6bb2de8ed5538aa1dd511acd2aeedd672cbd21
