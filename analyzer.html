@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI-Chancen-Analyse — FEA</title>
+<meta name="description" content="Sechs Fragen, und die KI-Analyse zeigt passende Stipendien, Studienwege, Ausbildungen und Kurse.">
+<meta name="theme-color" content="#2e7d4f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+  (function () {
+    try {
+      var root = document.documentElement;
+      var theme = localStorage.getItem('fea.theme');
+      if (!theme) {
+        theme = 'light'; /* white by default — dark mode only if the visitor toggles it */
+      }
+      root.setAttribute('data-theme', theme);
+      var lang = new URLSearchParams(location.search).get('lang') || localStorage.getItem('fea.lang');
+      if (lang === 'fa' || lang === 'ar') {
+        root.setAttribute('dir', 'rtl');
+        root.setAttribute('lang', lang === 'fa' ? 'fa-AF' : 'ar');
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+<body data-page-title="page.analyzer.title" data-page-description="an.hero.lead">
+
+<a class="skip-link" href="#main" data-i18n="common.skip">Zum Hauptinhalt springen</a>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+        <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+        <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+        <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__text">
+        <span class="brand__name">FEA</span>
+        <span class="brand__sub" data-i18n="brand.name">Free Education Assistance</span>
+      </span>
+    </a>
+
+    <div class="header__spacer"></div>
+
+    <nav class="nav" data-nav-menu aria-label="Hauptnavigation">
+      <a href="index.html" data-nav-link data-i18n="nav.home">Start</a>
+      <a href="about.html" data-nav-link data-i18n="nav.about">Projekt</a>
+      <a href="opportunities.html" data-nav-link data-i18n="nav.opps">Möglichkeiten</a>
+      <a href="analyzer.html" data-nav-link data-i18n="nav.analyzer">KI-Analyse</a>
+      <a href="community.html" data-nav-link data-i18n="nav.community">Community</a>
+      <a href="contact.html" data-nav-link data-i18n="nav.contact">Kontakt</a>
+    </nav>
+
+    <div class="header__tools">
+      <div class="lang-switcher" data-lang-switcher></div>
+      <button type="button" class="icon-btn" data-theme-toggle data-i18n-aria="common.theme" aria-pressed="false">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+          <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" data-i18n-aria="common.menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="an.hero.eyebrow">KI-gestützte Beratung</p>
+      <h1 data-i18n="an.hero.title"></h1>
+      <p class="lead" style="max-width:68ch" data-i18n="an.hero.lead"></p>
+      <p class="note" style="margin-top:1rem;max-width:68ch" data-i18n="an.note"></p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container" style="max-width:920px">
+
+      <div class="analyzer" data-analyzer>
+        <div class="an-progress">
+          <span class="an-progress__label" data-an-progress></span>
+          <div class="progress-track">
+            <span class="progress-fill" data-an-bar></span>
+          </div>
+        </div>
+
+        <form data-an-steps novalidate></form>
+
+        <div class="an-nav" data-an-nav>
+          <button type="button" class="btn btn--ghost" data-an-back>Zurück</button>
+          <button type="button" class="btn btn--primary" data-an-next>Weiter</button>
+        </div>
+
+        <div data-an-results hidden></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="grid grid--3">
+        <article class="card card--soft">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <rect x="3.5" y="4.5" width="17" height="15" rx="3"/>
+              <path d="M8 9.5h8M8 13.5h5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 data-i18n="about.ai.title"></h3>
+          <p class="note" style="margin:0" data-i18n="about.ai.note"></p>
+        </article>
+        <article class="card card--soft">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M12 3.5 4.5 7v5c0 4.3 3.1 7.5 7.5 8.5 4.4-1 7.5-4.2 7.5-8.5V7L12 3.5Z" stroke-linejoin="round"/>
+              <path d="m9 12 2.2 2.2L15.5 10" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 data-i18n="faq.q2"></h3>
+          <p class="note" style="margin:0" data-i18n="faq.a2"></p>
+        </article>
+        <article class="card card--soft">
+          <div class="card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+              <path d="M4 6.5h16M4 12h16M4 17.5h10" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 data-i18n="opps.hero.title"></h3>
+          <p class="note" data-i18n="opps.note"></p>
+          <a class="btn btn--ghost btn--sm" href="opportunities.html" data-i18n="hero.ctaSecondary"></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="index.html" style="margin-bottom:.9rem">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+            <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+            <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+            <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+          </svg>
+          <span class="brand__text"><span class="brand__name">FEA</span></span>
+        </a>
+        <p class="note" data-i18n="footer.about"></p>
+        <div class="channels" data-channels="inline"></div>
+      </div>
+      <div>
+        <h3 data-i18n="footer.links">Seiten</h3>
+        <ul class="footer__list">
+          <li><a href="index.html" data-i18n="nav.home"></a></li>
+          <li><a href="about.html" data-i18n="nav.about"></a></li>
+          <li><a href="opportunities.html" data-i18n="nav.opps"></a></li>
+          <li><a href="analyzer.html" data-i18n="nav.analyzer"></a></li>
+          <li><a href="community.html" data-i18n="nav.community"></a></li>
+          <li><a href="contact.html" data-i18n="nav.contact"></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-i18n="footer.languages">Sprachen</h3>
+        <div class="lang-switcher" data-lang-switcher style="margin-bottom:1rem"></div>
+        <p class="note" data-i18n="footer.legal"></p>
+      </div>
+      <div>
+        <h3 data-i18n="nav.contact">Kontakt</h3>
+        <ul class="footer__list">
+          <li><a href="contact.html" data-i18n="ct.form.title"></a></li>
+          <li><a data-mailto data-mailto-text href="#">happytrustcore.github@gmail.com</a></li>
+          <li><a data-dev-link target="_blank" rel="noopener noreferrer" href="#" data-i18n="footer.dev"></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p style="margin:0" data-i18n="footer.rights"></p>
+      <p style="margin:0" data-i18n="brand.tagline"></p>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" data-to-top data-i18n-aria="common.top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <path d="M12 19V6M6 11.5 12 5.5l6 6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script src="assets/js/fea.js"></script>
+<script src="assets/js/ui.js"></script>
+</body>
+</html>

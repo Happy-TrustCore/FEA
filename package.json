@@ -1,0 +1,24 @@
+{
+  "name": "fea-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Free Education Assistance (FEA) — front-end for the AI-powered educational guidance platform. Werner-Schulz-Stipendien 2026 project concept.",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "serve": "npx --yes serve . -l 5173",
+    "start": "npm run build && npm run serve"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "keywords": [
+    "education",
+    "scholarships",
+    "ausbildung",
+    "refugees",
+    "non-profit",
+    "multilingual"
+  ],
+  "license": "MIT"
+}

@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "lib": ["ES2019", "DOM", "DOM.Iterable"],
+    "module": "none",
+    "outFile": "assets/js/fea.js",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "declaration": false
+  },
+  "files": [
+    "src/ts/types.ts",
+    "src/ts/locales/en.ts",
+    "src/ts/locales/de.ts",
+    "src/ts/locales/fa.ts",
+    "src/ts/locales/ar.ts",
+    "src/ts/translations.ts",
+    "src/ts/data.ts",
+    "src/ts/i18n.ts",
+    "src/ts/opportunities.ts",
+    "src/ts/analyzer.ts",
+    "src/ts/chat.ts",
+    "src/ts/contact.ts",
+    "src/ts/main.ts"
+  ]
+}
