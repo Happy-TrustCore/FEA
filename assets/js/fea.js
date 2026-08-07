@@ -609,10 +609,13 @@ var FEA;
 /**
  * Assistant widget.
  *
- * The panel itself is written in the HTML of every page, so its labels can be
- * edited there. The answers live in assets/js/chat-data.js — one plain-JS file
- * shared by all pages. This module only matches what the visitor typed against
- * the keywords and prints the reply.
+ * The panel is written in the HTML of every page and the answers live in
+ * assets/js/chat-data.js. This module is the part that needs types: scoring
+ * what the visitor wrote against the knowledge base, handling typos and
+ * mixed languages, and deciding what to offer next.
+ *
+ * It costs nothing to run — no API, no server — and works on a slow
+ * connection, which matters for the people this project is built for.
  */
 var FEA;
 (function (FEA) {
@@ -621,8 +624,15 @@ var FEA;
         let panel = null;
         let launcher = null;
         let log = null;
+        let chips = null;
         let input = null;
-        /** Folds Arabic/Persian letter variants so "أفغانستان" matches "افغانستان". */
+        /** The last topic discussed, so short follow-ups still make sense. */
+        let lastIntent = null;
+        let busy = false;
+        /* ------------------------------------------------------------------ */
+        /* Matching                                                            */
+        /* ------------------------------------------------------------------ */
+        /** Folds Arabic/Persian letter variants and strips punctuation. */
         function normalize(value) {
             return value
                 .toLowerCase()
@@ -631,56 +641,162 @@ var FEA;
                 .replace(/[ىي]/g, 'ی')
                 .replace(/ك/g, 'ک')
                 .replace(/[ً-ْ]/g, '')
+                .replace(/[.,!?;:()"'،؟]/g, ' ')
                 .replace(/\s+/g, ' ')
                 .trim();
         }
-        function answerFor(text) {
-            const needle = normalize(text);
-            const lang = FEA.Lang.get();
-            let best = null;
-            let bestHits = 0;
-            FEA_CHAT.intents.forEach(function (intent) {
-                let hits = 0;
-                for (let i = 0; i < intent.keywords.length; i++) {
-                    if (needle.indexOf(normalize(intent.keywords[i])) !== -1)
-                        hits += 1;
+        /** Edit distance, capped — used only to forgive small typos. */
+        function close(a, b) {
+            if (a === b)
+                return true;
+            if (Math.abs(a.length - b.length) > 1)
+                return false;
+            if (a.length < 4)
+                return false;
+            let i = 0;
+            let j = 0;
+            let edits = 0;
+            while (i < a.length && j < b.length) {
+                if (a[i] === b[j]) {
+                    i += 1;
+                    j += 1;
+                    continue;
                 }
-                if (hits > bestHits) {
-                    bestHits = hits;
-                    best = intent.answer[lang] || intent.answer.en;
-                }
-            });
-            return best !== null ? best : FEA_CHAT.fallback[lang] || FEA_CHAT.fallback.en;
-        }
-        function byId(id) {
-            const lang = FEA.Lang.get();
-            for (let i = 0; i < FEA_CHAT.intents.length; i++) {
-                if (FEA_CHAT.intents[i].id === id) {
-                    return FEA_CHAT.intents[i].answer[lang] || FEA_CHAT.intents[i].answer.en;
+                edits += 1;
+                if (edits > 1)
+                    return false;
+                if (a.length > b.length)
+                    i += 1;
+                else if (b.length > a.length)
+                    j += 1;
+                else {
+                    i += 1;
+                    j += 1;
                 }
             }
-            return FEA_CHAT.fallback[lang] || FEA_CHAT.fallback.en;
+            return edits + (a.length - i) + (b.length - j) <= 1;
+        }
+        function scoreIntent(intent, text, tokens) {
+            let score = 0;
+            for (let i = 0; i < intent.keywords.length; i++) {
+                const keyword = normalize(intent.keywords[i]);
+                if (!keyword)
+                    continue;
+                // Whole phrase present — the strongest signal, weighted by length so
+                // "learn german" beats a bare "german".
+                if (text.indexOf(keyword) !== -1) {
+                    score += 4 + Math.min(keyword.length / 4, 4);
+                    continue;
+                }
+                // Otherwise compare token by token, forgiving one typo.
+                const parts = keyword.split(' ');
+                for (let p = 0; p < parts.length; p++) {
+                    if (parts[p].length < 3)
+                        continue;
+                    for (let t = 0; t < tokens.length; t++) {
+                        if (tokens[t] === parts[p])
+                            score += 2.5;
+                        else if (close(tokens[t], parts[p]))
+                            score += 1.5;
+                    }
+                }
+            }
+            return score;
+        }
+        function byId(id) {
+            for (let i = 0; i < FEA_CHAT.intents.length; i++) {
+                if (FEA_CHAT.intents[i].id === id)
+                    return FEA_CHAT.intents[i];
+            }
+            return null;
+        }
+        function match(raw) {
+            const text = normalize(raw);
+            const tokens = text.split(' ').filter(function (t) {
+                return t.length > 1;
+            });
+            const ranked = FEA_CHAT.intents
+                .map(function (intent) {
+                return { intent: intent, score: scoreIntent(intent, text, tokens) };
+            })
+                .filter(function (entry) {
+                return entry.score > 0;
+            })
+                .sort(function (a, b) {
+                return b.score - a.score;
+            });
+            if (!ranked.length) {
+                // "and in Germany?" right after a topic — keep the thread going.
+                if (lastIntent && tokens.length <= 4)
+                    return { intent: lastIntent };
+                return { intent: null };
+            }
+            // Two topics almost tied: ask instead of guessing wrong.
+            if (ranked.length > 1 && ranked[1].score >= ranked[0].score * 0.85 && ranked[0].score < 8) {
+                return {
+                    intent: null,
+                    alternatives: [ranked[0].intent, ranked[1].intent],
+                };
+            }
+            return { intent: ranked[0].intent };
+        }
+        /* ------------------------------------------------------------------ */
+        /* Rendering                                                           */
+        /* ------------------------------------------------------------------ */
+        function text(entry) {
+            return entry[FEA.Lang.get()] || entry.en;
         }
         function stamp() {
             const now = new Date();
             return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
         }
-        function bubble(author, text) {
+        function bubble(author, body, link) {
             if (!log)
-                return;
+                return null;
             const row = document.createElement('div');
             row.className = 'chat-msg chat-msg--' + author;
-            const body = document.createElement('div');
-            body.className = 'chat-msg__bubble';
-            body.textContent = text;
+            const content = document.createElement('div');
+            content.className = 'chat-msg__bubble';
+            content.textContent = body;
+            if (link) {
+                const anchor = document.createElement('a');
+                anchor.className = 'chat-msg__link';
+                anchor.href = link;
+                anchor.textContent = text({
+                    de: 'Seite öffnen',
+                    en: 'Open the page',
+                    fa: 'باز کردن صفحه',
+                    ar: 'افتح الصفحة',
+                });
+                content.appendChild(anchor);
+            }
             const meta = document.createElement('span');
             meta.className = 'chat-msg__meta';
-            const label = panel ? panel.getAttribute('data-label-' + author) : null;
-            meta.textContent = (label || '') + ' · ' + stamp();
-            row.appendChild(body);
+            meta.textContent = author === 'bot' ? 'FEA · ' + stamp() : stamp();
+            row.appendChild(content);
             row.appendChild(meta);
             log.appendChild(row);
             log.scrollTop = log.scrollHeight;
+            return row;
+        }
+        /** Replaces the quick replies with the topics that follow on naturally. */
+        function renderChips(ids) {
+            if (!chips)
+                return;
+            chips.innerHTML = '';
+            ids.forEach(function (id) {
+                const intent = byId(id);
+                if (!intent)
+                    return;
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'chip';
+                chip.textContent = text(intent.label);
+                chip.addEventListener('click', function () {
+                    ask(text(intent.label), intent);
+                });
+                chips.appendChild(chip);
+            });
         }
         function typing() {
             if (!log)
@@ -692,19 +808,62 @@ var FEA;
             log.scrollTop = log.scrollHeight;
             return row;
         }
-        function reply(text) {
+        /** Longer answers take a moment longer, the way a person would type. */
+        function replyDelay(length) {
+            return Math.min(1500, 420 + length * 3.2);
+        }
+        function say(body, options) {
+            busy = true;
             const indicator = typing();
             window.setTimeout(function () {
                 if (indicator && indicator.parentElement)
                     indicator.parentElement.removeChild(indicator);
-                bubble('bot', text);
-            }, 420);
+                bubble('bot', body, options && options.link);
+                renderChips((options && options.chips) || defaultChips());
+                busy = false;
+            }, replyDelay(body.length));
         }
+        function defaultChips() {
+            return ['scholarship', 'ausbildung', 'university', 'german', 'free', 'analyzer'];
+        }
+        /* ------------------------------------------------------------------ */
+        /* Conversation                                                        */
+        /* ------------------------------------------------------------------ */
+        function ask(userText, forced) {
+            const value = userText.trim();
+            if (!value || busy)
+                return;
+            bubble('user', value);
+            if (input)
+                input.value = '';
+            const outcome = forced ? { intent: forced } : match(value);
+            if (outcome.intent) {
+                lastIntent = outcome.intent;
+                say(text(outcome.intent.answer), {
+                    link: outcome.intent.link,
+                    chips: outcome.intent.follow || defaultChips(),
+                });
+                return;
+            }
+            if (outcome.alternatives && outcome.alternatives.length) {
+                say(text(FEA_CHAT.clarify), {
+                    chips: outcome.alternatives.map(function (i) {
+                        return i.id;
+                    }),
+                });
+                return;
+            }
+            say(text(FEA_CHAT.fallback), { chips: defaultChips() });
+        }
+        Chat.ask = ask;
         function greet() {
             if (!log)
                 return;
             log.innerHTML = '';
-            bubble('bot', FEA_CHAT.greeting[FEA.Lang.get()] || FEA_CHAT.greeting.en);
+            lastIntent = null;
+            const pick = FEA_CHAT.greeting[Math.floor(Math.random() * FEA_CHAT.greeting.length)];
+            bubble('bot', text(pick));
+            renderChips(defaultChips());
         }
         function toggle(open) {
             if (!panel || !launcher)
@@ -722,6 +881,7 @@ var FEA;
             if (!panel || !launcher || typeof FEA_CHAT === 'undefined')
                 return;
             log = panel.querySelector('[data-chat-log]');
+            chips = panel.querySelector('[data-chat-chips]');
             input = panel.querySelector('[data-chat-input]');
             launcher.addEventListener('click', function () {
                 toggle();
@@ -736,22 +896,10 @@ var FEA;
             if (form) {
                 form.addEventListener('submit', function (event) {
                     event.preventDefault();
-                    if (!input)
-                        return;
-                    const text = input.value.trim();
-                    if (!text)
-                        return;
-                    bubble('user', text);
-                    input.value = '';
-                    reply(answerFor(text));
+                    if (input)
+                        ask(input.value);
                 });
             }
-            panel.querySelectorAll('[data-chip]').forEach(function (chip) {
-                chip.addEventListener('click', function () {
-                    bubble('user', (chip.textContent || '').trim());
-                    reply(byId(chip.getAttribute('data-chip') || ''));
-                });
-            });
             document.addEventListener('keydown', function (event) {
                 if (event.key === 'Escape' && panel && !panel.hidden)
                     toggle(false);

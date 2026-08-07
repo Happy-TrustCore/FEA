@@ -1,0 +1,101 @@
+# FEA — daily opportunity check.
+#
+# Free: GitHub Actions has no usage limit on public repositories, and this job
+# takes well under a minute. No server, no API key, no payment method.
+#
+# What it does every morning:
+#   · checks that every official link on the site still works
+#   · notices when a source page changed (deadline may have moved)
+#   · writes today's date into the "last checked" line on the site
+#   · commits that back, so the site shows it is being maintained
+#   · opens an issue only when a human actually needs to look
+#
+# Run it by hand any time from the Actions tab ("Run workflow").
+
+name: Daily opportunity check
+
+on:
+  schedule:
+    # 05:30 UTC daily. GitHub may start scheduled runs a little late — fine here.
+    - cron: "30 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: daily-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # No pip install: the script uses only the standard library.
+      - name: Check every opportunity link
+        id: check
+        run: |
+          set +e
+          python tools/check_opportunities.py
+          echo "status=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Add the report to the run summary
+        if: always()
+        run: cat data/monitor-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Commit the new "last checked" date
+        if: always()
+        run: |
+          git config user.name  "FEA bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "Nothing changed today."
+          else
+            git commit -m "Daily check: $(date -u +%Y-%m-%d)"
+            git push
+          fi
+
+      - name: Open an issue if something needs a human
+        if: steps.check.outputs.status == '2'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.readFileSync('data/monitor-report.md', 'utf8');
+            const title = `Opportunity check needs attention — ${new Date().toISOString().slice(0, 10)}`;
+
+            // Reuse today's issue instead of opening a new one on every re-run.
+            const existing = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'link-check'
+            });
+
+            if (existing.data.length) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.data[0].number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: ['link-check']
+              });
+            }

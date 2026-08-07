@@ -1551,6 +1551,36 @@ html[dir="rtl"] .why__title {
   color: var(--ink-soft);
 }
 
+/* "Checked today" line — the visible proof that the site is maintained. */
+.freshness {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-pill);
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+  color: var(--brand-strong);
+  font-size: var(--step--1);
+  font-weight: 650;
+}
+
+.freshness__dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+  animation: freshness-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes freshness-pulse {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--brand) 8%, transparent);
+  }
+}
+
 .empty-state {
   text-align: center;
   padding: var(--space-6) var(--space-3);
@@ -2159,6 +2189,43 @@ html[dir="rtl"] .footer h3 {
   gap: 0.35rem;
   padding: 0.6rem 0.9rem 0;
   background: var(--surface);
+}
+
+/* Follow-up topics are replaced after every answer, so they fade in. */
+.chat-panel__chips .chip {
+  animation: chip-in 0.28s ease-out both;
+}
+
+.chat-panel__chips .chip:nth-child(2) { animation-delay: 0.04s; }
+.chat-panel__chips .chip:nth-child(3) { animation-delay: 0.08s; }
+.chat-panel__chips .chip:nth-child(4) { animation-delay: 0.12s; }
+.chat-panel__chips .chip:nth-child(5) { animation-delay: 0.16s; }
+.chat-panel__chips .chip:nth-child(6) { animation-delay: 0.2s; }
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+}
+
+/* Inline "open the page" link inside an answer bubble. */
+.chat-msg__link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: var(--step--1);
+  color: var(--brand-strong);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.chat-msg__link::after {
+  content: " →";
+}
+
+html[dir="rtl"] .chat-msg__link::after {
+  content: " ←";
 }
 
 .chip {
