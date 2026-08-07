@@ -59,6 +59,35 @@ placeholders cannot hold child elements, so they use `data-de` / `data-en` /
 
 The **assistant chat widget** is injected on every page by `src/ts/chat.ts`.
 
+## Editing the site — important
+
+**You edit 7 files. The site publishes 28.**
+
+```
+src/pages/index.html      ← YOU EDIT THIS (all four languages inside)
+        │
+        ├─►  index.html         German     ← generated, do not edit
+        ├─►  index-en.html      English    ← generated, do not edit
+        ├─►  index-fa.html      Dari       ← generated, do not edit
+        └─►  index-ar.html      Arabic     ← generated, do not edit
+```
+
+After changing a source page:
+
+```bash
+python tools/build_pages.py
+```
+
+Or just push — the GitHub robot rebuilds and commits them for you
+(`.github/workflows/build-pages.yml`).
+
+Never edit the files in the root folder. They carry a "GENERATED FILE" header
+and your changes would be overwritten on the next build.
+
+Why split them: a visitor used to download all four languages and read one.
+Each page is now about half the size, and every language has its own address
+so Google can offer the right one.
+
 ## Project structure
 
 ```

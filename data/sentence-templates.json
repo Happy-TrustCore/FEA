@@ -1,0 +1,242 @@
+{
+  "_readme": [
+    "FEA — human-translated sentence patterns.",
+    "",
+    "THE PROBLEM: every new opportunity needs a sentence in four languages.",
+    "Translating one by hand each week costs time; machine translation gets",
+    "deadlines and requirements subtly wrong, which is dangerous on this site.",
+    "",
+    "THE SOLUTION: opportunity descriptions are highly repetitive. So the",
+    "SENTENCE PATTERNS are translated once, by a human, and reused forever.",
+    "The weekly robot only fills in the blanks — {amount}, {date}, {provider} —",
+    "and numbers, dates and proper nouns read the same in all four languages.",
+    "",
+    "A new entry is therefore complete in DE / EN / FA / AR the moment it is",
+    "added, with no translation step and no machine guessing.",
+    "",
+    "TO ADD A NEW PATTERN: copy a block, keep the {placeholders} identical in",
+    "all four languages, and have a speaker check the Dari and Arabic once.",
+    "After that it is reusable forever.",
+    "",
+    "If a new opportunity fits NO pattern here, the robot must not invent a",
+    "sentence — it marks the entry 'needs a human sentence' and a person writes",
+    "it. That case should be rare."
+  ],
+
+  "templates": {
+    "scholarship_monthly": {
+      "_use": "A scholarship paying a fixed amount per month.",
+      "_slots": ["amount", "audience"],
+      "de": "{amount} pro Monat für {audience}. Die Bewerbung läuft direkt über die Hochschule.",
+      "en": "{amount} per month for {audience}. You apply directly through the university.",
+      "fa": "ماهانه {amount} برای {audience}. درخواست مستقیماً از طریق پوهنتون انجام می‌شود.",
+      "ar": "{amount} شهريًا ل{audience}. التقديم مباشرةً عبر الجامعة."
+    },
+
+    "scholarship_full": {
+      "_use": "A full scholarship covering tuition and usually living costs.",
+      "_slots": ["audience", "provider"],
+      "de": "Vollstipendium für {audience}, vergeben von {provider}. Studiengebühren und in der Regel Lebenshaltungskosten sind abgedeckt.",
+      "en": "Full scholarship for {audience}, awarded by {provider}. Tuition and usually living costs are covered.",
+      "fa": "بورسیهٔ کامل برای {audience}، از سوی {provider}. فیس تحصیل و معمولاً مصارف زندگی پوشش داده می‌شود.",
+      "ar": "منحة كاملة ل{audience}، تقدّمها {provider}. تغطي الرسوم الدراسية وعادةً تكاليف المعيشة."
+    },
+
+    "scholarship_at_risk": {
+      "_use": "For students denied education in their home country.",
+      "_slots": ["audience"],
+      "de": "Stipendium für {audience}, denen im Herkunftsland der Zugang zu Bildung verwehrt wird.",
+      "en": "Scholarship for {audience} who are denied access to education in their home country.",
+      "fa": "بورسیه برای {audience} که در کشور خود از دسترسی به تحصیل محروم شده‌اند.",
+      "ar": "منحة ل{audience} المحرومين من الوصول إلى التعليم في بلدهم."
+    },
+
+    "ausbildung_paid": {
+      "_use": "Paid vocational training in a company plus vocational school.",
+      "_slots": ["profession", "years"],
+      "de": "Bezahlte Ausbildung als {profession}. Sie dauert {years} Jahre und verbindet Arbeit im Betrieb mit der Berufsschule.",
+      "en": "Paid Ausbildung as {profession}. It takes {years} years and combines working in a company with vocational school.",
+      "fa": "آموزش مسلکی معاش‌دار به‌عنوان {profession}. {years} سال طول می‌کشد و کار در شرکت را با مکتب مسلکی یک‌جا می‌کند.",
+      "ar": "تدريب مهني مدفوع كـ {profession}. يستمر {years} سنوات ويجمع بين العمل في شركة والدراسة في مدرسة مهنية."
+    },
+
+    "portal_search": {
+      "_use": "An official portal listing many places or offers.",
+      "_slots": ["count", "what", "provider"],
+      "de": "Offizielles Portal von {provider} mit {count} {what} in ganz Deutschland.",
+      "en": "Official portal from {provider} with {count} {what} across Germany.",
+      "fa": "پورتال رسمی {provider} با {count} {what} در سراسر آلمان.",
+      "ar": "بوابة رسمية من {provider} تضم {count} {what} في كل أنحاء ألمانيا."
+    },
+
+    "course_free_certificate": {
+      "_use": "A free online course that ends with a certificate.",
+      "_slots": ["field", "provider"],
+      "de": "Kostenloser Onlinekurs in {field} von {provider}, mit Zertifikat zum Abschluss.",
+      "en": "Free online course in {field} from {provider}, with a certificate at the end.",
+      "fa": "کورس آنلاین رایگان در {field} از {provider}، همراه با سرتیفیکیت در پایان.",
+      "ar": "دورة مجانية عبر الإنترنت في {field} من {provider}، مع شهادة في النهاية."
+    },
+
+    "course_free_audit": {
+      "_use": "University courses free to follow, certificate optional and paid.",
+      "_slots": ["field", "provider"],
+      "de": "Universitätskurse in {field} von {provider}, kostenlos im Audit-Modus. Ein Zertifikat ist optional und kostenpflichtig.",
+      "en": "University courses in {field} from {provider}, free in audit mode. A certificate is optional and paid.",
+      "fa": "کورس‌های پوهنتونی در {field} از {provider}، در حالت audit رایگان. سرتیفیکیت اختیاری و پولی است.",
+      "ar": "مقررات جامعية في {field} من {provider}، مجانية في وضع audit. الشهادة اختيارية ومدفوعة."
+    },
+
+    "language_course": {
+      "_use": "A language course covering a level range.",
+      "_slots": ["language", "from", "to", "provider"],
+      "de": "{language}kurs von {from} bis {to}, angeboten von {provider}. Kostenlos und ohne Anmeldung nutzbar.",
+      "en": "{language} course from {from} to {to}, offered by {provider}. Free to use and no registration needed.",
+      "fa": "کورس {language} از {from} تا {to}، از سوی {provider}. رایگان و بدون ثبت‌نام.",
+      "ar": "دورة {language} من {from} إلى {to}، تقدّمها {provider}. مجانية وبلا تسجيل."
+    },
+
+    "preparation_year": {
+      "_use": "A preparatory year for people whose certificate is not recognised.",
+      "_slots": ["provider"],
+      "de": "Einjähriger Vorbereitungskurs bei {provider} für Bewerbende, deren Schulabschluss in Deutschland nicht direkt anerkannt wird.",
+      "en": "One-year preparatory course at {provider} for applicants whose school certificate is not directly recognised in Germany.",
+      "fa": "کورس آمادگی یک‌ساله در {provider} برای کسانی که سند مکتب‌شان در آلمان مستقیماً به رسمیت شناخته نمی‌شود.",
+      "ar": "سنة تحضيرية في {provider} لمن لا تُعترف شهادته المدرسية مباشرةً في ألمانيا."
+    },
+
+    "official_guidance": {
+      "_use": "An official information portal, not an application.",
+      "_slots": ["topic", "provider"],
+      "de": "Offizielle Informationen von {provider} zu {topic}.",
+      "en": "Official information from {provider} about {topic}.",
+      "fa": "معلومات رسمی از {provider} دربارهٔ {topic}.",
+      "ar": "معلومات رسمية من {provider} حول {topic}."
+    }
+  },
+
+  "slot_values": {
+    "_readme": [
+      "Words that appear inside the blanks and are NOT proper nouns still need",
+      "translating. They are listed once here and reused, so the robot never",
+      "has to translate anything itself."
+    ],
+
+    "audience": {
+      "talented_students": {
+        "de": "talentierte und engagierte Studierende",
+        "en": "talented and committed students",
+        "fa": "محصلان با استعداد و متعهد",
+        "ar": "طلاب موهوبين وملتزمين"
+      },
+      "women": {
+        "de": "Frauen",
+        "en": "women",
+        "fa": "زنان",
+        "ar": "نساء"
+      },
+      "refugees": {
+        "de": "junge Geflüchtete und Zugewanderte",
+        "en": "young refugees and migrants",
+        "fa": "جوانان پناهنده و مهاجر",
+        "ar": "شباب لاجئين ومهاجرين"
+      },
+      "international_students": {
+        "de": "internationale Studierende",
+        "en": "international students",
+        "fa": "محصلان بین‌المللی",
+        "ar": "طلاب دوليين"
+      },
+      "doctoral_candidates": {
+        "de": "Studierende und Promovierende",
+        "en": "students and doctoral candidates",
+        "fa": "محصلان و داوطلبان دکترا",
+        "ar": "طلاب وطلبة دكتوراه"
+      }
+    },
+
+    "field": {
+      "it": {
+        "de": "IT und Softwareentwicklung",
+        "en": "IT and software development",
+        "fa": "کمپیوتر و ساخت نرم‌افزار",
+        "ar": "الحاسوب وتطوير البرمجيات"
+      },
+      "engineering": {
+        "de": "Ingenieurwesen",
+        "en": "engineering",
+        "fa": "انجنیری",
+        "ar": "الهندسة"
+      },
+      "business": {
+        "de": "Wirtschaft",
+        "en": "business and economics",
+        "fa": "اقتصاد و تجارت",
+        "ar": "الأعمال والاقتصاد"
+      },
+      "health": {
+        "de": "Medizin und Gesundheit",
+        "en": "medicine and health",
+        "fa": "طب و صحت",
+        "ar": "الطب والصحة"
+      },
+      "many_subjects": {
+        "de": "vielen Fachrichtungen",
+        "en": "many subjects",
+        "fa": "رشته‌های گوناگون",
+        "ar": "مجالات متعددة"
+      }
+    },
+
+    "what": {
+      "training_places": {
+        "de": "Ausbildungsplätzen",
+        "en": "apprenticeship places",
+        "fa": "جای‌های آموزش مسلکی",
+        "ar": "أماكن التدريب المهني"
+      },
+      "scholarships": {
+        "de": "Stipendien",
+        "en": "scholarships",
+        "fa": "بورسیه",
+        "ar": "منحة"
+      },
+      "courses": {
+        "de": "Kursen",
+        "en": "courses",
+        "fa": "کورس",
+        "ar": "دورة"
+      }
+    },
+
+    "topic": {
+      "recognition_jobs_visa": {
+        "de": "Anerkennung von Abschlüssen, Jobsuche und Visum",
+        "en": "recognition of qualifications, job search and visas",
+        "fa": "به‌رسمیت‌شناسی اسناد، جستجوی کار و ویزه",
+        "ar": "معادلة الشهادات والبحث عن عمل والتأشيرة"
+      },
+      "integration_language": {
+        "de": "Integrationskursen und Sprachförderung",
+        "en": "integration courses and language support",
+        "fa": "کورس‌های ادغام و حمایت زبانی",
+        "ar": "دورات الاندماج ودعم اللغة"
+      }
+    },
+
+    "language": {
+      "german": {
+        "de": "Deutsch",
+        "en": "German",
+        "fa": "آلمانی",
+        "ar": "الألمانية"
+      },
+      "english": {
+        "de": "Englisch",
+        "en": "English",
+        "fa": "انگلیسی",
+        "ar": "الإنجليزية"
+      }
+    }
+  }
+}

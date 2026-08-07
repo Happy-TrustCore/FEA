@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" data-theme="light" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Community &amp; Unterstützung — FEA</title>
+<meta name="description" content="Mentoring, Webinare, Fragestunden und Support-Gruppen — menschliche Unterstützung hinter der Technologie.">
+<meta name="theme-color" content="#2e7d4f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+  (function () {
+    try {
+      var r = document.documentElement;
+      r.setAttribute('data-theme', localStorage.getItem('fea.theme') || 'light');
+      var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('fea.lang');
+      if (l === 'de' || l === 'en' || l === 'fa' || l === 'ar') {
+        r.setAttribute('data-lang', l);
+        r.setAttribute('lang', l === 'fa' ? 'fa-AF' : l);
+        r.setAttribute('dir', l === 'fa' || l === 'ar' ? 'rtl' : 'ltr');
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+
+<body
+  data-title-de="Community &amp; Unterstützung — FEA" data-title-en="Community &amp; support — FEA"
+  data-title-fa="جامعه و پشتیبانی — FEA" data-title-ar="المجتمع والدعم — FEA"
+  data-desc-de="Mentoring, Webinare, Fragestunden und Support-Gruppen — menschliche Unterstützung hinter der Technologie."
+  data-desc-en="Mentoring, webinars, Q&amp;A sessions and support groups — the human support behind the technology."
+  data-desc-fa="منتورشیپ، ویبینارها، جلسات پرسش و پاسخ و گروه‌های حمایتی."
+  data-desc-ar="إرشاد وندوات وجلسات أسئلة ومجموعات دعم — الدعم البشري خلف التكنولوجيا.">
+
+<a class="skip-link" href="#main"><span data-t="de">Zum Hauptinhalt springen</span><span data-t="en">Skip to main content</span><span data-t="fa">رفتن به محتوای اصلی</span><span data-t="ar">الانتقال إلى المحتوى الرئيسي</span></a>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+        <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+        <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+        <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__text"><span class="brand__name">FEA</span><span class="brand__sub">Free Education Assistance</span></span>
+    </a>
+    <div class="header__spacer"></div>
+    <nav class="nav" data-nav-menu data-al-de="Hauptnavigation" data-al-en="Main navigation" data-al-fa="ناوبری اصلی" data-al-ar="التنقل الرئيسي">
+      <a href="index.html" data-nav-link><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a>
+      <a href="about.html" data-nav-link><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a>
+      <a href="opportunities.html" data-nav-link><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a>
+      <a href="analyzer.html" data-nav-link><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a>
+      <a href="community.html" data-nav-link><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a>
+      <a href="contact.html" data-nav-link><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang-switcher" data-lang-switcher data-al-de="Sprache" data-al-en="Language" data-al-fa="زبان" data-al-ar="اللغة"></div>
+      <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" data-al-de="Hell / dunkel umschalten" data-al-en="Switch light / dark mode" data-al-fa="تغییر حالت روشن یا تاریک" data-al-ar="تبديل الوضع الفاتح والداكن">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" data-al-de="Menü" data-al-en="Menu" data-al-fa="فهرست" data-al-ar="القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow"><span data-t="de">Menschliche Unterstützung</span><span data-t="en">Human support</span><span data-t="fa">پشتیبانی انسانی</span><span data-t="ar">دعم بشري</span></p>
+      <h1 class="measure-title">
+        <span data-t="de">Technologie findet die Chance. Menschen helfen dir, sie zu nutzen.</span>
+        <span data-t="en">Technology finds the opportunity. People help you take it.</span>
+        <span data-t="fa">تکنالوژی فرصت را پیدا می‌کند. انسان‌ها کمک می‌کنند آن را به دست بیاورید.</span>
+        <span data-t="ar">التكنولوجيا تجد الفرصة. والناس يساعدونك على انتهازها.</span>
+      </h1>
+      <p class="lead measure">
+        <span data-t="de">Hinter jeder automatischen Antwort stehen Mentorinnen und Mentoren, Ehrenamtliche und Studierende, die denselben Weg gegangen sind.</span>
+        <span data-t="en">Every automated answer is backed by mentors, volunteers and students who have walked the same path.</span>
+        <span data-t="fa">پشت هر پاسخ خودکار، منتوران، داوطلبان و محصلانی ایستاده‌اند که همین راه را پیموده‌اند.</span>
+        <span data-t="ar">خلف كل إجابة آلية مرشدون ومتطوعون وطلاب سلكوا الطريق نفسه.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="container">
+      <!-- Heading for screen readers: keeps the h1 -> h2 -> h3 order intact. -->
+      <h2 class="visually-hidden">
+        <span data-t="de">Unsere Unterstützungsangebote</span>
+        <span data-t="en">The support we offer</span>
+        <span data-t="fa">خدمات حمایتی ما</span>
+        <span data-t="ar">خدمات الدعم التي نقدّمها</span>
+      </h2>
+
+      <div class="grid grid--3">
+
+        <article class="card card--hover" data-reveal>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke-linecap="round"/></svg></div>
+          <h3><span data-t="de">Online-Mentoring</span><span data-t="en">Online mentoring</span><span data-t="fa">رهنمایی آنلاین</span><span data-t="ar">إرشاد فردي عبر الإنترنت</span></h3>
+          <p class="muted"><span data-t="de">Einzelgespräche mit Studierenden und Ehrenamtlichen, die dir helfen, einen Weg zu wählen und die nächsten Schritte zu planen.</span><span data-t="en">One-to-one sessions with students and volunteers who help you choose a pathway and plan the next steps.</span><span data-t="fa">جلسات یک‌به‌یک با محصلان و داوطلبانی که کمک می‌کنند مسیر خود را انتخاب و گام‌های بعدی را پلان کنید.</span><span data-t="ar">جلسات فردية مع طلاب ومتطوعين يساعدونك على اختيار مسارك وتخطيط خطواتك التالية.</span></p>
+        </article>
+
+        <article class="card card--hover" data-reveal data-reveal-delay="70">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2.5"/><path d="M8.5 20h7M12 17v3" stroke-linecap="round"/></svg></div>
+          <h3><span data-t="de">Bildungs-Webinare</span><span data-t="en">Educational webinars</span><span data-t="fa">ویبینارهای آموزشی</span><span data-t="ar">ندوات تعليمية</span></h3>
+          <p class="muted"><span data-t="de">Live-Sitzungen zu Stipendien, Universitätsbewerbungen, Ausbildung und Studium in Deutschland.</span><span data-t="en">Live sessions on scholarships, university applications, Ausbildung and studying in Germany.</span><span data-t="fa">جلسات زنده دربارهٔ بورسیه‌ها، درخواست به پوهنتون، آموزش مسلکی و تحصیل در آلمان.</span><span data-t="ar">جلسات مباشرة حول المنح والتقديم الجامعي والتدريب المهني والدراسة في ألمانيا.</span></p>
+        </article>
+
+        <article class="card card--hover" data-reveal data-reveal-delay="140">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M20 12.5c0 3.6-3.6 6.5-8 6.5-.9 0-1.8-.1-2.6-.4L4.5 20l1.2-3.2C4.6 15.7 4 14.2 4 12.5 4 8.9 7.6 6 12 6s8 2.9 8 6.5Z" stroke-linejoin="round"/><path d="M10.2 11.2c.2-.9 1-1.5 1.9-1.4.9 0 1.6.7 1.6 1.5 0 1.3-1.7 1.4-1.7 2.6" stroke-linecap="round"/><circle cx="12" cy="15.6" r=".8" fill="currentColor" stroke="none"/></svg></div>
+          <h3><span data-t="de">Frage-und-Antwort-Sitzungen</span><span data-t="en">Question &amp; answer sessions</span><span data-t="fa">جلسات پرسش و پاسخ</span><span data-t="ar">جلسات أسئلة وأجوبة</span></h3>
+          <p class="muted"><span data-t="de">Offene Runden für alle Fragen zu Bewerbungen, Unterlagen, Fristen und Anerkennung.</span><span data-t="en">Open sessions where you can ask anything about applications, documents, deadlines and recognition.</span><span data-t="fa">جلسات باز برای هر پرسشی دربارهٔ درخواست، اسناد، مهلت‌ها و به‌رسمیت‌شناسی مدارک.</span><span data-t="ar">جلسات مفتوحة لأي سؤال عن التقديم والأوراق والمواعيد ومعادلة الشهادات.</span></p>
+        </article>
+
+        <article class="card card--hover" data-reveal>
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="8" cy="9" r="2.8"/><circle cx="16.5" cy="10" r="2.3"/><path d="M3 19c0-2.8 2.2-4.6 5-4.6s5 1.8 5 4.6M14.5 14.6c2.6 0 4.5 1.6 4.5 4.4" stroke-linecap="round"/></svg></div>
+          <h3><span data-t="de">WhatsApp- &amp; Telegram-Gruppen</span><span data-t="en">WhatsApp &amp; Telegram groups</span><span data-t="fa">گروه‌های واتساپ و تلگرام</span><span data-t="ar">مجموعات واتساب وتيليغرام</span></h3>
+          <p class="muted"><span data-t="de">Tägliche Updates zu neuen Möglichkeiten und ein Ort für kurze Fragen mit schnellen Antworten.</span><span data-t="en">Daily opportunity updates and a place to ask short questions and get quick answers.</span><span data-t="fa">معلومات روزانه دربارهٔ فرصت‌های جدید و جایی برای پرسش‌های کوتاه با پاسخ سریع.</span><span data-t="ar">تحديثات يومية عن الفرص ومكان لطرح الأسئلة القصيرة والحصول على إجابات سريعة.</span></p>
+        </article>
+
+        <article class="card card--hover" data-reveal data-reveal-delay="70">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z" stroke-linejoin="round"/><path d="M6.5 10.2V15c0 1.6 2.5 3 5.5 3s5.5-1.4 5.5-3v-4.8" stroke-linecap="round"/></svg></div>
+          <h3><span data-t="de">Beratung durch Studierende</span><span data-t="en">Student &amp; volunteer guidance</span><span data-t="fa">رهنمایی محصلان و داوطلبان</span><span data-t="ar">إرشاد الطلاب والمتطوعين</span></h3>
+          <p class="muted"><span data-t="de">Peer-Unterstützung von Menschen, die sich selbst kürzlich beworben haben und den Prozess von innen kennen.</span><span data-t="en">Peer support from people who applied recently and know the process from the inside.</span><span data-t="fa">حمایت همتا از سوی کسانی که به‌تازگی درخواست داده‌اند و روند کار را از نزدیک می‌شناسند.</span><span data-t="ar">دعم من أقران قدّموا طلباتهم حديثًا ويعرفون الإجراءات من الداخل.</span></p>
+        </article>
+
+        <article class="card card--hover" data-reveal data-reveal-delay="140">
+          <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 19V9.5M12 19V5M19 19v-6.5" stroke-linecap="round"/><path d="M3.5 19h17" stroke-linecap="round"/></svg></div>
+          <h3><span data-t="de">Zukunft planen</span><span data-t="en">Planning your future</span><span data-t="fa">پلان‌گذاری آینده</span><span data-t="ar">تخطيط مستقبلك</span></h3>
+          <p class="muted"><span data-t="de">Strukturierte Unterstützung für alle, die studieren oder eine Ausbildung machen möchten — aber noch nicht wissen, was und wo.</span><span data-t="en">Structured support for people who know they want to study or train, but not yet what or where.</span><span data-t="fa">حمایت منظم برای کسانی که می‌دانند می‌خواهند تحصیل یا آموزش مسلکی کنند، اما هنوز نمی‌دانند چه و کجا.</span><span data-t="ar">دعم منظّم لمن يعرف أنه يريد الدراسة أو التدريب، لكنه لم يحدّد بعد ماذا وأين.</span></p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Channels -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section__head section__head--center">
+        <p class="eyebrow"><span data-t="de">Folge uns</span><span data-t="en">Follow us</span><span data-t="fa">ما را دنبال کنید</span><span data-t="ar">تابعنا</span></p>
+        <h2><span data-t="de">Wo du uns findest</span><span data-t="en">Where to find us</span><span data-t="fa">ما را کجا پیدا کنید</span><span data-t="ar">أين تجدنا</span></h2>
+        <p class="lead">
+          <span data-t="de">Wir veröffentlichen jede Woche neue Stipendien, Studienmöglichkeiten, Ausbildungsplätze, kostenlose Kurse und Bewerbungstipps.</span>
+          <span data-t="en">We publish new scholarships, university opportunities, Ausbildung places, free courses and application tips every week.</span>
+          <span data-t="fa">هر هفته بورسیه‌های جدید، فرصت‌های پوهنتون، جای‌های آموزش مسلکی، کورس‌های رایگان و نکات درخواست را نشر می‌کنیم.</span>
+          <span data-t="ar">ننشر كل أسبوع منحًا جديدة وفرصًا جامعية وأماكن تدريب مهني ودورات مجانية ونصائح للتقديم.</span>
+        </p>
+      </div>
+
+      <div class="channels--cards">
+        <a class="channel-card" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg><span>Instagram</span></a>
+        <a class="channel-card" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8.4h2.2V5.6h-2.4c-2.2 0-3.6 1.4-3.6 3.6v1.6H8.4v2.9h2.3V21h3v-7.3h2.3l.4-2.9h-2.7V9.6c0-.8.3-1.2.8-1.2z" fill="currentColor"/></svg><span>Facebook</span></a>
+        <a class="channel-card" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.2 3h2.6c.2 1.9 1.4 3.3 3.2 3.6v2.7c-1.2 0-2.3-.3-3.2-.9v5.8c0 3.1-2.3 5.4-5.2 5.4S6.4 17.3 6.4 14.2s2.3-5.4 5.2-5.4c.3 0 .6 0 .9.1v2.8a2.6 2.6 0 1 0 1.7 2.5z" fill="currentColor"/></svg><span>TikTok</span></a>
+        <a class="channel-card" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 4.5 3.9 11c-1 .4-1 1.8 0 2.1l4.2 1.3 1.6 4.8c.3.9 1.4 1.1 2 .4l2.2-2.4 4.1 3c.7.5 1.7.1 1.9-.8l2.6-13c.2-1-.8-1.8-1.8-1.4z" fill="currentColor"/></svg><span>Telegram</span></a>
+        <a class="channel-card" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.3a8.6 8.6 0 0 0-7.4 13l-1.2 4.4 4.5-1.2A8.6 8.6 0 1 0 12 3.3zm4.7 12c-.2.6-1.2 1.1-1.7 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6a9.4 9.4 0 0 1-3.6-3.6c-.4-.6-.7-1.3-.7-2 0-.7.3-1.3.7-1.7.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.3.4c-.1.1-.2.3-.1.5.3.6 1.5 2.1 3 2.7.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.3.1.4.3.4.4 0 .1 0 .4-.1.6z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Volunteer -->
+  <section class="section">
+    <div class="container split">
+      <div data-reveal>
+        <p class="eyebrow"><span data-t="de">Mitmachen</span><span data-t="en">Get involved</span><span data-t="fa">سهم بگیرید</span><span data-t="ar">شارك معنا</span></p>
+        <h2><span data-t="de">Ehrenamtliche Mentorin oder Mentor werden</span><span data-t="en">Become a volunteer mentor</span><span data-t="fa">منتور داوطلب شوید</span><span data-t="ar">كن مرشدًا متطوعًا</span></h2>
+        <p class="muted">
+          <span data-t="de">Du studierst, hast einen Abschluss oder arbeitest im Beruf? Eine Stunde im Monat kann den Bildungsweg eines Menschen verändern. Besonders willkommen sind Mentorinnen und Mentoren mit Dari-, Paschtu- oder Arabischkenntnissen.</span>
+          <span data-t="en">Are you a student, a graduate or a professional? A single hour per month is enough to change the direction of someone’s education. We especially welcome mentors who speak Dari, Pashto or Arabic.</span>
+          <span data-t="fa">محصل، فارغ‌التحصیل یا شاغل هستید؟ یک ساعت در ماه کافی است تا مسیر تحصیلی یک انسان را تغییر دهید. به‌ویژه از منتورانی که دری، پشتو یا عربی می‌دانند استقبال می‌کنیم.</span>
+          <span data-t="ar">هل أنت طالب أو خريج أو مهني؟ ساعة واحدة في الشهر تكفي لتغيير مسار تعليم إنسان. نرحّب خصوصًا بالمرشدين الذين يتحدثون الدرية أو الباشتو أو العربية.</span>
+        </p>
+        <a class="btn btn--primary" href="contact.html"><span data-t="de">Schreib uns</span><span data-t="en">Write to us</span><span data-t="fa">برای ما بنویسید</span><span data-t="ar">اكتب لنا</span></a>
+      </div>
+
+      <div class="card card--soft" data-reveal data-reveal-delay="90">
+        <h3><span data-t="de">Antwortzeit</span><span data-t="en">Response time</span><span data-t="fa">زمان پاسخ</span><span data-t="ar">زمن الاستجابة</span></h3>
+        <p class="muted">
+          <span data-t="de">Der KI-Assistent antwortet sofort, rund um die Uhr. Eine persönliche Antwort dauert meist ein bis drei Tage — wir sind zwei Studierende und machen das neben dem Studium.</span>
+          <span data-t="en">The AI assistant answers immediately, 24/7. A human reply usually takes one to three days — we are two students doing this next to our studies.</span>
+          <span data-t="fa">دستیار هوش مصنوعی فوراً و ۲۴ ساعته پاسخ می‌دهد. پاسخ انسانی معمولاً یک تا سه روز وقت می‌گیرد — ما دو محصل هستیم و این کار را در کنار درس انجام می‌دهیم.</span>
+          <span data-t="ar">يجيب المساعد الآلي فورًا وعلى مدار الساعة. أما الرد البشري فيستغرق عادةً من يوم إلى ثلاثة أيام — نحن طالبان ونقوم بذلك إلى جانب دراستنا.</span>
+        </p>
+        <hr class="divider">
+        <h3><span data-t="de">Was FEA anbietet</span><span data-t="en">What FEA provides</span><span data-t="fa">FEA چه ارائه می‌کند</span><span data-t="ar">ماذا يقدّم FEA</span></h3>
+        <ul class="check-list">
+          <li><span data-t="de">Online-Mentoring.</span><span data-t="en">Online mentoring.</span><span data-t="fa">رهنمایی آنلاین.</span><span data-t="ar">إرشادًا عبر الإنترنت.</span></li>
+          <li><span data-t="de">Bildungs-Webinare.</span><span data-t="en">Educational webinars.</span><span data-t="fa">ویبینارهای آموزشی.</span><span data-t="ar">ندوات تعليمية.</span></li>
+          <li><span data-t="de">Frage-und-Antwort-Sitzungen.</span><span data-t="en">Question-and-answer sessions.</span><span data-t="fa">جلسات پرسش و پاسخ.</span><span data-t="ar">جلسات أسئلة وأجوبة.</span></li>
+          <li><span data-t="de">WhatsApp- und Telegram-Gruppen.</span><span data-t="en">WhatsApp and Telegram support groups.</span><span data-t="fa">گروه‌های واتساپ و تلگرام.</span><span data-t="ar">مجموعات دعم على واتساب وتيليغرام.</span></li>
+          <li><span data-t="de">Beratung durch Studierende und Ehrenamtliche.</span><span data-t="en">Guidance from students and volunteers.</span><span data-t="fa">رهنمایی از سوی محصلان و داوطلبان.</span><span data-t="ar">إرشادًا من طلاب ومتطوعين.</span></li>
+          <li><span data-t="de">Unterstützung bei der Planung der Bildungszukunft.</span><span data-t="en">Support for planning your educational future.</span><span data-t="fa">حمایت در پلان‌گذاری آیندهٔ تحصیلی.</span><span data-t="ar">دعمًا لتخطيط مستقبلك التعليمي.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section--alt" id="faq">
+    <div class="container wrap-reading">
+      <div class="section__head section__head--center">
+        <p class="eyebrow"><span data-t="de">FAQ</span><span data-t="en">FAQ</span><span data-t="fa">پرسش‌ها</span><span data-t="ar">الأسئلة</span></p>
+        <h2><span data-t="de">Häufig gestellte Fragen</span><span data-t="en">Frequently asked questions</span><span data-t="fa">پرسش‌های پرتکرار</span><span data-t="ar">الأسئلة الشائعة</span></h2>
+        <p class="lead"><span data-t="de">Die Fragen, die uns am häufigsten erreichen — in allen unseren Sprachen.</span><span data-t="en">The questions we receive most often — in every language we support.</span><span data-t="fa">پرسش‌هایی که بیشتر از همه دریافت می‌کنیم — به هر چهار زبان.</span><span data-t="ar">الأسئلة التي تصلنا أكثر من غيرها — بكل لغاتنا.</span></p>
+      </div>
+
+      <div class="accordion" data-accordion>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Kostet FEA etwas?</span><span data-t="en">Does FEA cost anything?</span><span data-t="fa">آیا استفاده از FEA مصرف دارد؟</span><span data-t="ar">هل استخدام FEA مدفوع؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Nein. Alle Informationen, Beratung, Mentoring und Werkzeuge sind kostenlos. FEA ist gemeinnützig, erhebt keine Gebühren, verkauft keine Daten und schaltet keine Werbung.</span><span data-t="en">No. All information, guidance, mentoring and tools are free. FEA is a non-profit initiative and does not charge fees, sell data or run advertising.</span><span data-t="fa">نی. همهٔ معلومات، رهنمایی، منتورشیپ و ابزارها رایگان اند. FEA غیرانتفاعی است، فیس نمی‌گیرد، معلومات را نمی‌فروشد و اعلان تجارتی ندارد.</span><span data-t="ar">لا. كل المعلومات والإرشاد والتوجيه والأدوات مجانية. FEA مبادرة غير ربحية لا تتقاضى رسومًا ولا تبيع البيانات ولا تعرض إعلانات.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Muss ich ein Konto anlegen?</span><span data-t="en">Do I need to create an account?</span><span data-t="fa">آیا باید حساب کاربری بسازم؟</span><span data-t="ar">هل أحتاج إلى إنشاء حساب؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Nein. Übersicht, KI-Analyse und Chat funktionieren ohne Registrierung. Deine Antworten in der Analyse bleiben in deinem eigenen Browser.</span><span data-t="en">No. You can use the opportunity directory, the AI Analyzer and the chat without registering. Your analyzer answers stay in your own browser.</span><span data-t="fa">نی. فهرست فرصت‌ها، تحلیلگر و چت بدون ثبت‌نام کار می‌کنند. پاسخ‌های شما تنها در مرورگر خودتان می‌ماند.</span><span data-t="ar">لا. يمكنك استخدام دليل الفرص والمحلّل والمحادثة دون تسجيل. تبقى إجاباتك داخل متصفحك وحده.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Bewirbt sich FEA für mich um ein Stipendium?</span><span data-t="en">Can FEA apply for a scholarship on my behalf?</span><span data-t="fa">آیا FEA به جای من درخواست می‌دهد؟</span><span data-t="ar">هل يقدّم FEA طلب المنحة نيابةً عني؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Nein. Wir reichen keine Bewerbungen ein und sind keine Agentur. Wir erklären die Voraussetzungen, helfen dir, den Prozess zu verstehen, und beantworten deine Fragen — die Bewerbung selbst bleibt immer deine.</span><span data-t="en">No. We do not submit applications and we are not an agency. We explain the requirements, help you understand the process and answer your questions — the application itself always stays yours.</span><span data-t="fa">نی. ما درخواست ارسال نمی‌کنیم و آژانس نیستیم. ما شرایط را توضیح می‌دهیم و به پرسش‌های شما پاسخ می‌دهیم — اما خود درخواست همیشه از شماست.</span><span data-t="ar">لا. نحن لا نرسل الطلبات ولسنا وكالة. نشرح المتطلبات ونساعدك على فهم الإجراءات ونجيب عن أسئلتك — أما الطلب نفسه فيبقى دائمًا طلبك أنت.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Ich bin in Afghanistan. Kann ich FEA trotzdem nutzen?</span><span data-t="en">I am in Afghanistan. Can I still use FEA?</span><span data-t="fa">من در افغانستان هستم. باز هم می‌توانم استفاده کنم؟</span><span data-t="ar">أنا في أفغانستان. هل يمكنني استخدام FEA؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Ja. Ein großer Teil unserer Arbeit richtet sich an Menschen in Afghanistan, besonders an Mädchen und Frauen. Viele Angebote — Onlinekurse, Sprachprogramme und internationale Stipendien — lassen sich von zu Hause aus beginnen.</span><span data-t="en">Yes. A large part of our work is aimed at students in Afghanistan, especially girls and women. Many opportunities we list — online courses, language programmes and international scholarships — can be started from home.</span><span data-t="fa">بلی. بخش بزرگ کار ما برای محصلان افغانستان است، به‌ویژه دختران و زنان. بسیاری از فرصت‌ها — کورس‌های آنلاین، برنامه‌های زبان و بورسیه‌های بین‌المللی — از خانه شروع شده می‌توانند.</span><span data-t="ar">نعم. جزء كبير من عملنا موجّه لطلاب أفغانستان، وخصوصًا الفتيات والنساء. كثير من الفرص — الدورات عبر الإنترنت وبرامج اللغة والمنح الدولية — يمكن البدء بها من المنزل.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Was ist eine Ausbildung?</span><span data-t="en">What is an Ausbildung?</span><span data-t="fa">Ausbildung چیست؟</span><span data-t="ar">ما هو الـ Ausbildung؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Eine Ausbildung ist eine bezahlte Berufsausbildung in Deutschland: Arbeit im Betrieb kombiniert mit Berufsschule. Sie dauert meist zwei bis dreieinhalb Jahre und endet mit einem anerkannten Berufsabschluss.</span><span data-t="en">An Ausbildung is a paid vocational training programme in Germany that combines working in a company with vocational school. It usually lasts two to three and a half years and ends with a recognised professional qualification.</span><span data-t="fa">Ausbildung آموزش مسلکی معاش‌دار در آلمان است: کار در یک شرکت همراه با درس در مکتب مسلکی. معمولاً دو تا سه‌ونیم سال طول می‌کشد و با یک سند مسلکی به‌رسمیت‌شناخته‌شده پایان می‌یابد.</span><span data-t="ar">الـ Ausbildung تدريب مهني مدفوع الأجر في ألمانيا يجمع بين العمل في شركة والدراسة في مدرسة مهنية. يستمر عادةً من سنتين إلى ثلاث سنوات ونصف وينتهي بشهادة مهنية معترف بها.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Welches Deutschniveau brauche ich?</span><span data-t="en">Which German level do I need?</span><span data-t="fa">به کدام سطح زبان آلمانی نیاز دارم؟</span><span data-t="ar">ما مستوى الألمانية المطلوب؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Das hängt vom Weg ab. Für eine Ausbildung meist B1 bis B2, für ein deutschsprachiges Studium in der Regel C1; viele Masterprogramme sind auf Englisch. Sprach- und Onlinekurse sind auf jedem Niveau offen.</span><span data-t="en">It depends on the pathway. Ausbildung usually requires B1 to B2, a German-language degree programme usually requires C1, and many Master programmes are taught in English. Language courses and online courses are open at every level.</span><span data-t="fa">به مسیر بستگی دارد. برای Ausbildung معمولاً B1 تا B2، برای تحصیل به زبان آلمانی معمولاً C1، و بسیاری از برنامه‌های ماستری به انگلیسی تدریس می‌شوند. کورس‌های زبان و آنلاین در هر سطحی باز اند.</span><span data-t="ar">يعتمد على المسار. التدريب المهني يتطلب عادةً B1 إلى B2، والدراسة الجامعية بالألمانية تتطلب عادةً C1، وكثير من برامج الماجستير تُدرَّس بالإنجليزية. أما دورات اللغة والدورات الإلكترونية فمفتوحة لكل المستويات.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">In welchen Sprachen kann ich Fragen stellen?</span><span data-t="en">In which languages can I ask questions?</span><span data-t="fa">به کدام زبان‌ها می‌توانم پرسش کنم؟</span><span data-t="ar">بأي لغات يمكنني طرح الأسئلة؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Deutsch, Englisch, Dari und Arabisch — auf der Website, im Chat und in unseren Social-Media-Kanälen.</span><span data-t="en">German, English, Dari and Arabic — on the website, in the chat and in our social media channels.</span><span data-t="fa">آلمانی، انگلیسی، دری و عربی — در ویب‌سایت، در چت و در شبکه‌های اجتماعی ما.</span><span data-t="ar">الألمانية والإنجليزية والدرية والعربية — على الموقع وفي المحادثة وفي قنوات التواصل.</span></p></div>
+        </div>
+
+        <div class="accordion__item">
+          <button type="button" class="accordion__trigger"><span><span data-t="de">Wie verlässlich sind die Informationen?</span><span data-t="en">How reliable is the information?</span><span data-t="fa">معلومات تا چه اندازه معتبر است؟</span><span data-t="ar">ما مدى موثوقية المعلومات؟</span></span></button>
+          <div class="accordion__panel"><p class="mb-0"><span data-t="de">Jeder Eintrag verlinkt auf eine offizielle Quelle wie DAAD, BAMF, die Bundesagentur für Arbeit oder eine Hochschule. Wir prüfen regelmäßig, aber Fristen ändern sich — bitte vor der Bewerbung immer offiziell nachsehen.</span><span data-t="en">Every entry links to an official source such as DAAD, BAMF, the Bundesagentur für Arbeit or a university. We check entries regularly, but deadlines change — always confirm on the official page before applying.</span><span data-t="fa">هر مورد به یک منبع رسمی مانند DAAD، BAMF، ادارهٔ فدرال کار یا یک پوهنتون پیوند دارد. ما به‌طور منظم بررسی می‌کنیم، اما مهلت‌ها تغییر می‌کنند — پیش از درخواست همیشه صفحهٔ رسمی را ببینید.</span><span data-t="ar">كل مدخل يرتبط بمصدر رسمي مثل DAAD أو BAMF أو وكالة العمل الاتحادية أو جامعة. نراجع المداخل بانتظام، لكن المواعيد تتغيّر — تحقّق دائمًا من الصفحة الرسمية قبل التقديم.</span></p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+            <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+            <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+            <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+          </svg>
+          <span class="brand__text"><span class="brand__name">FEA</span></span>
+        </a>
+        <p class="note"><span data-t="de">FEA ist eine gemeinnützige Initiative von zwei Studierenden der Softwaretechnik in Deutschland.</span><span data-t="en">FEA is a non-profit initiative founded by two software engineering students in Germany.</span><span data-t="fa">FEA یک ابتکار غیرانتفاعی از دو محصل انجنیری نرم‌افزار در آلمان است.</span><span data-t="ar">FEA مبادرة غير ربحية أسّسها طالبان في هندسة البرمجيات في ألمانيا.</span></p>
+      </div>
+      <div>
+        <h3><span data-t="de">Seiten</span><span data-t="en">Pages</span><span data-t="fa">صفحه‌ها</span><span data-t="ar">الصفحات</span></h3>
+        <ul class="footer__list">
+          <li><a href="index.html"><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a></li>
+          <li><a href="about.html"><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a></li>
+          <li><a href="opportunities.html"><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a></li>
+          <li><a href="analyzer.html"><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a></li>
+          <li><a href="community.html"><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a></li>
+          <li><a href="contact.html"><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3><span data-t="de">Sprachen</span><span data-t="en">Languages</span><span data-t="fa">زبان‌ها</span><span data-t="ar">اللغات</span></h3>
+        <div class="lang-switcher lang-switcher--footer" data-lang-switcher></div>
+        <p class="note"><span data-t="de">Gemeinnützig · Keine Gebühren · Keine Werbung</span><span data-t="en">Non-profit · No fees · No advertising</span><span data-t="fa">غیرانتفاعی · بدون فیس · بدون اعلان</span><span data-t="ar">غير ربحي · بلا رسوم · بلا إعلانات</span></p>
+      </div>
+      <div>
+        <h3><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></h3>
+        <ul class="footer__list">
+          <li><a href="contact.html"><span data-t="de">Frage senden</span><span data-t="en">Send a question</span><span data-t="fa">ارسال پرسش</span><span data-t="ar">أرسل سؤالك</span></a></li>
+          <li><a href="mailto:happytrustcore.github@gmail.com">happytrustcore.github@gmail.com</a></li>
+          <li><a href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><span data-t="de">Live-Entwicklungsversion</span><span data-t="en">Live development version</span><span data-t="fa">نسخهٔ در حال توسعه</span><span data-t="ar">النسخة التطويرية</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="mb-0"><a href="legal.html"><span data-t="de">Impressum &amp; Datenschutz</span><span data-t="en">Legal notice &amp; privacy</span><span data-t="fa">معلومات قانونی و حریم خصوصی</span><span data-t="ar">البيانات القانونية والخصوصية</span></a></p>
+      <p class="mb-0"><span data-t="de">© 2026 Free Education Assistance. Projektkonzept für die Werner-Schulz-Stipendien 2026.</span><span data-t="en">© 2026 Free Education Assistance. Project concept for the Werner-Schulz-Stipendien 2026.</span><span data-t="fa">© 2026 Free Education Assistance. طرح پروژه برای بورسیهٔ Werner-Schulz 2026.</span><span data-t="ar">© 2026 Free Education Assistance. مفهوم المشروع لمنحة Werner-Schulz 2026.</span></p>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" data-to-top data-al-de="Nach oben" data-al-en="Back to top" data-al-fa="بازگشت به بالا" data-al-ar="العودة إلى الأعلى">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V6M6 11.5 12 5.5l6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<button type="button" class="chat-launcher" data-chat-launcher aria-expanded="false" aria-controls="fea-chat">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 3.4 9 7.6 0 4.2-4 7.6-9 7.6-.9 0-1.7-.1-2.5-.3L5 20.4l.9-3.2C4.1 15.8 3 13.3 3 10.6 3 6.4 7 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.5" cy="10.6" r="1.05" fill="currentColor"/><circle cx="12" cy="10.6" r="1.05" fill="currentColor"/><circle cx="15.5" cy="10.6" r="1.05" fill="currentColor"/></svg>
+  <span class="chat-launcher__label"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></span>
+</button>
+
+<section class="chat-panel" id="fea-chat" data-chat-panel hidden data-al-de="FEA-Assistent" data-al-en="FEA Assistant" data-al-fa="دستیار FEA" data-al-ar="مساعد FEA">
+  <header class="chat-panel__head">
+    <div>
+      <p class="chat-panel__title"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></p>
+      <p class="chat-panel__subtitle"><span data-t="de">Antworten in deiner Sprache · rund um die Uhr</span><span data-t="en">Answers in your language · 24/7</span><span data-t="fa">پاسخ به زبان شما · ۲۴ ساعته</span><span data-t="ar">إجابات بلغتك · على مدار الساعة</span></p>
+    </div>
+    <button type="button" class="chat-panel__close" data-chat-close data-al-de="Schließen" data-al-en="Close" data-al-fa="بستن" data-al-ar="إغلاق">&times;</button>
+  </header>
+  <div class="chat-panel__log" data-chat-log role="log" aria-live="polite"></div>
+  <div class="chat-panel__chips" data-chat-chips>
+    <button type="button" class="chip" data-chip="scholarship"><span data-t="de">Stipendien</span><span data-t="en">Scholarships</span><span data-t="fa">بورسیه‌ها</span><span data-t="ar">المنح</span></button>
+    <button type="button" class="chip" data-chip="ausbildung"><span data-t="de">Ausbildung</span><span data-t="en">Ausbildung</span><span data-t="fa">آموزش مسلکی</span><span data-t="ar">التدريب المهني</span></button>
+    <button type="button" class="chip" data-chip="university"><span data-t="de">Universität</span><span data-t="en">University</span><span data-t="fa">پوهنتون</span><span data-t="ar">الجامعة</span></button>
+    <button type="button" class="chip" data-chip="german"><span data-t="de">Deutsch lernen</span><span data-t="en">Learning German</span><span data-t="fa">یادگیری آلمانی</span><span data-t="ar">تعلّم الألمانية</span></button>
+    <button type="button" class="chip" data-chip="free"><span data-t="de">Kostenlose Kurse</span><span data-t="en">Free courses</span><span data-t="fa">کورس‌های رایگان</span><span data-t="ar">دورات مجانية</span></button>
+    <button type="button" class="chip" data-chip="cost"><span data-t="de">Kostet das etwas?</span><span data-t="en">Does it cost anything?</span><span data-t="fa">آیا مصرف دارد؟</span><span data-t="ar">هل هناك تكلفة؟</span></button>
+  </div>
+  <form class="chat-panel__form" data-chat-form>
+    <input type="text" class="chat-panel__input" data-chat-input autocomplete="off"
+           data-ph-de="Frag nach Stipendien, Ausbildung, Kursen …" data-ph-en="Ask about scholarships, Ausbildung, courses …"
+           data-ph-fa="دربارهٔ بورسیه، آموزش مسلکی، کورس‌ها بپرسید …" data-ph-ar="اسأل عن المنح أو التدريب المهني أو الدورات …"
+           data-al-de="Deine Frage" data-al-en="Your question" data-al-fa="پرسش شما" data-al-ar="سؤالك">
+    <button type="submit" class="btn btn--primary btn--sm"><span data-t="de">Senden</span><span data-t="en">Send</span><span data-t="fa">ارسال</span><span data-t="ar">إرسال</span></button>
+  </form>
+  <p class="chat-panel__note"><span data-t="de">Prototyp: Die Antworten kommen aus einer lokalen Wissensbasis im Browser.</span><span data-t="en">Prototype: answers come from a local knowledge base in your browser.</span><span data-t="fa">نمونهٔ اولیه: پاسخ‌ها از یک بانک معلومات محلی در مرورگر می‌آیند.</span><span data-t="ar">نموذج أولي: تأتي الإجابات من قاعدة معرفة محلية داخل المتصفح.</span></p>
+</section>
+
+<script src="assets/js/chat-data.js"></script>
+<script src="assets/js/fea.js"></script>
+<script src="assets/js/ui.js"></script>
+</body>
+</html>

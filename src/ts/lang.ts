@@ -140,6 +140,23 @@ namespace FEA.Lang {
   }
 
   export function init(): void {
+    const root = document.documentElement;
+
+    // Built pages contain exactly one language and say so. Switching is done by
+    // following a link, not by script — so here we only read which language this
+    // file is, and remember it so the next page opens in the same one.
+    const fixed = root.getAttribute('data-lang');
+    if (root.hasAttribute('data-single-lang') && isLang(fixed)) {
+      current = fixed;
+      try {
+        window.localStorage.setItem(STORAGE_KEY, fixed);
+      } catch (err) {
+        /* private mode — nothing to remember */
+      }
+      return;
+    }
+
+    // Source pages (src/pages/*.html) still hold all four languages.
     buildSwitchers();
     set(detect(), false);
   }

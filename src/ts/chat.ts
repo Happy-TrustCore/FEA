@@ -174,6 +174,18 @@ namespace FEA.Chat {
     return entry[Lang.get()] || entry.en;
   }
 
+  /**
+   * Points a link at the current language's file.
+   * "opportunities.html#scholarship" becomes "opportunities-ar.html#scholarship"
+   * on the Arabic build, and stays unchanged on the German one.
+   */
+  function localise(href: string): string {
+    const suffix: Record<string, string> = { de: '', en: '-en', fa: '-fa', ar: '-ar' };
+    const add = suffix[Lang.get()];
+    if (!add) return href;
+    return href.replace(/^([a-z-]+)\.html/, '$1' + add + '.html');
+  }
+
   function stamp(): string {
     const now = new Date();
     return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
@@ -192,7 +204,7 @@ namespace FEA.Chat {
     if (link) {
       const anchor = document.createElement('a');
       anchor.className = 'chat-msg__link';
-      anchor.href = link;
+      anchor.href = localise(link);
       anchor.textContent = text({
         de: 'Seite öffnen',
         en: 'Open the page',

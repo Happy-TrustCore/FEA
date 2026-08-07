@@ -150,6 +150,22 @@ var FEA;
             });
         }
         function init() {
+            const root = document.documentElement;
+            // Built pages contain exactly one language and say so. Switching is done by
+            // following a link, not by script — so here we only read which language this
+            // file is, and remember it so the next page opens in the same one.
+            const fixed = root.getAttribute('data-lang');
+            if (root.hasAttribute('data-single-lang') && isLang(fixed)) {
+                current = fixed;
+                try {
+                    window.localStorage.setItem(STORAGE_KEY, fixed);
+                }
+                catch (err) {
+                    /* private mode — nothing to remember */
+                }
+                return;
+            }
+            // Source pages (src/pages/*.html) still hold all four languages.
             buildSwitchers();
             set(detect(), false);
         }
@@ -746,6 +762,18 @@ var FEA;
         function text(entry) {
             return entry[FEA.Lang.get()] || entry.en;
         }
+        /**
+         * Points a link at the current language's file.
+         * "opportunities.html#scholarship" becomes "opportunities-ar.html#scholarship"
+         * on the Arabic build, and stays unchanged on the German one.
+         */
+        function localise(href) {
+            const suffix = { de: '', en: '-en', fa: '-fa', ar: '-ar' };
+            const add = suffix[FEA.Lang.get()];
+            if (!add)
+                return href;
+            return href.replace(/^([a-z-]+)\.html/, '$1' + add + '.html');
+        }
         function stamp() {
             const now = new Date();
             return String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
@@ -761,7 +789,7 @@ var FEA;
             if (link) {
                 const anchor = document.createElement('a');
                 anchor.className = 'chat-msg__link';
-                anchor.href = link;
+                anchor.href = localise(link);
                 anchor.textContent = text({
                     de: 'Seite öffnen',
                     en: 'Open the page',

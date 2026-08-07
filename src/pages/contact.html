@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="de" dir="ltr" data-theme="light" data-lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — FEA</title>
+<meta name="description" content="Stelle deine Frage zu Stipendien, Studium, Ausbildung oder Kursen — auf Deutsch, Englisch, Dari oder Arabisch.">
+<meta name="theme-color" content="#2e7d4f">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/main.css">
+<script>
+  (function () {
+    try {
+      var r = document.documentElement;
+      r.setAttribute('data-theme', localStorage.getItem('fea.theme') || 'light');
+      var l = new URLSearchParams(location.search).get('lang') || localStorage.getItem('fea.lang');
+      if (l === 'de' || l === 'en' || l === 'fa' || l === 'ar') {
+        r.setAttribute('data-lang', l);
+        r.setAttribute('lang', l === 'fa' ? 'fa-AF' : l);
+        r.setAttribute('dir', l === 'fa' || l === 'ar' ? 'rtl' : 'ltr');
+      }
+    } catch (e) {}
+  })();
+</script>
+</head>
+
+<body
+  data-title-de="Kontakt — FEA" data-title-en="Contact — FEA"
+  data-title-fa="تماس — FEA" data-title-ar="اتصل بنا — FEA"
+  data-desc-de="Stelle deine Frage zu Stipendien, Studium, Ausbildung oder Kursen — auf Deutsch, Englisch, Dari oder Arabisch."
+  data-desc-en="Ask your question about scholarships, university, Ausbildung or courses — in German, English, Dari or Arabic."
+  data-desc-fa="پرسش خود را دربارهٔ بورسیه، پوهنتون، آموزش مسلکی یا کورس‌ها بپرسید."
+  data-desc-ar="اطرح سؤالك عن المنح أو الجامعة أو التدريب المهني أو الدورات.">
+
+<a class="skip-link" href="#main"><span data-t="de">Zum Hauptinhalt springen</span><span data-t="en">Skip to main content</span><span data-t="fa">رفتن به محتوای اصلی</span><span data-t="ar">الانتقال إلى المحتوى الرئيسي</span></a>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="brand" href="index.html">
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+        <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+        <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+        <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+        <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__text"><span class="brand__name">FEA</span><span class="brand__sub">Free Education Assistance</span></span>
+    </a>
+    <div class="header__spacer"></div>
+    <nav class="nav" data-nav-menu data-al-de="Hauptnavigation" data-al-en="Main navigation" data-al-fa="ناوبری اصلی" data-al-ar="التنقل الرئيسي">
+      <a href="index.html" data-nav-link><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a>
+      <a href="about.html" data-nav-link><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a>
+      <a href="opportunities.html" data-nav-link><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a>
+      <a href="analyzer.html" data-nav-link><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a>
+      <a href="community.html" data-nav-link><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a>
+      <a href="contact.html" data-nav-link><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a>
+    </nav>
+    <div class="header__tools">
+      <div class="lang-switcher" data-lang-switcher data-al-de="Sprache" data-al-en="Language" data-al-fa="زبان" data-al-ar="اللغة"></div>
+      <button type="button" class="icon-btn" data-theme-toggle aria-pressed="false" data-al-de="Hell / dunkel umschalten" data-al-en="Switch light / dark mode" data-al-fa="تغییر حالت روشن یا تاریک" data-al-ar="تبديل الوضع الفاتح والداكن">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6" stroke-linecap="round"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" class="icon-btn nav-toggle" data-nav-toggle aria-expanded="false" data-al-de="Menü" data-al-en="Menu" data-al-fa="فهرست" data-al-ar="القائمة">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow"><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></p>
+      <h1><span data-t="de">Stell uns jede Frage zu deiner Bildung</span><span data-t="en">Ask us anything about your education</span><span data-t="fa">هر پرسشی دربارهٔ تحصیل خود دارید از ما بپرسید</span><span data-t="ar">اسألنا أي شيء عن تعليمك</span></h1>
+      <p class="lead measure-narrow">
+        <span data-t="de">Schreib auf Deutsch, Englisch, Dari oder Arabisch. Wir antworten in derselben Sprache.</span>
+        <span data-t="en">Write in German, English, Dari or Arabic. We answer in the same language.</span>
+        <span data-t="fa">به آلمانی، انگلیسی، دری یا عربی بنویسید. ما به همان زبان پاسخ می‌دهیم.</span>
+        <span data-t="ar">اكتب بالألمانية أو الإنجليزية أو الدرية أو العربية. نجيبك باللغة نفسها.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--flush">
+    <div class="container split">
+
+      <!-- ============ FORM ============ -->
+      <div class="card">
+        <h2 class="card__title-lg"><span data-t="de">Frage senden</span><span data-t="en">Send a question</span><span data-t="fa">ارسال پرسش</span><span data-t="ar">أرسل سؤالك</span></h2>
+
+        <p class="success-note" data-contact-success hidden>
+          <span data-t="de">Dein E-Mail-Programm sollte sich jetzt öffnen. Falls nichts passiert, schreib uns direkt an die Adresse unten.</span>
+          <span data-t="en">Your email application should open now. If nothing happens, write to us directly at the address below.</span>
+          <span data-t="fa">برنامهٔ ایمیل شما باید باز شود. اگر چیزی باز نشد، مستقیماً به آدرس زیر برای ما بنویسید.</span>
+          <span data-t="ar">من المفترض أن يفتح تطبيق البريد الآن. إن لم يحدث شيء، اكتب لنا مباشرةً على العنوان أدناه.</span>
+        </p>
+
+        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+
+          <div class="field">
+            <label class="field__label" for="ct-name"><span data-t="de">Dein Name</span><span data-t="en">Your name</span><span data-t="fa">نام شما</span><span data-t="ar">اسمك</span></label>
+            <input class="field__control" type="text" id="ct-name" name="name" autocomplete="name"
+                   data-ph-de="Vor- und Nachname" data-ph-en="First and last name" data-ph-fa="نام و تخلص" data-ph-ar="الاسم واللقب">
+            <p class="field__error" hidden><span data-t="de">Bitte gib deinen Namen ein.</span><span data-t="en">Please enter your name.</span><span data-t="fa">لطفاً نام خود را بنویسید.</span><span data-t="ar">يرجى إدخال اسمك.</span></p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="ct-email"><span data-t="de">E-Mail-Adresse</span><span data-t="en">Email address</span><span data-t="fa">آدرس ایمیل</span><span data-t="ar">البريد الإلكتروني</span></label>
+            <input class="field__control" type="email" id="ct-email" name="email" autocomplete="email" placeholder="you@example.com">
+            <p class="field__error" hidden><span data-t="de">Bitte gib eine gültige E-Mail-Adresse ein.</span><span data-t="en">Please enter a valid email address.</span><span data-t="fa">لطفاً یک آدرس ایمیل معتبر بنویسید.</span><span data-t="ar">يرجى إدخال بريد إلكتروني صحيح.</span></p>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label class="field__label" for="ct-topic"><span data-t="de">Thema</span><span data-t="en">Topic</span><span data-t="fa">موضوع</span><span data-t="ar">الموضوع</span></label>
+              <select class="field__control" id="ct-topic" name="topic">
+                <option value="scholarship" data-de="Stipendien" data-en="Scholarships" data-fa="بورسیه‌ها" data-ar="المنح الدراسية">Stipendien</option>
+                <option value="university" data-de="Universitätsbewerbung" data-en="University application" data-fa="درخواست به پوهنتون" data-ar="التقديم الجامعي">Universitätsbewerbung</option>
+                <option value="ausbildung" data-de="Ausbildung" data-en="Ausbildung" data-fa="آموزش مسلکی" data-ar="التدريب المهني">Ausbildung</option>
+                <option value="course" data-de="Kurse &amp; Sprache" data-en="Courses &amp; language" data-fa="کورس‌ها و زبان" data-ar="الدورات واللغة">Kurse &amp; Sprache</option>
+                <option value="volunteer" data-de="Ehrenamt / Mentoring" data-en="Volunteering / mentoring" data-fa="داوطلبی / منتورشیپ" data-ar="التطوّع / الإرشاد">Ehrenamt / Mentoring</option>
+                <option value="other" data-de="Etwas anderes" data-en="Something else" data-fa="موضوع دیگر" data-ar="شيء آخر">Etwas anderes</option>
+              </select>
+            </div>
+            <div class="field">
+              <label class="field__label" for="ct-lang"><span data-t="de">Antwort bitte auf</span><span data-t="en">Answer me in</span><span data-t="fa">پاسخ به زبان</span><span data-t="ar">أجبني باللغة</span></label>
+              <select class="field__control" id="ct-lang" name="lang">
+                <option value="de">Deutsch</option>
+                <option value="en">English</option>
+                <option value="fa">دری</option>
+                <option value="ar">العربية</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="ct-message"><span data-t="de">Deine Frage</span><span data-t="en">Your question</span><span data-t="fa">پرسش شما</span><span data-t="ar">سؤالك</span></label>
+            <textarea class="field__control" id="ct-message" name="message"
+                      data-ph-de="Beschreibe deine Situation: wo du lebst, was du bisher gelernt hast und was du als Nächstes machen möchtest."
+                      data-ph-en="Describe your situation: where you live, what you have studied and what you would like to do next."
+                      data-ph-fa="وضعیت خود را بنویسید: کجا زندگی می‌کنید، تا کنون چه خوانده‌اید و می‌خواهید بعد چه کنید."
+                      data-ph-ar="صف وضعك: أين تعيش، وماذا درست حتى الآن، وما الذي تريد فعله بعد ذلك."></textarea>
+            <p class="field__error" hidden><span data-t="de">Bitte schreibe mindestens 20 Zeichen, damit wir dir gut helfen können.</span><span data-t="en">Please write at least 20 characters so we can help you properly.</span><span data-t="fa">لطفاً حداقل ۲۰ حرف بنویسید تا بتوانیم درست کمک کنیم.</span><span data-t="ar">يرجى كتابة 20 حرفًا على الأقل حتى نتمكن من مساعدتك جيدًا.</span></p>
+          </div>
+
+          <div class="field">
+            <label class="switch">
+              <input type="checkbox" id="ct-consent" name="consent">
+              <span><span data-t="de">FEA darf meine Nachricht verwenden, um meine Frage zu beantworten.</span><span data-t="en">FEA may use my message to answer my question.</span><span data-t="fa">FEA می‌تواند از پیام من برای پاسخ به پرسشم استفاده کند.</span><span data-t="ar">أوافق على أن يستخدم FEA رسالتي للإجابة عن سؤالي.</span></span>
+            </label>
+            <p class="field__error" hidden><span data-t="de">Bitte bestätige dies, um fortzufahren.</span><span data-t="en">Please confirm this to continue.</span><span data-t="fa">برای ادامه لطفاً این مورد را تأیید کنید.</span><span data-t="ar">يرجى التأكيد للمتابعة.</span></p>
+          </div>
+
+          <div class="form-foot">
+            <button type="submit" class="btn btn--primary"><span data-t="de">Nachricht senden</span><span data-t="en">Send message</span><span data-t="fa">ارسال پیام</span><span data-t="ar">إرسال الرسالة</span></button>
+            <p class="note mb-0">
+              <span data-t="de">Noch ohne Backend: Der Button öffnet dein E-Mail-Programm mit der fertigen Nachricht.</span>
+              <span data-t="en">No backend yet: the button opens your email application with the message already prepared.</span>
+              <span data-t="fa">فعلاً بدون سرور: این دکمه برنامهٔ ایمیل شما را با پیام آماده باز می‌کند.</span>
+              <span data-t="ar">بلا خادم حتى الآن: يفتح الزر تطبيق البريد لديك والرسالة جاهزة.</span>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <!-- ============ SIDE ============ -->
+      <div class="stack">
+        <div class="card card--soft">
+          <h3><span data-t="de">Direkte Kanäle</span><span data-t="en">Direct channels</span><span data-t="fa">راه‌های مستقیم تماس</span><span data-t="ar">قنوات مباشرة</span></h3>
+          <p class="muted"><span data-t="de">Lieber eine Nachricht statt eines Formulars? Alles hier erreicht dieselben zwei Personen.</span><span data-t="en">Prefer a message instead of a form? All of these reach the same two people.</span><span data-t="fa">پیام را به فورم ترجیح می‌دهید؟ همهٔ این راه‌ها به همان دو نفر می‌رسد.</span><span data-t="ar">تفضّل رسالة بدل النموذج؟ كل هذه القنوات تصل إلى الشخصين نفسيهما.</span></p>
+          <p class="mb-3">
+            <a class="btn btn--ghost btn--sm" href="mailto:happytrustcore.github@gmail.com">
+              <svg class="mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7 8 5.5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>happytrustcore.github@gmail.com</span>
+            </a>
+          </p>
+          <div class="channels">
+            <a class="channel-link" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg><span>Instagram</span></a>
+            <a class="channel-link" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 4.5 3.9 11c-1 .4-1 1.8 0 2.1l4.2 1.3 1.6 4.8c.3.9 1.4 1.1 2 .4l2.2-2.4 4.1 3c.7.5 1.7.1 1.9-.8l2.6-13c.2-1-.8-1.8-1.8-1.4z" fill="currentColor"/></svg><span>Telegram</span></a>
+            <a class="channel-link" href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.3a8.6 8.6 0 0 0-7.4 13l-1.2 4.4 4.5-1.2A8.6 8.6 0 1 0 12 3.3zm4.7 12c-.2.6-1.2 1.1-1.7 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6a9.4 9.4 0 0 1-3.6-3.6c-.4-.6-.7-1.3-.7-2 0-.7.3-1.3.7-1.7.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.3.4c-.1.1-.2.3-.1.5.3.6 1.5 2.1 3 2.7.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.6.8c.3.1.4.3.4.4 0 .1 0 .4-.1.6z" fill="currentColor"/></svg><span>WhatsApp</span></a>
+          </div>
+        </div>
+
+        <div class="card card--soft">
+          <h3><span data-t="de">Antwortzeit</span><span data-t="en">Response time</span><span data-t="fa">زمان پاسخ</span><span data-t="ar">زمن الاستجابة</span></h3>
+          <p class="muted mb-0"><span data-t="de">Der KI-Assistent antwortet sofort, rund um die Uhr. Eine persönliche Antwort dauert meist ein bis drei Tage.</span><span data-t="en">The AI assistant answers immediately, 24/7. A human reply usually takes one to three days.</span><span data-t="fa">دستیار هوش مصنوعی فوراً پاسخ می‌دهد. پاسخ انسانی معمولاً یک تا سه روز وقت می‌گیرد.</span><span data-t="ar">يجيب المساعد الآلي فورًا. أما الرد البشري فيستغرق عادةً من يوم إلى ثلاثة أيام.</span></p>
+        </div>
+
+        <div class="card card--soft">
+          <h3><span data-t="de">Sofort eine Antwort?</span><span data-t="en">Need an answer right now?</span><span data-t="fa">همین حالا پاسخ می‌خواهید؟</span><span data-t="ar">تريد إجابة الآن؟</span></h3>
+          <p class="muted"><span data-t="de">Der Assistent beantwortet die häufigsten Fragen sofort — in deiner Sprache.</span><span data-t="en">The assistant answers the most common questions immediately — in your language.</span><span data-t="fa">دستیار به پرسش‌های پرتکرار فوراً پاسخ می‌دهد — به زبان شما.</span><span data-t="ar">يجيب المساعد عن الأسئلة الأكثر شيوعًا فورًا — بلغتك.</span></p>
+          <button type="button" class="btn btn--primary btn--sm" data-open-chat><span data-t="de">FEA-Assistent öffnen</span><span data-t="en">Open the FEA assistant</span><span data-t="fa">باز کردن دستیار FEA</span><span data-t="ar">افتح مساعد FEA</span></button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand brand--footer" href="index.html">
+          <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false">
+            <rect width="40" height="40" rx="11.5" fill="var(--brand)"/>
+            <path d="M8.5 14.6a1 1 0 0 1 1.2-1l8.6 1.9a1 1 0 0 1 .8 1v12.1a1 1 0 0 1-1.2 1l-8.6-1.9a1 1 0 0 1-.8-1V14.6Z" fill="#fff" fill-opacity=".95"/>
+            <path d="M31.5 14.6a1 1 0 0 0-1.2-1l-8.6 1.9a1 1 0 0 0-.8 1v12.1a1 1 0 0 0 1.2 1l8.6-1.9a1 1 0 0 0 .8-1V14.6Z" fill="#fff" fill-opacity=".6"/>
+            <path d="m26.4 6.6 1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1 1-2.6Z" fill="var(--accent)"/>
+          </svg>
+          <span class="brand__text"><span class="brand__name">FEA</span></span>
+        </a>
+        <p class="note"><span data-t="de">FEA ist eine gemeinnützige Initiative von zwei Studierenden der Softwaretechnik in Deutschland.</span><span data-t="en">FEA is a non-profit initiative founded by two software engineering students in Germany.</span><span data-t="fa">FEA یک ابتکار غیرانتفاعی از دو محصل انجنیری نرم‌افزار در آلمان است.</span><span data-t="ar">FEA مبادرة غير ربحية أسّسها طالبان في هندسة البرمجيات في ألمانيا.</span></p>
+      </div>
+      <div>
+        <h3><span data-t="de">Seiten</span><span data-t="en">Pages</span><span data-t="fa">صفحه‌ها</span><span data-t="ar">الصفحات</span></h3>
+        <ul class="footer__list">
+          <li><a href="index.html"><span data-t="de">Start</span><span data-t="en">Home</span><span data-t="fa">خانه</span><span data-t="ar">الرئيسية</span></a></li>
+          <li><a href="about.html"><span data-t="de">Projekt</span><span data-t="en">Project</span><span data-t="fa">پروژه</span><span data-t="ar">المشروع</span></a></li>
+          <li><a href="opportunities.html"><span data-t="de">Möglichkeiten</span><span data-t="en">Opportunities</span><span data-t="fa">فرصت‌ها</span><span data-t="ar">الفرص</span></a></li>
+          <li><a href="analyzer.html"><span data-t="de">KI-Analyse</span><span data-t="en">AI Analyzer</span><span data-t="fa">تحلیلگر</span><span data-t="ar">المحلّل</span></a></li>
+          <li><a href="community.html"><span data-t="de">Community</span><span data-t="en">Community</span><span data-t="fa">جامعه</span><span data-t="ar">المجتمع</span></a></li>
+          <li><a href="contact.html"><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3><span data-t="de">Sprachen</span><span data-t="en">Languages</span><span data-t="fa">زبان‌ها</span><span data-t="ar">اللغات</span></h3>
+        <div class="lang-switcher lang-switcher--footer" data-lang-switcher></div>
+        <p class="note"><span data-t="de">Gemeinnützig · Keine Gebühren · Keine Werbung</span><span data-t="en">Non-profit · No fees · No advertising</span><span data-t="fa">غیرانتفاعی · بدون فیس · بدون اعلان</span><span data-t="ar">غير ربحي · بلا رسوم · بلا إعلانات</span></p>
+      </div>
+      <div>
+        <h3><span data-t="de">Kontakt</span><span data-t="en">Contact</span><span data-t="fa">تماس</span><span data-t="ar">اتصل بنا</span></h3>
+        <ul class="footer__list">
+          <li><a href="contact.html"><span data-t="de">Frage senden</span><span data-t="en">Send a question</span><span data-t="fa">ارسال پرسش</span><span data-t="ar">أرسل سؤالك</span></a></li>
+          <li><a href="mailto:happytrustcore.github@gmail.com">happytrustcore.github@gmail.com</a></li>
+          <li><a href="https://happy-trustcore.github.io/FEA/" target="_blank" rel="noopener noreferrer"><span data-t="de">Live-Entwicklungsversion</span><span data-t="en">Live development version</span><span data-t="fa">نسخهٔ در حال توسعه</span><span data-t="ar">النسخة التطويرية</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="mb-0"><a href="legal.html"><span data-t="de">Impressum &amp; Datenschutz</span><span data-t="en">Legal notice &amp; privacy</span><span data-t="fa">معلومات قانونی و حریم خصوصی</span><span data-t="ar">البيانات القانونية والخصوصية</span></a></p>
+      <p class="mb-0"><span data-t="de">© 2026 Free Education Assistance. Projektkonzept für die Werner-Schulz-Stipendien 2026.</span><span data-t="en">© 2026 Free Education Assistance. Project concept for the Werner-Schulz-Stipendien 2026.</span><span data-t="fa">© 2026 Free Education Assistance. طرح پروژه برای بورسیهٔ Werner-Schulz 2026.</span><span data-t="ar">© 2026 Free Education Assistance. مفهوم المشروع لمنحة Werner-Schulz 2026.</span></p>
+    </div>
+  </div>
+</footer>
+
+<button type="button" class="to-top" data-to-top data-al-de="Nach oben" data-al-en="Back to top" data-al-fa="بازگشت به بالا" data-al-ar="العودة إلى الأعلى">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V6M6 11.5 12 5.5l6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<button type="button" class="chat-launcher" data-chat-launcher aria-expanded="false" aria-controls="fea-chat">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 3.4 9 7.6 0 4.2-4 7.6-9 7.6-.9 0-1.7-.1-2.5-.3L5 20.4l.9-3.2C4.1 15.8 3 13.3 3 10.6 3 6.4 7 3 12 3z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.5" cy="10.6" r="1.05" fill="currentColor"/><circle cx="12" cy="10.6" r="1.05" fill="currentColor"/><circle cx="15.5" cy="10.6" r="1.05" fill="currentColor"/></svg>
+  <span class="chat-launcher__label"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></span>
+</button>
+
+<section class="chat-panel" id="fea-chat" data-chat-panel hidden data-al-de="FEA-Assistent" data-al-en="FEA Assistant" data-al-fa="دستیار FEA" data-al-ar="مساعد FEA">
+  <header class="chat-panel__head">
+    <div>
+      <p class="chat-panel__title"><span data-t="de">FEA-Assistent</span><span data-t="en">FEA Assistant</span><span data-t="fa">دستیار FEA</span><span data-t="ar">مساعد FEA</span></p>
+      <p class="chat-panel__subtitle"><span data-t="de">Antworten in deiner Sprache · rund um die Uhr</span><span data-t="en">Answers in your language · 24/7</span><span data-t="fa">پاسخ به زبان شما · ۲۴ ساعته</span><span data-t="ar">إجابات بلغتك · على مدار الساعة</span></p>
+    </div>
+    <button type="button" class="chat-panel__close" data-chat-close data-al-de="Schließen" data-al-en="Close" data-al-fa="بستن" data-al-ar="إغلاق">&times;</button>
+  </header>
+  <div class="chat-panel__log" data-chat-log role="log" aria-live="polite"></div>
+  <div class="chat-panel__chips" data-chat-chips>
+    <button type="button" class="chip" data-chip="scholarship"><span data-t="de">Stipendien</span><span data-t="en">Scholarships</span><span data-t="fa">بورسیه‌ها</span><span data-t="ar">المنح</span></button>
+    <button type="button" class="chip" data-chip="ausbildung"><span data-t="de">Ausbildung</span><span data-t="en">Ausbildung</span><span data-t="fa">آموزش مسلکی</span><span data-t="ar">التدريب المهني</span></button>
+    <button type="button" class="chip" data-chip="university"><span data-t="de">Universität</span><span data-t="en">University</span><span data-t="fa">پوهنتون</span><span data-t="ar">الجامعة</span></button>
+    <button type="button" class="chip" data-chip="german"><span data-t="de">Deutsch lernen</span><span data-t="en">Learning German</span><span data-t="fa">یادگیری آلمانی</span><span data-t="ar">تعلّم الألمانية</span></button>
+    <button type="button" class="chip" data-chip="free"><span data-t="de">Kostenlose Kurse</span><span data-t="en">Free courses</span><span data-t="fa">کورس‌های رایگان</span><span data-t="ar">دورات مجانية</span></button>
+    <button type="button" class="chip" data-chip="cost"><span data-t="de">Kostet das etwas?</span><span data-t="en">Does it cost anything?</span><span data-t="fa">آیا مصرف دارد؟</span><span data-t="ar">هل هناك تكلفة؟</span></button>
+  </div>
+  <form class="chat-panel__form" data-chat-form>
+    <input type="text" class="chat-panel__input" data-chat-input autocomplete="off"
+           data-ph-de="Frag nach Stipendien, Ausbildung, Kursen …" data-ph-en="Ask about scholarships, Ausbildung, courses …"
+           data-ph-fa="دربارهٔ بورسیه، آموزش مسلکی، کورس‌ها بپرسید …" data-ph-ar="اسأل عن المنح أو التدريب المهني أو الدورات …"
+           data-al-de="Deine Frage" data-al-en="Your question" data-al-fa="پرسش شما" data-al-ar="سؤالك">
+    <button type="submit" class="btn btn--primary btn--sm"><span data-t="de">Senden</span><span data-t="en">Send</span><span data-t="fa">ارسال</span><span data-t="ar">إرسال</span></button>
+  </form>
+  <p class="chat-panel__note"><span data-t="de">Prototyp: Die Antworten kommen aus einer lokalen Wissensbasis im Browser.</span><span data-t="en">Prototype: answers come from a local knowledge base in your browser.</span><span data-t="fa">نمونهٔ اولیه: پاسخ‌ها از یک بانک معلومات محلی در مرورگر می‌آیند.</span><span data-t="ar">نموذج أولي: تأتي الإجابات من قاعدة معرفة محلية داخل المتصفح.</span></p>
+</section>
+
+<script src="assets/js/chat-data.js"></script>
+<script src="assets/js/fea.js"></script>
+<script src="assets/js/ui.js"></script>
+</body>
+</html>
