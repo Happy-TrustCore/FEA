@@ -98,6 +98,13 @@
       <div class="card">
         <h2 class="card__title-lg">Frage senden</h2>
 
+        <p class="success-note" data-contact-success-sent hidden>
+          Danke! Deine Nachricht wurde gesendet. Wir antworten so schnell wie möglich.
+          
+          
+          
+        </p>
+
         <p class="success-note" data-contact-success hidden>
           Dein E-Mail-Programm sollte sich jetzt öffnen. Falls nichts passiert, schreib uns direkt an die Adresse unten.
           
@@ -105,7 +112,17 @@
           
         </p>
 
-        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+        <form class="form-grid" data-contact-form novalidate
+              data-mail-to="happytrustcore.github@gmail.com"
+              data-endpoint="https://fea-contact.YOUR-SUBDOMAIN.workers.dev/contact">
+
+          <!-- Honeypot: real visitors never see this field. A bot that fills
+               every input on the form fills this one too, and gets silently
+               ignored server-side. Do not remove data-hp-field. -->
+          <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="ct-website">Website</label>
+            <input type="text" id="ct-website" name="website" data-hp-field tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label class="field__label" for="ct-name">Dein Name</label>
@@ -161,7 +178,7 @@
           <div class="form-foot">
             <button type="submit" class="btn btn--primary">Nachricht senden</button>
             <p class="note mb-0">
-              Noch ohne Backend: Der Button öffnet dein E-Mail-Programm mit der fertigen Nachricht.
+              Deine Nachricht wird direkt gesendet. Falls das einmal nicht klappt, öffnet sich stattdessen automatisch dein E-Mail-Programm.
               
               
               
@@ -284,7 +301,7 @@
            aria-label="Deine Frage">
     <button type="submit" class="btn btn--primary btn--sm">Senden</button>
   </form>
-  <p class="chat-panel__note">Prototyp: Die Antworten kommen aus einer lokalen Wissensbasis im Browser.</p>
+  <p class="chat-panel__note">Antworten kommen zuerst aus einer lokalen Wissensbasis. Bei allem anderen hilft zusätzlich ein KI-Assistent, sofern das Tageslimit nicht erreicht ist.</p>
 </section>
 
 <script src="assets/js/chat-data.js"></script>

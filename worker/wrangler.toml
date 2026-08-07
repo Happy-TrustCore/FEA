@@ -1,0 +1,38 @@
+# FEA — edge Worker: contact form (/contact) + chat AI fallback (/chat).
+#
+# Free tier, no card, both endpoints: Cloudflare Workers gives every account
+# 100,000 requests/day free forever, and Workers AI has its own daily free
+# allocation (see src/chat.js for how this stays well under it). Deploy with:
+#
+#   cd worker
+#   npx wrangler login
+#   npx wrangler kv namespace create CONTACT_KV        # paste the id below
+#   npx wrangler secret put BREVO_API_KEY              # pastes into Cloudflare, never into chat
+#   npx wrangler deploy
+#
+# See README.md in this folder for the full walkthrough.
+
+name = "fea-contact"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+
+[ai]
+# Workers AI — no separate signup, included on the same free Cloudflare
+# account. Powers the /chat fallback only; the local knowledge base in the
+# browser is always tried first.
+binding = "AI"
+
+[vars]
+# Where contact-form messages arrive.
+CONTACT_TO_EMAIL = "happytrustcore.github@gmail.com"
+# Must be a "verified sender" in Brevo (Brevo dashboard → Senders, free,
+# no domain required — verifying this exact Gmail address is enough).
+CONTACT_FROM_EMAIL = "happytrustcore.github@gmail.com"
+
+# Created once with `npx wrangler kv namespace create CONTACT_KV` — that
+# command prints an id to paste here. Shared by both endpoints: it remembers
+# "how many contact messages / chat questions has this IP sent today", so
+# neither the free Brevo quota nor the AI daily cap can be burned by a bot.
+[[kv_namespaces]]
+binding = "CONTACT_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"

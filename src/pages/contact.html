@@ -89,6 +89,13 @@
       <div class="card">
         <h2 class="card__title-lg"><span data-t="de">Frage senden</span><span data-t="en">Send a question</span><span data-t="fa">ارسال پرسش</span><span data-t="ar">أرسل سؤالك</span></h2>
 
+        <p class="success-note" data-contact-success-sent hidden>
+          <span data-t="de">Danke! Deine Nachricht wurde gesendet. Wir antworten so schnell wie möglich.</span>
+          <span data-t="en">Thanks! Your message has been sent. We will answer as soon as possible.</span>
+          <span data-t="fa">متشکریم! پیام شما ارسال شد. در اسرع وقت پاسخ می‌دهیم.</span>
+          <span data-t="ar">شكرًا! تم إرسال رسالتك. سنجيبك في أقرب وقت ممكن.</span>
+        </p>
+
         <p class="success-note" data-contact-success hidden>
           <span data-t="de">Dein E-Mail-Programm sollte sich jetzt öffnen. Falls nichts passiert, schreib uns direkt an die Adresse unten.</span>
           <span data-t="en">Your email application should open now. If nothing happens, write to us directly at the address below.</span>
@@ -96,7 +103,17 @@
           <span data-t="ar">من المفترض أن يفتح تطبيق البريد الآن. إن لم يحدث شيء، اكتب لنا مباشرةً على العنوان أدناه.</span>
         </p>
 
-        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+        <form class="form-grid" data-contact-form novalidate
+              data-mail-to="happytrustcore.github@gmail.com"
+              data-endpoint="https://fea-contact.YOUR-SUBDOMAIN.workers.dev/contact">
+
+          <!-- Honeypot: real visitors never see this field. A bot that fills
+               every input on the form fills this one too, and gets silently
+               ignored server-side. Do not remove data-hp-field. -->
+          <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="ct-website">Website</label>
+            <input type="text" id="ct-website" name="website" data-hp-field tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label class="field__label" for="ct-name"><span data-t="de">Dein Name</span><span data-t="en">Your name</span><span data-t="fa">نام شما</span><span data-t="ar">اسمك</span></label>
@@ -155,10 +172,10 @@
           <div class="form-foot">
             <button type="submit" class="btn btn--primary"><span data-t="de">Nachricht senden</span><span data-t="en">Send message</span><span data-t="fa">ارسال پیام</span><span data-t="ar">إرسال الرسالة</span></button>
             <p class="note mb-0">
-              <span data-t="de">Noch ohne Backend: Der Button öffnet dein E-Mail-Programm mit der fertigen Nachricht.</span>
-              <span data-t="en">No backend yet: the button opens your email application with the message already prepared.</span>
-              <span data-t="fa">فعلاً بدون سرور: این دکمه برنامهٔ ایمیل شما را با پیام آماده باز می‌کند.</span>
-              <span data-t="ar">بلا خادم حتى الآن: يفتح الزر تطبيق البريد لديك والرسالة جاهزة.</span>
+              <span data-t="de">Deine Nachricht wird direkt gesendet. Falls das einmal nicht klappt, öffnet sich stattdessen automatisch dein E-Mail-Programm.</span>
+              <span data-t="en">Your message is sent directly. If that ever doesn't work, your email application opens automatically instead.</span>
+              <span data-t="fa">پیام شما مستقیماً ارسال می‌شود. اگر گاهی این کار انجام نشود، برنامهٔ ایمیل شما به‌طور خودکار باز می‌شود.</span>
+              <span data-t="ar">تُرسل رسالتك مباشرةً. إذا لم ينجح ذلك أحيانًا، سيفتح تطبيق البريد لديك تلقائيًا بدلاً من ذلك.</span>
             </p>
           </div>
         </form>
@@ -279,7 +296,7 @@
            data-al-de="Deine Frage" data-al-en="Your question" data-al-fa="پرسش شما" data-al-ar="سؤالك">
     <button type="submit" class="btn btn--primary btn--sm"><span data-t="de">Senden</span><span data-t="en">Send</span><span data-t="fa">ارسال</span><span data-t="ar">إرسال</span></button>
   </form>
-  <p class="chat-panel__note"><span data-t="de">Prototyp: Die Antworten kommen aus einer lokalen Wissensbasis im Browser.</span><span data-t="en">Prototype: answers come from a local knowledge base in your browser.</span><span data-t="fa">نمونهٔ اولیه: پاسخ‌ها از یک بانک معلومات محلی در مرورگر می‌آیند.</span><span data-t="ar">نموذج أولي: تأتي الإجابات من قاعدة معرفة محلية داخل المتصفح.</span></p>
+  <p class="chat-panel__note"><span data-t="de">Antworten kommen zuerst aus einer lokalen Wissensbasis. Bei allem anderen hilft zusätzlich ein KI-Assistent, sofern das Tageslimit nicht erreicht ist.</span><span data-t="en">Answers come first from a local knowledge base. For anything else, an AI assistant helps too, as long as today's limit has not been reached.</span><span data-t="fa">پاسخ‌ها ابتدا از یک بانک معلومات محلی می‌آیند. برای هر موضوع دیگر، تا زمانی که سقف روزانه پر نشده، یک دستیار هوش مصنوعی هم کمک می‌کند.</span><span data-t="ar">تأتي الإجابات أولًا من قاعدة معرفة محلية. ولأي شيء آخر، يساعد أيضًا مساعد ذكاء اصطناعي طالما لم يُستنفد الحد اليومي.</span></p>
 </section>
 
 <script src="assets/js/chat-data.js"></script>

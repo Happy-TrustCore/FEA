@@ -98,6 +98,13 @@
       <div class="card">
         <h2 class="card__title-lg">أرسل سؤالك</h2>
 
+        <p class="success-note" data-contact-success-sent hidden>
+          
+          
+          
+          شكرًا! تم إرسال رسالتك. سنجيبك في أقرب وقت ممكن.
+        </p>
+
         <p class="success-note" data-contact-success hidden>
           
           
@@ -105,7 +112,17 @@
           من المفترض أن يفتح تطبيق البريد الآن. إن لم يحدث شيء، اكتب لنا مباشرةً على العنوان أدناه.
         </p>
 
-        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+        <form class="form-grid" data-contact-form novalidate
+              data-mail-to="happytrustcore.github@gmail.com"
+              data-endpoint="https://fea-contact.YOUR-SUBDOMAIN.workers.dev/contact">
+
+          <!-- Honeypot: real visitors never see this field. A bot that fills
+               every input on the form fills this one too, and gets silently
+               ignored server-side. Do not remove data-hp-field. -->
+          <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="ct-website">Website</label>
+            <input type="text" id="ct-website" name="website" data-hp-field tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label class="field__label" for="ct-name">اسمك</label>
@@ -163,7 +180,7 @@
               
               
               
-              بلا خادم حتى الآن: يفتح الزر تطبيق البريد لديك والرسالة جاهزة.
+              تُرسل رسالتك مباشرةً. إذا لم ينجح ذلك أحيانًا، سيفتح تطبيق البريد لديك تلقائيًا بدلاً من ذلك.
             </p>
           </div>
         </form>
@@ -281,7 +298,7 @@
     <input type="text" class="chat-panel__input" data-chat-input autocomplete="off" placeholder="اسأل عن المنح أو التدريب المهني أو الدورات …" aria-label="سؤالك">
     <button type="submit" class="btn btn--primary btn--sm">إرسال</button>
   </form>
-  <p class="chat-panel__note">نموذج أولي: تأتي الإجابات من قاعدة معرفة محلية داخل المتصفح.</p>
+  <p class="chat-panel__note">تأتي الإجابات أولًا من قاعدة معرفة محلية. ولأي شيء آخر، يساعد أيضًا مساعد ذكاء اصطناعي طالما لم يُستنفد الحد اليومي.</p>
 </section>
 
 <script src="assets/js/chat-data.js"></script>

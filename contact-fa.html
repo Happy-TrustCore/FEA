@@ -98,6 +98,13 @@
       <div class="card">
         <h2 class="card__title-lg">ارسال پرسش</h2>
 
+        <p class="success-note" data-contact-success-sent hidden>
+          
+          
+          متشکریم! پیام شما ارسال شد. در اسرع وقت پاسخ می‌دهیم.
+          
+        </p>
+
         <p class="success-note" data-contact-success hidden>
           
           
@@ -105,7 +112,17 @@
           
         </p>
 
-        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+        <form class="form-grid" data-contact-form novalidate
+              data-mail-to="happytrustcore.github@gmail.com"
+              data-endpoint="https://fea-contact.YOUR-SUBDOMAIN.workers.dev/contact">
+
+          <!-- Honeypot: real visitors never see this field. A bot that fills
+               every input on the form fills this one too, and gets silently
+               ignored server-side. Do not remove data-hp-field. -->
+          <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="ct-website">Website</label>
+            <input type="text" id="ct-website" name="website" data-hp-field tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label class="field__label" for="ct-name">نام شما</label>
@@ -162,7 +179,7 @@
             <p class="note mb-0">
               
               
-              فعلاً بدون سرور: این دکمه برنامهٔ ایمیل شما را با پیام آماده باز می‌کند.
+              پیام شما مستقیماً ارسال می‌شود. اگر گاهی این کار انجام نشود، برنامهٔ ایمیل شما به‌طور خودکار باز می‌شود.
               
             </p>
           </div>
@@ -282,7 +299,7 @@
            placeholder="دربارهٔ بورسیه، آموزش مسلکی، کورس‌ها بپرسید …" aria-label="پرسش شما">
     <button type="submit" class="btn btn--primary btn--sm">ارسال</button>
   </form>
-  <p class="chat-panel__note">نمونهٔ اولیه: پاسخ‌ها از یک بانک معلومات محلی در مرورگر می‌آیند.</p>
+  <p class="chat-panel__note">پاسخ‌ها ابتدا از یک بانک معلومات محلی می‌آیند. برای هر موضوع دیگر، تا زمانی که سقف روزانه پر نشده، یک دستیار هوش مصنوعی هم کمک می‌کند.</p>
 </section>
 
 <script src="assets/js/chat-data.js"></script>

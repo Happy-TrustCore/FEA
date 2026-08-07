@@ -242,9 +242,13 @@
   /* ---------------------------------------------------------------- */
 
   /**
-   * There is no backend in this phase, so a valid form opens the visitor's mail
-   * client with the message prepared. The error texts are not written here —
-   * they sit in contact.html in all four languages and are only revealed.
+   * A valid submission is sent straight to the Cloudflare Worker endpoint
+   * (see /worker), which relays it through Brevo. If that endpoint has not
+   * been deployed yet (data-endpoint is still the placeholder), or the
+   * request fails for any reason — offline visitor, Worker down, free quota
+   * exhausted — the form falls back to opening the visitor's own mail client
+   * with the message prepared, exactly as it always has. A visitor never
+   * sees a dead end either way.
    */
   function initContactForm() {
     var form = document.querySelector('[data-contact-form]');
@@ -256,8 +260,12 @@
     var consent = form.querySelector('#ct-consent');
     var topic = form.querySelector('#ct-topic');
     var answerLang = form.querySelector('#ct-lang');
-    var success = document.querySelector('[data-contact-success]');
+    var honeypot = form.querySelector('[data-hp-field]');
+    var successSent = document.querySelector('[data-contact-success-sent]');
+    var successMailto = document.querySelector('[data-contact-success]');
     var address = form.getAttribute('data-mail-to') || '';
+    var endpoint = form.getAttribute('data-endpoint') || '';
+    var submitButton = form.querySelector('button[type="submit"]');
 
     function mark(field, invalid) {
       var wrapper = field.closest('.field');
@@ -274,22 +282,19 @@
         : '';
     }
 
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
+    function hideSuccess() {
+      if (successSent) successSent.hidden = true;
+      if (successMailto) successMailto.hidden = true;
+    }
 
-      var valid = true;
-      valid = mark(name, name.value.trim().length < 2) && valid;
-      valid = mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) && valid;
-      valid = mark(message, message.value.trim().length < 20) && valid;
-      valid = mark(consent, !consent.checked) && valid;
+    function showSuccess(node) {
+      hideSuccess();
+      if (!node) return;
+      node.hidden = false;
+      node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
 
-      if (!valid) {
-        if (success) success.hidden = true;
-        var first = form.querySelector('[aria-invalid="true"]');
-        if (first) first.focus();
-        return;
-      }
-
+    function sendByMailto() {
       var body = [
         message.value.trim(),
         '',
@@ -305,10 +310,77 @@
         '?subject=' + encodeURIComponent('[FEA] ' + selectedText(topic) + ' — ' + name.value.trim()) +
         '&body=' + encodeURIComponent(body);
 
-      if (success) {
-        success.hidden = false;
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      showSuccess(successMailto);
+    }
+
+    function sendByWorker() {
+      var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      var timeout = window.setTimeout(function () {
+        if (controller) controller.abort();
+      }, 8000);
+
+      var payload = {
+        name: name.value.trim(),
+        email: email.value.trim(),
+        message: message.value.trim(),
+        topic: topic ? topic.value : 'other',
+        lang: answerLang ? answerLang.value : 'en',
+        consent: !!(consent && consent.checked),
+        hp: honeypot ? honeypot.value : ''
+      };
+
+      fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+        signal: controller ? controller.signal : undefined
+      })
+        .then(function (response) {
+          if (!response.ok) throw new Error('worker responded ' + response.status);
+          return response.json();
+        })
+        .then(function (data) {
+          if (!data || data.ok !== true) throw new Error('worker reported failure');
+          form.reset();
+          showSuccess(successSent);
+        })
+        .catch(function () {
+          // Offline, Worker not deployed yet, free quota exhausted for the
+          // day, anything — the visitor still gets their message out.
+          sendByMailto();
+        })
+        .then(function () {
+          window.clearTimeout(timeout);
+          if (submitButton) submitButton.disabled = false;
+        });
+    }
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      var valid = true;
+      valid = mark(name, name.value.trim().length < 2) && valid;
+      valid = mark(email, !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) && valid;
+      valid = mark(message, message.value.trim().length < 20) && valid;
+      valid = mark(consent, !consent.checked) && valid;
+
+      if (!valid) {
+        hideSuccess();
+        var first = form.querySelector('[aria-invalid="true"]');
+        if (first) first.focus();
+        return;
       }
+
+      // Not deployed yet (still the placeholder subdomain): keep today's
+      // behaviour rather than let every visitor's browser try — and fail —
+      // a request to a Worker that does not exist.
+      if (!endpoint || endpoint.indexOf('YOUR-SUBDOMAIN') !== -1) {
+        sendByMailto();
+        return;
+      }
+
+      if (submitButton) submitButton.disabled = true;
+      sendByWorker();
     });
   }
 

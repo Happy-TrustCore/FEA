@@ -637,6 +637,13 @@ var FEA;
 (function (FEA) {
     var Chat;
     (function (Chat) {
+        /**
+         * Tried only when the local knowledge base has no confident answer — see
+         * ask() below. Free, rate-limited server-side, and never required: until
+         * this is deployed (see /worker/README.md) the placeholder below is
+         * detected and the assistant behaves exactly as it always has.
+         */
+        const CHAT_ENDPOINT = 'https://fea-contact.YOUR-SUBDOMAIN.workers.dev/chat';
         let panel = null;
         let launcher = null;
         let log = null;
@@ -857,6 +864,56 @@ var FEA;
         /* ------------------------------------------------------------------ */
         /* Conversation                                                        */
         /* ------------------------------------------------------------------ */
+        /**
+         * Reached only when the local matcher found nothing. Tries the AI Worker;
+         * whatever happens — not deployed yet, offline, today's free quota used up,
+         * a slow response — falls back to the same static answer the assistant has
+         * always given, so a visitor never sees an error or a dead end.
+         */
+        function askAI(userText) {
+            if (!CHAT_ENDPOINT || CHAT_ENDPOINT.indexOf('YOUR-SUBDOMAIN') !== -1) {
+                say(text(FEA_CHAT.fallback), { chips: defaultChips() });
+                return;
+            }
+            busy = true;
+            const indicator = typing();
+            const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+            const timeout = window.setTimeout(function () {
+                if (controller)
+                    controller.abort();
+            }, 12000);
+            function stop() {
+                window.clearTimeout(timeout);
+                if (indicator && indicator.parentElement)
+                    indicator.parentElement.removeChild(indicator);
+                busy = false;
+            }
+            fetch(CHAT_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userText, lang: FEA.Lang.get() }),
+                signal: controller ? controller.signal : undefined,
+            })
+                .then(function (response) {
+                if (!response.ok)
+                    throw new Error('chat endpoint responded ' + response.status);
+                return response.json();
+            })
+                .then(function (data) {
+                stop();
+                if (data && data.ok && data.reply) {
+                    bubble('bot', data.reply);
+                    renderChips(defaultChips());
+                }
+                else {
+                    say(text(FEA_CHAT.fallback), { chips: defaultChips() });
+                }
+            })
+                .catch(function () {
+                stop();
+                say(text(FEA_CHAT.fallback), { chips: defaultChips() });
+            });
+        }
         function ask(userText, forced) {
             const value = userText.trim();
             if (!value || busy)
@@ -881,7 +938,10 @@ var FEA;
                 });
                 return;
             }
-            say(text(FEA_CHAT.fallback), { chips: defaultChips() });
+            // The local knowledge base — checked first, always free, always
+            // available — found nothing confident enough. Only now does the AI
+            // fallback get a turn.
+            askAI(value);
         }
         Chat.ask = ask;
         function greet() {

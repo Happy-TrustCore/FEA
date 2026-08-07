@@ -98,6 +98,13 @@
       <div class="card">
         <h2 class="card__title-lg">Send a question</h2>
 
+        <p class="success-note" data-contact-success-sent hidden>
+          
+          Thanks! Your message has been sent. We will answer as soon as possible.
+          
+          
+        </p>
+
         <p class="success-note" data-contact-success hidden>
           
           Your email application should open now. If nothing happens, write to us directly at the address below.
@@ -105,7 +112,17 @@
           
         </p>
 
-        <form class="form-grid" data-contact-form novalidate data-mail-to="happytrustcore.github@gmail.com">
+        <form class="form-grid" data-contact-form novalidate
+              data-mail-to="happytrustcore.github@gmail.com"
+              data-endpoint="https://fea-contact.YOUR-SUBDOMAIN.workers.dev/contact">
+
+          <!-- Honeypot: real visitors never see this field. A bot that fills
+               every input on the form fills this one too, and gets silently
+               ignored server-side. Do not remove data-hp-field. -->
+          <div class="hp-field" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+            <label for="ct-website">Website</label>
+            <input type="text" id="ct-website" name="website" data-hp-field tabindex="-1" autocomplete="off">
+          </div>
 
           <div class="field">
             <label class="field__label" for="ct-name">Your name</label>
@@ -161,7 +178,7 @@
             <button type="submit" class="btn btn--primary">Send message</button>
             <p class="note mb-0">
               
-              No backend yet: the button opens your email application with the message already prepared.
+              Your message is sent directly. If that ever doesn't work, your email application opens automatically instead.
               
               
             </p>
@@ -281,7 +298,7 @@
     <input type="text" class="chat-panel__input" data-chat-input autocomplete="off" placeholder="Ask about scholarships, Ausbildung, courses …" aria-label="Your question">
     <button type="submit" class="btn btn--primary btn--sm">Send</button>
   </form>
-  <p class="chat-panel__note">Prototype: answers come from a local knowledge base in your browser.</p>
+  <p class="chat-panel__note">Answers come first from a local knowledge base. For anything else, an AI assistant helps too, as long as today's limit has not been reached.</p>
 </section>
 
 <script src="assets/js/chat-data.js"></script>
