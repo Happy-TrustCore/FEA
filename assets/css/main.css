@@ -31,21 +31,30 @@
   --positive: #8a5a12;
   --positive-soft: #fbf2de;
 
-  --shadow-sm: 0 1px 2px rgba(24, 82, 50, 0.07), 0 2px 8px rgba(24, 82, 50, 0.06);
-  --shadow-md: 0 4px 12px rgba(24, 82, 50, 0.09), 0 16px 40px rgba(24, 82, 50, 0.09);
-  --shadow-lg: 0 12px 28px rgba(24, 82, 50, 0.13), 0 32px 64px rgba(24, 82, 50, 0.13);
+  /* Layered, tinted shadows — light and airy rather than grey and heavy. */
+  --shadow-sm: 0 1px 2px rgba(20, 60, 40, 0.05), 0 2px 6px rgba(20, 60, 40, 0.04);
+  --shadow-md: 0 2px 4px rgba(20, 60, 40, 0.04), 0 8px 20px rgba(20, 60, 40, 0.07),
+    0 20px 44px rgba(20, 60, 40, 0.06);
+  --shadow-lg: 0 4px 8px rgba(20, 60, 40, 0.05), 0 16px 36px rgba(20, 60, 40, 0.1),
+    0 40px 80px rgba(20, 60, 40, 0.1);
+  --ring: 0 0 0 4px rgba(46, 125, 79, 0.14);
 
-  --radius-sm: 8px;
-  --radius: 14px;
-  --radius-lg: 22px;
+  --gradient-brand: linear-gradient(135deg, var(--brand-strong), var(--brand) 55%, var(--accent));
+  --gradient-line: linear-gradient(90deg, var(--brand), var(--accent));
+
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
   --radius-pill: 999px;
 
-  --step--1: clamp(0.82rem, 0.79rem + 0.15vw, 0.9rem);
-  --step-0: clamp(0.98rem, 0.94rem + 0.2vw, 1.06rem);
-  --step-1: clamp(1.12rem, 1.05rem + 0.35vw, 1.3rem);
-  --step-2: clamp(1.32rem, 1.18rem + 0.7vw, 1.7rem);
-  --step-3: clamp(1.6rem, 1.35rem + 1.2vw, 2.3rem);
-  --step-4: clamp(2rem, 1.6rem + 2vw, 3.2rem);
+  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --step--1: clamp(0.84rem, 0.81rem + 0.15vw, 0.92rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  --step-1: clamp(1.14rem, 1.06rem + 0.38vw, 1.34rem);
+  --step-2: clamp(1.38rem, 1.2rem + 0.8vw, 1.85rem);
+  --step-3: clamp(1.7rem, 1.38rem + 1.45vw, 2.6rem);
+  --step-4: clamp(2.15rem, 1.6rem + 2.6vw, 3.75rem);
 
   --space-1: 0.35rem;
   --space-2: 0.7rem;
@@ -83,9 +92,10 @@
   --positive: #e2b662;
   --positive-soft: rgba(226, 182, 98, 0.16);
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.55);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.45);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.6);
+  --ring: 0 0 0 4px rgba(92, 201, 138, 0.22);
 }
 
 /* ---------- 2. Base ---------- */
@@ -142,9 +152,42 @@ body {
   color: var(--ink);
   font-family: var(--font);
   font-size: var(--step-0);
-  line-height: 1.65;
+  line-height: 1.68;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
   overflow-x: hidden;
+}
+
+::selection {
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+
+/* Slim, on-brand scrollbar instead of the default grey one. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: var(--radius-pill);
+  border: 3px solid var(--bg);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--brand);
 }
 
 html[dir="rtl"] body {
@@ -161,10 +204,15 @@ h2,
 h3,
 h4 {
   margin: 0 0 var(--space-2);
-  line-height: 1.18;
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  line-height: 1.14;
+  font-weight: 750;
+  letter-spacing: -0.022em;
   color: var(--ink);
+  text-wrap: balance;
+}
+
+h1 {
+  letter-spacing: -0.032em;
 }
 
 html[dir="rtl"] h1,
@@ -204,9 +252,10 @@ ol {
 }
 
 :focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 6px;
+  box-shadow: var(--ring);
 }
 
 .skip-link {
@@ -254,15 +303,17 @@ html[dir="rtl"] .skip-link {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .header.is-stuck {
+  background: color-mix(in srgb, var(--bg) 86%, transparent);
   border-bottom-color: var(--line);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 0 var(--line), 0 8px 24px rgba(20, 60, 40, 0.06);
 }
 
 .header__inner {
@@ -321,15 +372,16 @@ html[dir="rtl"] .brand__sub {
 }
 
 .nav a {
+  position: relative;
   display: inline-block;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.8rem;
   border-radius: var(--radius-pill);
   color: var(--ink-soft);
   text-decoration: none;
   font-size: var(--step--1);
-  font-weight: 600;
+  font-weight: 650;
   white-space: nowrap;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav a:hover {
@@ -338,8 +390,21 @@ html[dir="rtl"] .brand__sub {
 }
 
 .nav a.is-active {
-  color: var(--brand);
+  color: var(--brand-strong);
   background: var(--brand-soft);
+}
+
+/* A small dot marks the current page instead of a heavy filled pill. */
+.nav a.is-active::after {
+  content: "";
+  position: absolute;
+  inset-inline: 50%;
+  bottom: 0.15rem;
+  width: 4px;
+  height: 4px;
+  margin-inline-start: -2px;
+  border-radius: 50%;
+  background: var(--brand);
 }
 
 .header__tools {
@@ -415,37 +480,64 @@ html[dir="rtl"] .brand__sub {
 /* ---------- 4. Buttons ---------- */
 
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.78rem 1.35rem;
+  padding: 0.85rem 1.5rem;
   border-radius: var(--radius-pill);
   border: 1px solid transparent;
   font: inherit;
   font-weight: 700;
   font-size: var(--step--1);
   line-height: 1.2;
+  letter-spacing: -0.005em;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.12s ease, background 0.15s ease, border-color 0.15s ease,
-    box-shadow 0.15s ease, color 0.15s ease;
+  overflow: hidden;
+  transition: transform 0.18s cubic-bezier(0.34, 1.4, 0.64, 1), background 0.18s ease,
+    border-color 0.18s ease, box-shadow 0.22s ease, color 0.18s ease;
 }
 
 .btn:active {
-  transform: translateY(1px);
+  transform: translateY(1px) scale(0.99);
 }
 
 .btn--primary {
-  background: var(--brand);
+  /* Solid colour first so the button is still readable if the gradient fails. */
+  background-color: var(--brand);
+  background-image: linear-gradient(135deg, var(--brand) 0%, var(--brand-strong) 100%);
   color: var(--brand-ink);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 1px 2px rgba(20, 60, 40, 0.16), 0 6px 16px rgba(20, 60, 40, 0.18);
+}
+
+/* A soft sheen that sweeps across on hover. */
+.btn--primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.22) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
 }
 
 .btn--primary:hover {
-  background: var(--brand-strong);
   color: var(--brand-ink);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(20, 60, 40, 0.16), 0 12px 28px rgba(20, 60, 40, 0.24);
+}
+
+.btn--primary:hover::after {
+  transform: translateX(120%);
+}
+
+html[dir="rtl"] .btn--primary::after {
+  transform: translateX(120%);
+}
+
+html[dir="rtl"] .btn--primary:hover::after {
+  transform: translateX(-120%);
 }
 
 .btn--accent {
@@ -467,20 +559,46 @@ html[dir="rtl"] .brand__sub {
 }
 
 .btn--ghost {
-  background: transparent;
+  background: var(--surface);
   border-color: var(--line-strong);
   color: var(--ink);
 }
 
 .btn--ghost:hover {
   border-color: var(--brand);
-  color: var(--brand);
+  color: var(--brand-strong);
   background: var(--brand-soft);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn--sm {
-  padding: 0.5rem 0.95rem;
+  padding: 0.55rem 1.05rem;
   font-size: var(--step--1);
+}
+
+/* Link-style buttons on cards get an arrow that steps forward on hover. */
+.opp-card__link::after,
+.btn--arrow::after {
+  content: "→";
+  font-size: 1.05em;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+html[dir="rtl"] .opp-card__link::after,
+html[dir="rtl"] .btn--arrow::after {
+  content: "←";
+}
+
+.opp-card__link:hover::after,
+.btn--arrow:hover::after {
+  transform: translateX(3px);
+}
+
+html[dir="rtl"] .opp-card__link:hover::after,
+html[dir="rtl"] .btn--arrow:hover::after {
+  transform: translateX(-3px);
 }
 
 .btn[disabled] {
@@ -488,15 +606,20 @@ html[dir="rtl"] .brand__sub {
   cursor: not-allowed;
 }
 
+/* Sits on the coloured CTA band, so it must override the light surface that
+   .btn--ghost otherwise gives it — white text on white is invisible. */
 .btn--on-dark.btn--ghost {
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
   color: #fff;
+  backdrop-filter: blur(4px);
 }
 
 .btn--on-dark.btn--ghost:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.2);
   border-color: #fff;
   color: #fff;
+  box-shadow: none;
 }
 
 /* ---------- 5. Sections & typography helpers ---------- */
@@ -518,39 +641,55 @@ html[dir="rtl"] .brand__sub {
   margin-bottom: var(--space-5);
 }
 
+.section__head h2 {
+  margin-bottom: var(--space-3);
+}
+
 .section__head--center {
   margin-inline: auto;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* The eyebrow is a small pill with a pulsing dot — it reads as a label rather
+   than as stray small text, and it anchors every section head. */
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.74rem;
+  gap: 0.55rem;
+  padding: 0.34rem 0.85rem 0.34rem 0.7rem;
+  border-radius: var(--radius-pill);
+  background: var(--brand-soft);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
+  font-size: var(--step--2);
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--brand);
-  margin-bottom: var(--space-2);
+  color: var(--brand-strong);
+  margin-bottom: var(--space-3);
 }
 
 html[dir="rtl"] .eyebrow {
   letter-spacing: 0;
   text-transform: none;
-  font-size: 0.86rem;
+  font-size: var(--step--1);
+  padding: 0.34rem 0.7rem 0.34rem 0.85rem;
 }
 
 .eyebrow::before {
   content: "";
-  width: 22px;
-  height: 2px;
-  background: var(--accent);
-  border-radius: 2px;
+  width: 7px;
+  height: 7px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--brand) 20%, transparent);
 }
 
-.section__head--center .eyebrow {
-  justify-content: center;
+:root[data-theme="dark"] .eyebrow {
+  color: var(--brand-strong);
 }
 
 .lead {
@@ -580,39 +719,67 @@ html[dir="rtl"] .eyebrow {
 .grid--cards { grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); }
 
 .card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease,
+    border-color 0.28s ease;
 }
 
 .card--soft {
   background: var(--surface-2);
+  border-color: transparent;
   box-shadow: none;
 }
 
+/* A hairline of brand colour appears along the top edge on hover. */
+.card--hover::before {
+  content: "";
+  position: absolute;
+  inset-inline: var(--space-4);
+  top: -1px;
+  height: 2px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-line);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
 .card--hover:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   box-shadow: var(--shadow-md);
-  border-color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 32%, var(--line));
+}
+
+.card--hover:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .card__icon {
-  width: 46px;
-  height: 46px;
+  width: 50px;
+  height: 50px;
   display: grid;
   place-items: center;
-  border-radius: 14px;
+  border-radius: 15px;
   background: var(--brand-soft);
-  color: var(--brand);
+  color: var(--brand-strong);
   margin-bottom: var(--space-3);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 14%, transparent);
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1), background 0.28s ease;
+}
+
+.card--hover:hover .card__icon {
+  transform: scale(1.06) rotate(-3deg);
 }
 
 .card__icon svg {
-  width: 24px;
-  height: 24px;
+  width: 25px;
+  height: 25px;
 }
 
 .card p:last-child {
@@ -627,49 +794,93 @@ html[dir="rtl"] .eyebrow {
 }
 
 .value-card__num {
-  font-size: 2.6rem;
+  font-size: 3.4rem;
   font-weight: 800;
-  line-height: 1;
-  color: var(--brand);
-  opacity: 0.22;
-  margin-bottom: var(--space-2);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  background: var(--gradient-line);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  opacity: 0.34;
+  margin-bottom: var(--space-3);
+  transition: opacity 0.28s ease;
+}
+
+.value-card:hover .value-card__num {
+  opacity: 0.72;
 }
 
 .value-card::after {
   content: "";
   position: absolute;
   inset-inline-start: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: linear-gradient(var(--brand), var(--accent));
+  top: var(--space-4);
+  bottom: var(--space-4);
+  width: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-line);
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transform: scaleY(0.3);
+  transition: opacity 0.28s ease, transform 0.28s ease;
 }
 
 .value-card:hover::after {
   opacity: 1;
+  transform: scaleY(1);
 }
 
 /* ---------- 7. Hero ---------- */
 
 .hero {
   position: relative;
-  padding-block: clamp(3rem, 7vw, 6rem);
+  padding-block: clamp(3.5rem, 8vw, 7rem);
   overflow: hidden;
+  isolation: isolate;
 }
 
+/* Two soft colour clouds give the white page depth without adding a heavy
+   background block. */
 .hero::before {
   content: "";
   position: absolute;
-  inset-inline-end: -12%;
-  top: -30%;
-  width: 60vw;
-  height: 60vw;
-  max-width: 780px;
-  max-height: 780px;
-  background: radial-gradient(circle at 50% 50%, var(--brand-soft), transparent 65%);
-  z-index: 0;
+  inset-inline-end: -14%;
+  top: -34%;
+  width: 62vw;
+  height: 62vw;
+  max-width: 820px;
+  max-height: 820px;
+  background: radial-gradient(circle at 50% 50%, var(--brand-soft), transparent 62%);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset-inline-start: -18%;
+  bottom: -46%;
+  width: 46vw;
+  height: 46vw;
+  max-width: 620px;
+  max-height: 620px;
+  background: radial-gradient(circle at 50% 50%, var(--accent-soft), transparent 66%);
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+/* A very faint dot grid, masked so it fades out before the text. */
+.hero__inner::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -1;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 40%, #000, transparent 72%);
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -677,27 +888,28 @@ html[dir="rtl"] .eyebrow {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
   gap: var(--space-6);
   align-items: center;
 }
 
 .hero__title {
   margin-bottom: var(--space-3);
-  max-width: 16ch;
+  max-width: 15ch;
 }
 
 .hero__lead {
   font-size: var(--step-1);
   color: var(--ink-soft);
-  max-width: 54ch;
+  max-width: 52ch;
+  margin-bottom: var(--space-4);
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
 }
 
 .hero__trust {
@@ -771,22 +983,25 @@ html[dir="rtl"] .badge {
 .hero__steps li {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
   font-size: var(--step--1);
   color: var(--ink-soft);
 }
 
-.hero__steps span {
-  width: 24px;
-  height: 24px;
+/* Only the first span is the numbered chip. The second one wraps the four
+   language variants of the label and must stay ordinary text. */
+.hero__steps li > span:first-child {
+  width: 26px;
+  height: 26px;
   flex: none;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: var(--brand-soft);
-  color: var(--brand);
+  color: var(--brand-strong);
   font-weight: 800;
-  font-size: 0.72rem;
+  font-size: var(--step--2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--brand) 16%, transparent);
 }
 
 /* ---------- 8. Stats ---------- */
@@ -797,28 +1012,57 @@ html[dir="rtl"] .badge {
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 .stat {
+  position: relative;
   background: var(--surface);
-  padding: var(--space-4) var(--space-3);
+  padding: var(--space-5) var(--space-3);
   text-align: center;
+  transition: background 0.28s ease;
+}
+
+.stat::before {
+  content: "";
+  position: absolute;
+  inset-inline: 22%;
+  top: 0;
+  height: 3px;
+  border-radius: 0 0 var(--radius-pill) var(--radius-pill);
+  background: var(--gradient-line);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.stat:hover {
+  background: var(--bg-alt);
+}
+
+.stat:hover::before {
+  opacity: 1;
 }
 
 .stat__value {
-  font-size: var(--step-3);
+  font-size: clamp(2rem, 1.5rem + 2vw, 3rem);
   font-weight: 800;
-  color: var(--brand);
-  line-height: 1.1;
+  letter-spacing: -0.035em;
+  line-height: 1;
   display: block;
+  background: var(--gradient-line);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .stat__label {
   font-size: var(--step--1);
   color: var(--ink-soft);
-  margin: 0.35rem 0 0;
+  margin: 0.6rem auto 0;
+  max-width: 24ch;
+  line-height: 1.45;
 }
 
 /* ---------- 9. Flow diagram ---------- */
@@ -834,25 +1078,33 @@ html[dir="rtl"] .badge {
   position: relative;
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: var(--space-3);
-  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-3);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .flow__step.is-focused {
-  transform: translateY(-4px);
-  border-color: var(--brand);
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--brand) 36%, var(--line));
   box-shadow: var(--shadow-md);
 }
 
+/* Connector between the five steps, with an arrow head on the leading edge. */
 .flow__step::after {
   content: "";
   position: absolute;
-  top: 50%;
+  top: 2.55rem;
   inset-inline-end: calc(-1 * var(--space-3) - 1px);
   width: var(--space-3);
   height: 2px;
-  background: var(--line-strong);
+  background: linear-gradient(90deg, var(--line-strong), color-mix(in srgb, var(--brand) 55%, transparent));
+  z-index: 1;
+}
+
+html[dir="rtl"] .flow__step::after {
+  background: linear-gradient(270deg, var(--line-strong), color-mix(in srgb, var(--brand) 55%, transparent));
 }
 
 .flow__step:last-child::after {
@@ -860,16 +1112,26 @@ html[dir="rtl"] .badge {
 }
 
 .flow__num {
-  width: 30px;
-  height: 30px;
+  position: relative;
+  width: 40px;
+  height: 40px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--brand);
+  background-color: var(--brand-strong);
+  background-image: var(--gradient-brand);
+  /* --brand-ink flips to a dark green in dark mode, where the gradient is
+     light. A hardcoded white would be unreadable there. */
   color: var(--brand-ink);
   font-weight: 800;
-  font-size: 0.85rem;
-  margin-bottom: var(--space-2);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-3);
+  box-shadow: 0 0 0 5px var(--brand-soft);
+  transition: transform 0.28s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+.flow__step.is-focused .flow__num {
+  transform: scale(1.08);
 }
 
 .flow__title {
@@ -1124,13 +1386,15 @@ textarea.field__control {
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.18rem 0.6rem;
+  padding: 0.24rem 0.68rem;
   border-radius: var(--radius-pill);
   background: var(--surface-2);
   color: var(--ink-soft);
-  font-size: 0.72rem;
+  font-size: var(--step--2);
   font-weight: 700;
+  letter-spacing: 0.01em;
   border: 1px solid var(--line);
+  white-space: nowrap;
 }
 
 .tag--free {
@@ -1164,6 +1428,14 @@ textarea.field__control {
   display: flex;
   flex-direction: column;
   gap: 0.55rem;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.opp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--brand) 30%, var(--line));
 }
 
 .opp-card__tags {
@@ -1174,7 +1446,8 @@ textarea.field__control {
 
 .opp-card__title {
   font-size: var(--step-1);
-  margin: 0.2rem 0 0;
+  margin: 0.25rem 0 0;
+  letter-spacing: -0.018em;
 }
 
 .opp-card__provider {
@@ -1449,11 +1722,16 @@ html[dir="rtl"] .progress-fill {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.accordion__item:hover {
+  border-color: color-mix(in srgb, var(--brand) 28%, var(--line));
 }
 
 .accordion__item.is-open {
-  border-color: var(--brand);
+  border-color: color-mix(in srgb, var(--brand) 45%, var(--line));
+  box-shadow: var(--shadow-sm);
 }
 
 .accordion__trigger {
@@ -1569,22 +1847,41 @@ html[dir="rtl"] .progress-fill {
 .cta-band {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--brand-strong), var(--brand));
+  background-color: var(--brand-strong);
+  background-image: var(--gradient-brand);
   color: #fff;
-  border-radius: var(--radius-lg);
-  padding: clamp(2rem, 5vw, 3.4rem);
+  border-radius: var(--radius-xl);
+  padding: clamp(2.4rem, 6vw, 4.2rem);
   text-align: center;
+  box-shadow: var(--shadow-lg);
 }
 
+/* Two translucent orbs plus a fine grid give the band some depth. */
 .cta-band::after {
   content: "";
   position: absolute;
-  inset-inline-end: -60px;
-  bottom: -110px;
-  width: 320px;
-  height: 320px;
+  inset-inline-end: -70px;
+  bottom: -130px;
+  width: 360px;
+  height: 360px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.09);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 68%);
+}
+
+.cta-band::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: -90px;
+  top: -120px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12), transparent 66%);
+}
+
+.cta-band h2 {
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-3);
 }
 
 .cta-band > * {
@@ -1625,7 +1922,8 @@ html[dir="rtl"] .progress-fill {
    need their own deep green instead — otherwise white text sits on pale mint. */
 :root[data-theme="dark"] .cta-band,
 :root[data-theme="dark"] .chat-panel__head {
-  background: linear-gradient(135deg, #103d27, #1c6640);
+  background-color: #103d27;
+  background-image: linear-gradient(135deg, #103d27, #1c6640);
 }
 
 :root[data-theme="dark"] .cta-band .btn--accent,
@@ -1953,13 +2251,16 @@ html[dir="rtl"] .footer h3 {
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateY(22px) scale(0.985);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 
 [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+  will-change: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
