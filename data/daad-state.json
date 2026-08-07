@@ -1,0 +1,366 @@
+{
+  "known": {
+    "10000300": {
+      "added": "2026-08-07",
+      "title": "Country-related cooperation programme with Argentina (ALEARG)"
+    },
+    "10000312": {
+      "added": "2026-08-07",
+      "title": "DAAD/NSTC- Sandwich- Scholarship Programme"
+    },
+    "10000321": {
+      "added": "2026-08-07",
+      "title": "German Studies Research Grant"
+    },
+    "10000335": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Government Scholarships Programme Oman"
+    },
+    "10000344": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Government Scholarships Programme Tunesia"
+    },
+    "10000381": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Important Information"
+    },
+    "10000486": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In-Region Programme Sub-Saharan Africa"
+    },
+    "50015171": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "ERP Study Scholarships for Graduates of Economics and Business"
+    },
+    "50015217": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "PEA"
+    },
+    "50015276": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "ALECOSTA: Alemania-Costa Rica"
+    },
+    "50015282": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Third Country Scholarships for Postgraduate Studies for Students from"
+    },
+    "50015315": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Sino-German Postdoc Program"
+    },
+    "50015361": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Taiwan Summer Institute Programme"
+    },
+    "50015446": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "DAAD-K.C.Wong Postdoc Fellowships"
+    },
+    "50015450": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Regierungsstip. Pakistan - DAAD/HEC Overseas"
+    },
+    "50015492": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Re-invitation Programme for Former Scholarship Holders"
+    },
+    "50015508": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Bilateral Exchange of Academics (to Germany)"
+    },
+    "50015638": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "RISE professional"
+    },
+    "50016578": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "DAAD/TEV Master Scholarships"
+    },
+    "50017039": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "DAAD-Short-term scholarships for master's degree students"
+    },
+    "50019749": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "DLR/DAAD Research Fellowship Programme"
+    },
+    "50020910": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "RISE Germany"
+    },
+    "50026200": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Scholarships - Master Studies for All Academic Disciplines"
+    },
+    "50026397": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Helmut-Schmidt-Programme"
+    },
+    "50035295": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "University Summer Courses"
+    },
+    "50046485": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "University Winter Courses"
+    },
+    "50076777": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Development-Related Postgraduate Courses"
+    },
+    "50078419": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "DAAD/BECAS Chile"
+    },
+    "50094047": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "CAS-DAAD Regierungsstipendien - Programme for the Promotion of"
+    },
+    "50109971": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Scholarships - Postgraduate Studies in the Field of the Performing"
+    },
+    "50110016": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Visits for Academics - Artistic Disciplines and Architecture"
+    },
+    "50747186": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Regierungsstipendien Aceh"
+    },
+    "57135739": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Research Grants - Doctoral Programmes in Germany"
+    },
+    "57135742": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art,"
+    },
+    "57135743": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Scholarships - Postgraduate Studies in the Field of Music"
+    },
+    "57135744": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study Scholarships - Postgraduate Studies in the Field of Architecture"
+    },
+    "57176484": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Third Country Programme Central America"
+    },
+    "57352834": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "IAESTE Incoming"
+    },
+    "57378178": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Co-financed Short-Term Research Grant Brazil"
+    },
+    "57379863": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Joint Rustaveli-DAAD-fellowship programme"
+    },
+    "57471578": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "KOSPIE ALEARG"
+    },
+    "57471579": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "KOSPIE UTN"
+    },
+    "57471580": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "KOSPIE ICETEX"
+    },
+    "57471581": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "KOSPIE Mexico"
+    },
+    "57504697": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Combined Study and Practice Stays for Engineers from Developing"
+    },
+    "57507783": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Research Grants - Bi-nationally Supervised Doctoral Degrees/Cotutelle"
+    },
+    "57549329": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "BECAL"
+    },
+    "57593463": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "BECAL Master"
+    },
+    "57593632": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "KOSPIE Tunisia"
+    },
+    "57649740": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Gilman-DAAD Germany Scholarships"
+    },
+    "57650857": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Future Ukraine: Research Grants"
+    },
+    "57652675": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country Palestinian Territories"
+    },
+    "57655437": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "TheMuseumsLab"
+    },
+    "57730436": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Third Country Programme Latin America MA"
+    },
+    "57730537": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at AIT"
+    },
+    "57730541": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at SEARCA FS"
+    },
+    "57730542": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at SEARCA NRM"
+    },
+    "57730543": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at UGM"
+    },
+    "57742121": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Research Grants in Germany"
+    },
+    "57742130": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Study scholarships for STEM disciplines"
+    },
+    "57757717": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at IITD"
+    },
+    "57757718": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at SEARCA FS"
+    },
+    "57757719": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "In-Country/In Region Scholarships Programme at SEARCA NRM"
+    },
+    "57808993": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Government Scholarships Programme Mexico COMECYT-DAAD Master"
+    },
+    "57809001": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Government Scholarships Programme Mexico COMECYT-DAAD Promotion"
+    },
+    "57814471": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "COLFUTURO MA"
+    },
+    "57814472": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "COLFUTURO PhD"
+    },
+    "57862424": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "SECIHTI"
+    },
+    "57862427": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "GROW – Programm Line 1"
+    },
+    "57871506": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Zukunftsnetzwerk Weimarer Dreieck"
+    },
+    "57871508": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Zukunftsnetzwerk Weimarer Dreieck"
+    },
+    "57874180": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "EU-Projekt Scholarships for Technical and post-Secondary Education"
+    },
+    "57883183": {
+      "added": "2026-08-07",
+      "baseline": true,
+      "title": "Heilbronn AI Fellowships"
+    }
+  }
+}
