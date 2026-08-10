@@ -1,8 +1,7 @@
 # FEA — DAAD harvester
 
-Run: 2026-08-07 16:56 UTC  
-DAAD scholarships seen: **73**  ·  Already known: **73**
+Run: 2026-08-10 10:45 UTC
 
-## Nothing new
+Could not fetch or parse DAAD's data this run: **URLError: <urlopen error timed out>**
 
-No DAAD scholarships were added since the last run.
+No files were changed. This is not necessarily a problem — DAAD may have changed the shape of their data, or the site may have been briefly unreachable. If this keeps happening, a human should check by hand.
