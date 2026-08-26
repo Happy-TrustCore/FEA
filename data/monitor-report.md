@@ -1,14 +1,15 @@
 # FEA — daily opportunity check
 
-Run: 2026-08-25 08:02 UTC  
+Run: 2026-08-26 08:03 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
 
-## Broken links (2)
+## Broken links (3)
 
 These no longer load. Fix the URL or remove the card.
 
-- **integrationskurs** — URLError — https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html
-- **uniassist** — URLError — https://www.uni-assist.de/en/
+- **daad** — HTTP 403 — https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/
+- **hildedomin** — HTTP 403 — https://www.daad.de/en/studying-in-germany/scholarships/
+- **studienkolleg** — HTTP 403 — https://www.study-in-germany.de/en/
 
 ## Source pages changed (3)
 
