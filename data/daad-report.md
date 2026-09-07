@@ -1,8 +1,7 @@
 # FEA — DAAD harvester
 
-Run: 2026-08-31 06:17 UTC  
-DAAD scholarships seen: **63**  ·  Already known: **73**
+Run: 2026-09-07 12:25 UTC
 
-## Nothing new
+Could not fetch or parse DAAD's data this run: **HTTPError: HTTP Error 403: Forbidden**
 
-No DAAD scholarships were added since the last run.
+No files were changed. This is not necessarily a problem — DAAD may have changed the shape of their data, or the site may have been briefly unreachable. If this keeps happening, a human should check by hand.
