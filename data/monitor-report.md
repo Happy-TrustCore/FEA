@@ -1,6 +1,6 @@
 # FEA — daily opportunity check
 
-Run: 2026-09-10 09:57 UTC  
+Run: 2026-09-11 09:55 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
 
 ## Broken links (3)
@@ -15,6 +15,6 @@ These no longer load. Fix the URL or remove the card.
 
 Open each one and confirm the deadline and requirements.
 
-- **dwgerman** — source page changed — https://learngerman.dw.com/
 - **edx** — source page changed — https://www.edx.org/
+- **freecodecamp** — source page changed — https://www.freecodecamp.org/
 - **makeit** — source page changed — https://www.make-it-in-germany.com/en/
