@@ -1,6 +1,6 @@
 # FEA — DAAD harvester
 
-Run: 2026-09-07 12:25 UTC
+Run: 2026-09-14 12:39 UTC
 
 Could not fetch or parse DAAD's data this run: **HTTPError: HTTP Error 403: Forbidden**
 
