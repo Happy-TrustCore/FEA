@@ -1,13 +1,13 @@
 # FEA — daily opportunity check
 
-Run: 2026-10-04 11:13 UTC  
+Run: 2026-10-05 12:29 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
 
 ## Broken links (1)
 
 These no longer load. Fix the URL or remove the card.
 
-- **integrationskurs** — URLError — https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html
+- **deutschlandstipendium** — URLError — https://www.deutschlandstipendium.de/
 
 ## Source pages changed (2)
 
