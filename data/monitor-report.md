@@ -1,6 +1,6 @@
 # FEA — daily opportunity check
 
-Run: 2026-10-11 11:31 UTC  
+Run: 2026-10-12 13:23 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
 
 ## Broken links (3)
