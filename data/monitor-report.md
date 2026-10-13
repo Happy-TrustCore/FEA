@@ -1,19 +1,20 @@
 # FEA — daily opportunity check
 
-Run: 2026-10-12 13:23 UTC  
+Run: 2026-10-13 12:52 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
 
-## Broken links (3)
+## Broken links (1)
 
 These no longer load. Fix the URL or remove the card.
 
-- **daad** — HTTP 403 — https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/
-- **hildedomin** — HTTP 403 — https://www.daad.de/en/studying-in-germany/scholarships/
-- **studienkolleg** — HTTP 403 — https://www.study-in-germany.de/en/
+- **integrationskurs** — URLError — https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html
 
-## Source pages changed (2)
+## Source pages changed (5)
 
 Open each one and confirm the deadline and requirements.
 
+- **dwgerman** — source page changed — https://learngerman.dw.com/
 - **edx** — source page changed — https://www.edx.org/
+- **garantiefonds** — source page changed — https://www.obs-ev.de/
 - **makeit** — source page changed — https://www.make-it-in-germany.com/en/
+- **studienkolleg** — source page changed — https://www.study-in-germany.de/en/
