@@ -1,16 +1,7 @@
 # FEA — daily opportunity check
 
-Run: 2026-10-31 11:02 UTC  
+Run: 2026-11-01 11:57 UTC  
 Checked: **14** opportunities · Date written into **4** places on the site
-
-## Broken links (4)
-
-These no longer load. Fix the URL or remove the card.
-
-- **daad** — HTTP 403 — https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/
-- **deutschlandstipendium** — URLError — https://www.deutschlandstipendium.de/
-- **hildedomin** — HTTP 403 — https://www.daad.de/en/studying-in-germany/scholarships/
-- **studienkolleg** — HTTP 403 — https://www.study-in-germany.de/en/
 
 ## Source pages changed (2)
 
