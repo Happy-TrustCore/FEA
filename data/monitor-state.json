@@ -4,97 +4,97 @@
     "status": 200,
     "hash": "856179ea9c8706ef",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "auw": {
     "url": "https://asian-university.org/admissions/",
     "status": 200,
     "hash": "7e125b74e54727dc",
     "deadline": "2027-01-31",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "daad": {
     "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
-    "status": 200,
+    "status": 403,
     "hash": "16eb5fbafda47105",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "deutschlandstipendium": {
     "url": "https://www.deutschlandstipendium.de/",
     "status": 200,
     "hash": "5b848eedd6276d93",
     "deadline": "2026-10-15",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "dwgerman": {
     "url": "https://learngerman.dw.com/",
     "status": 200,
-    "hash": "eee5525a9b8fdf4d",
+    "hash": "e3e14b112928ba58",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "edx": {
     "url": "https://www.edx.org/",
     "status": 200,
-    "hash": "e4a221b70fca7de5",
+    "hash": "b8d0d2a8056bd055",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "freecodecamp": {
     "url": "https://www.freecodecamp.org/",
     "status": 200,
     "hash": "e3b0c44298fc1c14",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "garantiefonds": {
     "url": "https://www.obs-ev.de/",
     "status": 200,
     "hash": "e249bf61b496b4ce",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "hildedomin": {
     "url": "https://www.daad.de/en/studying-in-germany/scholarships/",
-    "status": 200,
+    "status": 403,
     "hash": "acca632e1d2808ac",
     "deadline": "2026-11-30",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "ihk": {
     "url": "https://www.ihk-lehrstellenboerse.de/",
     "status": 200,
     "hash": "ff5ed65fd6514837",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "integrationskurs": {
     "url": "https://www.bamf.de/EN/Themen/Integration/ZugewanderteTeilnehmende/Integrationskurse/integrationskurse-node.html",
-    "status": 0,
+    "status": 200,
     "hash": "eafd0cb4915ea143",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "makeit": {
     "url": "https://www.make-it-in-germany.com/en/",
     "status": 200,
-    "hash": "12989088b01919a5",
+    "hash": "546556aff7236ca1",
     "deadline": "rolling",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "studienkolleg": {
     "url": "https://www.study-in-germany.de/en/",
-    "status": 200,
+    "status": 403,
     "hash": "4771cbc9e92264d1",
     "deadline": "2026-11-15",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   },
   "uniassist": {
     "url": "https://www.uni-assist.de/en/",
     "status": 200,
     "hash": "22d1e69a961d61e5",
     "deadline": "2027-01-15",
-    "checked": "2026-11-13"
+    "checked": "2026-11-14"
   }
 }
