@@ -1,6 +1,6 @@
 # FEA — DAAD harvester
 
-Run: 2026-11-09 16:07 UTC  
+Run: 2026-11-16 15:36 UTC  
 DAAD scholarships seen: **61**  ·  Already known: **73**
 
 ## Nothing new
